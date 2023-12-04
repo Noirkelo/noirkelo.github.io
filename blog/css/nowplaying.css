@@ -1,0 +1,46 @@
+/* 
+ * Copyright (c) 2020 Eric Goebelbecker.
+ * 
+ * This program is free software: you can redistribute it and/or modify  
+ * it under the terms of the GNU General Public License as published by  
+ * the Free Software Foundation, version 3.
+ *
+ * This program is distributed in the hope that it will be useful, but 
+ * WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License 
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.nowplayingcard {
+    margin: 0 auto;
+    margin-top: 5%
+}
+
+.nowplayingcontainer-inner {
+    box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    padding: 50px;
+    display: inline-flex;
+}
+
+img#trackart {
+    width: 100%;
+    float: left;
+    left: 0;
+}
+
+.trackInfo {
+    font-size: 13px !important;
+    width: 90%;
+    font-weight: bold;
+    float: top;
+    display: inline-block;
+    padding: 15px;
+}
+a.trackInfo {
+    font-size: 13px !important;
+    text-overflow: ellipsis;
+}
