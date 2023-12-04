@@ -1,38 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Noirkel 's blog</title><link>https://noirkelo.github.io/blog/</link><description>Recent content in ᕦʕ •ᴥ•ʔᕤ on Noirkel 's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><lastBuildDate>Mon, 04 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://noirkelo.github.io/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>测试</title><link>https://noirkelo.github.io/blog/%E6%B5%8B%E8%AF%95/</link><pubDate>Mon, 04 Dec 2023 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/blog/%E6%B5%8B%E8%AF%95/</guid><description>测试 xxxx
-测试2 xxxxxxddddd xxxxx xxxx xxxxccxxx Track: Album:</description><content:encoded><![CDATA[<h2 id="测试">测试</h2>
+测试2 xxxxxxddddd xxxxx xxxx xxxxccxxx</description><content:encoded><![CDATA[<h2 id="测试">测试</h2>
 <p>xxxx</p>
 <h2 id="测试2">测试2</h2>
 <p>xxxxxxddddd
 xxxxx
 xxxx
-xxxxccxxx
-
-
-<script src="js/nowplaying.js"></script>
-
-<link rel="stylesheet" href="css/nowplaying.css">
-
-<div class="nowplayingcard">
-	<div class="nowplayingcontainer-inner">
-		<div class="trackInfo">
-			<p>Track: <a id="tracktitle"></a></p>
-			<p>Album: <a id="album"></a></p>
-			<a id="artist"></a></p>
-		</div>
-		<img id="trackart" src="#">
-	</div>
-</div>
-
-<script>
-setInterval(getLastTrack("Rcommand","f09b1647ffb4709b76534f30b0993f52"), 10 * 1000);
-</script>
-
-
-
-
-
-
-
-
-</p>
+xxxxccxxx</p>
 ]]></content:encoded></item></channel></rss>
