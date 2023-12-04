@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://noirkelo.github.io/blog/sitemap.xml
