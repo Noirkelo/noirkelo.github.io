@@ -8,9 +8,9 @@ xxxx
 xxxxccxxx
 
 
-<script src="/js/nowplaying.js"></script>
+<script src="js/nowplaying.js"></script>
 
-<link rel="stylesheet" href="/css/nowplaying.css">
+<link rel="stylesheet" href="css/nowplaying.css">
 
 <div class="nowplayingcard">
 	<div class="nowplayingcontainer-inner">
