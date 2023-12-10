@@ -1,22 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Noirkel 's blog</title><link>https://noirkelo.github.io/</link><description>Recent content in ᕦʕ •ᴥ•ʔᕤ on Noirkel 's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><lastBuildDate>Tue, 05 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://noirkelo.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>接雨水</title><link>https://noirkelo.github.io/box/%E6%8E%A5%E9%9B%A8%E6%B0%B4/</link><pubDate>Tue, 05 Dec 2023 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/%E6%8E%A5%E9%9B%A8%E6%B0%B4/</guid><description>接雨水 Summary Dp 看第i个左边右边最小的数
-双指针 可以用双指针的原因是 我们只需要知道右边会大于K那么当前这个T(T&amp;lt;K)一定能围成一个小区域（挡板） 也就是我只需要知道右边最小会大于什么
-单调队列 单调队列就是关注每一步上涨高度去维护
-Connect Reference</description><content:encoded><![CDATA[<h1 id="接雨水">接雨水</h1>
-<h2 id="summary">Summary</h2>
-<h2 id="dp">Dp</h2>
-<p>看第i个左边右边最小的数</p>
-<h2 id="双指针">双指针</h2>
-<p>可以用双指针的原因是
-我们只需要知道右边会大于K那么当前这个T(T&lt;K)一定能围成一个小区域（挡板）
-也就是我只需要知道右边最小会大于什么</p>
-<h2 id="单调队列">单调队列</h2>
-<p>单调队列就是关注每一步上涨高度去维护</p>
-<h2 id="connect">Connect</h2>
-<hr>
-<h1 id="reference">Reference</h1>
-]]></content:encoded></item><item><title>数据流中位数</title><link>https://noirkelo.github.io/box/%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B8%AD%E4%BD%8D%E6%95%B0/</link><pubDate>Tue, 05 Dec 2023 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B8%AD%E4%BD%8D%E6%95%B0/</guid><description>两个堆然后去找中位数 O($k*nLog_2(N)$) 本质上一种机械的组合不同数据结构的性质</description><content:encoded>&lt;p>两个堆然后去找中位数
-O($k*nLog_2(N)$)
-本质上一种机械的组合不同数据结构的性质&lt;/p></content:encoded></item><item><title/><link>https://noirkelo.github.io/image/drawing-2023-12-10-16.38.51.excalidraw/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/image/drawing-2023-12-10-16.38.51.excalidraw/</guid><description>⚠ Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Noirkel 's blog</title><link>https://noirkelo.github.io/blog/excalidraw/</link><description>Recent content in excalidraw on Noirkel 's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><atom:link href="https://noirkelo.github.io/blog/excalidraw/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://noirkelo.github.io/image/drawing-2023-12-10-16.38.51.excalidraw/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/image/drawing-2023-12-10-16.38.51.excalidraw/</guid><description>⚠ Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠
 Text Elements %%
 Drawing { &amp;#34;type&amp;#34;: &amp;#34;excalidraw&amp;#34;, &amp;#34;version&amp;#34;: 2, &amp;#34;source&amp;#34;: &amp;#34;https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.0.4&amp;#34;, &amp;#34;elements&amp;#34;: [ { &amp;#34;id&amp;#34;: &amp;#34;eM7pykepwBIE2R3u7Iyp3&amp;#34;, &amp;#34;type&amp;#34;: &amp;#34;rectangle&amp;#34;, &amp;#34;x&amp;#34;: -185.6170438528061, &amp;#34;y&amp;#34;: -47.38367462158203, &amp;#34;width&amp;#34;: 184.39987182617188, &amp;#34;height&amp;#34;: 114.41311645507812, &amp;#34;angle&amp;#34;: 0, &amp;#34;strokeColor&amp;#34;: &amp;#34;#1e1e1e&amp;#34;, &amp;#34;backgroundColor&amp;#34;: &amp;#34;transparent&amp;#34;, &amp;#34;fillStyle&amp;#34;: &amp;#34;solid&amp;#34;, &amp;#34;strokeWidth&amp;#34;: 2, &amp;#34;strokeStyle&amp;#34;: &amp;#34;solid&amp;#34;, &amp;#34;roughness&amp;#34;: 1, &amp;#34;opacity&amp;#34;: 100, &amp;#34;groupIds&amp;#34;: [], &amp;#34;frameId&amp;#34;: null, &amp;#34;roundness&amp;#34;: { &amp;#34;type&amp;#34;: 3 }, &amp;#34;seed&amp;#34;: 1881962826, &amp;#34;version&amp;#34;: 158, &amp;#34;versionNonce&amp;#34;: 27461898, &amp;#34;isDeleted&amp;#34;: true, &amp;#34;boundElements&amp;#34;: [], &amp;#34;updated&amp;#34;: 1702197560458, &amp;#34;link&amp;#34;: null, &amp;#34;locked&amp;#34;: false }, { &amp;#34;id&amp;#34;: &amp;#34;gkcYPYHS&amp;#34;, &amp;#34;type&amp;#34;: &amp;#34;text&amp;#34;, &amp;#34;x&amp;#34;: -98.</description><content:encoded><![CDATA[<p><mark>⚠  Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠</mark></p>
 <h1 id="text-elements">Text Elements</h1>
