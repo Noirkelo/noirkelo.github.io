@@ -160,7 +160,8 @@ Detailed design 我在原有的分支做了一定修改至少证明了这个拦�
 </span></span></span><span class="line"><span class="cl"><span class="w">    
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre></div>
-<p>接下来就是需要参考vscode的原始代码我们能发现由若干个动画构成</p>
+<p>接下来就是需要参考vscode的原始代码我们能发现由若干个动画构成
+这里可以在动画包里面找到</p>
 
 
 
@@ -252,12 +253,112 @@ Detailed design 我在原有的分支做了一定修改至少证明了这个拦�
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
 <p>未完待续</p>
 <p>参考资料</p>
-<p><a href="https://github.com/zed-industries/zed/discussions/21982">https://github.com/zed-industries/zed/discussions/21982</a>
-<a href="https://github.com/djeedai/bevy_tweening">https://github.com/djeedai/bevy_tweening</a>
-<a href="https://github.com/zed-industries/zed/pull/24604">https://github.com/zed-industries/zed/pull/24604</a></p>
+<p><a href="https://github.com/zed-industries/zed/discussions/21982">https://github.com/zed-industries/zed/discussions/21982</a></p>
+<p><a href="https://github.com/djeedai/bevy_tweening">https://github.com/djeedai/bevy_tweening</a></p>
+<p><a href="https://github.com/zed-industries/zed/pull/24604">https://github.com/zed-industries/zed/pull/24604</a></p>
 <p>github.com/zed-industries/zed/issues/4355</p>
 <h2 id="design-discussion">Design discussion</h2>
-]]></content:encoded></item><item><title>折腾ubutnu 24.04 的那些事情</title><link>https://noirkelo.github.io/box/%E6%8A%98%E8%85%BEubutnu-24.04-%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E6%83%85/</link><pubDate>Mon, 09 Jun 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/%E6%8A%98%E8%85%BEubutnu-24.04-%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E6%83%85/</guid><description>折腾ubutnu 24.04 的那些事情 do-release-upgrade 千万不要中途暂停，否则会出现升级一半的情况 然后你就可以使用强制解决dpkg依赖冲突
+]]></content:encoded></item><item><title>rust 学习</title><link>https://noirkelo.github.io/box/rust-%E5%AD%A6%E4%B9%A0/</link><pubDate>Mon, 18 Aug 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/rust-%E5%AD%A6%E4%B9%A0/</guid><description>Summary 针对概念性的，如果不看就会忘掉的东西 并且对相对比较复杂的地方需要做一下自己的理解 不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行
+常规语法 循环控制结构 for/while/loop
+match 匹配 match
+风格 生命周期 所有权 例外就是Cell&amp;lt;T&amp;gt;
+trait 泛型 Send/Sync Send 是 我可以将其移动到另一个线程而不创建非线程安全的隐藏共享状态吗？ Rc 移动后保持共享状态 Sync 是 多个线程是否可以保存对此的引用，而不会发生突变竞争（当且仅当&amp;amp;T是Send的时候T才是Sync） 特例: e.g. 通过通过libloading载入dll,为了防止线程局部变量出问题!Send(需要由创建他的线程释放),!Sync(并没有做读写访问控制) e.g. MutexGuard&amp;lt;T&amp;gt; 由于pthread平台限制(如果你把它发送到别的线程那么析构函数会在被发送到的线程执行,但是你可以Send &amp;amp;MutexGuard&amp;lt;T&amp;gt;) https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur
+奇怪语法糖 泛型相关 HRTB 具体表现是for&amp;lt;‘a&amp;gt;:Trait&amp;lt;&amp;lsquo;a&amp;gt;
+//将生命周期推迟到调用者来决定 fn with_nested_refcell&amp;lt;&amp;#39;nested&amp;gt; ( nested: &amp;amp;&amp;#39;nested RefCell&amp;lt;RefCell&amp;lt;str&amp;gt;&amp;gt;, f: for&amp;lt;&amp;#39;arg&amp;gt; fn(&amp;amp;&amp;#39;arg str), // ≈ fn&amp;lt;&amp;#39;arg&amp;gt; (&amp;amp;&amp;#39;arg str), ) { f(&amp;amp;*nested.borrow().borrow()) } RPIT return position impl Trait RPIT 并不是泛型
+fn test_rpit() -&amp;gt; impl Iterator&amp;lt;Item = i32&amp;gt; { [1, 2, 3, 4].</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
+<blockquote>
+<p>针对概念性的，如果不看就会忘掉的东西
+并且对相对比较复杂的地方需要做一下自己的理解
+不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行</p>
+</blockquote>
+<h2 id="常规语法">常规语法</h2>
+<h3 id="循环控制结构">循环控制结构</h3>
+<p>for/while/loop</p>
+<h3 id="match-匹配">match 匹配</h3>
+<p>match</p>
+<h3 id="风格">风格</h3>
+<h2 id="生命周期">生命周期</h2>
+<h2 id="所有权">所有权</h2>
+<p>例外就是Cell&lt;T&gt;</p>
+<h2 id="trait-泛型">trait 泛型</h2>
+<h2 id="sendsync">Send/Sync</h2>
+<p>Send 是 我可以将其移动到另一个线程而不创建非线程安全的隐藏共享状态吗？ Rc 移动后保持共享状态
+Sync 是 多个线程是否可以保存对此的引用，而不会发生突变竞争（当且仅当&amp;T是Send的时候T才是Sync）
+特例:
+e.g. 通过通过libloading载入dll,为了防止线程局部变量出问题!Send(需要由创建他的线程释放),!Sync(并没有做读写访问控制)
+e.g. MutexGuard&lt;T&gt; 由于pthread平台限制(如果你把它发送到别的线程那么析构函数会在被发送到的线程执行,但是你可以Send &amp;MutexGuard&lt;T&gt;)
+<a href="https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur">https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur</a></p>
+<h2 id="奇怪语法糖">奇怪语法糖</h2>
+<h3 id="泛型相关">泛型相关</h3>
+<h4 id="hrtb">HRTB</h4>
+<p>具体表现是for&lt;‘a&gt;:Trait&lt;&lsquo;a&gt;</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="c1">//将生命周期推迟到调用者来决定
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">fn</span> <span class="nf">with_nested_refcell</span><span class="o">&lt;</span><span class="na">&#39;nested</span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="n">nested</span>: <span class="kp">&amp;</span><span class="na">&#39;nested</span> <span class="nc">RefCell</span><span class="o">&lt;</span><span class="n">RefCell</span><span class="o">&lt;</span><span class="kt">str</span><span class="o">&gt;&gt;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="n">f</span>: <span class="nc">for</span><span class="o">&lt;</span><span class="na">&#39;arg</span><span class="o">&gt;</span><span class="w"> </span><span class="k">fn</span><span class="p">(</span><span class="o">&amp;</span><span class="na">&#39;arg</span><span class="w"> </span><span class="kt">str</span><span class="p">),</span><span class="w"> </span><span class="c1">// ≈ fn&lt;&#39;arg&gt; (&amp;&#39;arg str),
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="n">f</span><span class="p">(</span><span class="o">&amp;*</span><span class="n">nested</span><span class="p">.</span><span class="n">borrow</span><span class="p">().</span><span class="n">borrow</span><span class="p">())</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre></div>
+<h4 id="rpit">RPIT</h4>
+<p>return position impl Trait
+<strong>RPIT 并不是泛型</strong></p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">fn</span> <span class="nf">test_rpit</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nc">impl</span><span class="w"> </span><span class="nb">Iterator</span><span class="o">&lt;</span><span class="n">Item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">i32</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">	 </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">].</span><span class="n">into_iter</span><span class="p">()</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">}</span></span></span></code></pre></div>
+<h4 id="gat">GAT</h4>
+<p><strong>泛型关联类型</strong></p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">trait</span><span class="w"> </span><span class="n">ConvertTo</span>: <span class="nb">Sized</span> <span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="k">type</span> <span class="nc">Inner</span><span class="p">;</span><span class="w">     
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="k">type</span> <span class="nc">Output</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="w">     
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="k">where</span><span class="w">         
+</span></span></span><span class="line"><span class="cl"><span class="w">	     </span><span class="n">Item</span>: <span class="nb">From</span><span class="o">&lt;</span><span class="bp">Self</span>::<span class="n">Inner</span><span class="o">&gt;</span><span class="p">;</span><span class="w">      
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">fn</span> <span class="nf">convert_to</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Self</span>::<span class="n">Output</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">where</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	        </span><span class="n">U</span>: <span class="nb">From</span><span class="o">&lt;</span><span class="bp">Self</span>::<span class="n">Inner</span><span class="o">&gt;</span><span class="p">;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre></div>
+<p>我可以将函数上面的泛型类型参数U和Output泛型类型参数绑定到一起(生命周期什么的都可以传递过去了)</p>
+<h4 id="rpitit">RPITIT</h4>
+<p><strong>Return Position <code>impl Trait</code> In Traits</strong>
+<strong>RPITIT 解糖为关联类型或 GAT</strong></p>
+<h4 id="afit">AFIT</h4>
+<p>rust的async函数脱糖目标是RPIT（也是#[async_trait] expend的结果）</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">async</span><span class="w"> </span><span class="k">fn</span> <span class="nf">get_one</span><span class="p">()</span>-&gt;<span class="kt">i32</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="mi">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//脱糖到
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">fn</span> <span class="nf">get_one</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nc">impl</span><span class="w"> </span><span class="n">Future</span><span class="o">&lt;</span><span class="n">Output</span><span class="o">=</span><span class="kt">i32</span><span class="o">&gt;</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">async</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre></div>
+<p>同样道理
+<strong><code>async fn</code> In Traits</strong>
+就会脱糖到RPITIT
+AFIT-&gt; RPITIT -&gt; GAT/关联类型</p>
+<h2 id="connect">Connect</h2>
+<hr>
+<h1 id="reference">Reference</h1>
+<p><a href="https://nihil.cc/posts/rust_rpitit_afit/">https://nihil.cc/posts/rust_rpitit_afit/</a></p>
+]]></content:encoded></item><item><title>折腾ubutnu 24.04 的那些事情</title><link>https://noirkelo.github.io/box/%E6%8A%98%E8%85%BEubutnu-24.04-%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E6%83%85/</link><pubDate>Mon, 09 Jun 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/%E6%8A%98%E8%85%BEubutnu-24.04-%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E6%83%85/</guid><description>do-release-upgrade 千万不要中途暂停，否则会出现升级一半的情况 然后你就可以使用强制解决dpkg依赖冲突
 如何强制解决dpkg依赖冲突 直接强行删除dpkg 的status里面引发冲突的条目这样就不会一直出现unmet 你一定要知道你在做什么 这一步最好备份一下 这里目标是直接让他以为还没安装就可以走fix broken
 archieve镜像 切换到国内的cn镜像或者us镜像
 apt 没有走代理 sudo vim /etc/apt/apt.conf.d/proxy.conf Acquire::http::Proxy &amp;ldquo;http://127.0.0.1:7890/&amp;rdquo;; Acquire::https::Proxy &amp;ldquo;http://127.0.0.1:7890/&amp;rdquo;;
@@ -266,8 +367,7 @@ apt 没有走代理 sudo vim /etc/apt/apt.conf.d/proxy.conf Acquire::http::Proxy
 mpd相关 因为我的cantata是直接以alsa到我的dac里面所以obs是没有办法监听 sudo modprobe snd-aloop 创建一个loopback设备 然后设定cantata有两个output 一个是pluse [https://bbs.nga.cn/read.php?tid=32515680&amp;amp;rand=760]
 设定包括界面窗口都打不开 logout 选择gome桌面登录
 dracut 在24是因为这个bug用不了 https://bugs.launchpad.net/ubuntu/+source/plymouth/+bug/1596220 文末有个人弄了个反向移植[https://launchpad.net/~jocke/+archive/ubuntu/dracut-noble-backports] dracut -f &amp;ndash;regenerate-all (下面是还没发现ppa时候的想法) 这里不能用dracut-ng的版本因为这是ubuntu的bug补丁也在这里,如果想反向移植可以把上游的包拿过来重新生成原始代码 再重新打包一次就可以 https://www.debian.org/doc/manuals/maint-guide/build.html
-If someone else wants to re-create your package from scratch, they can easily do so using the above three files.</description><content:encoded><![CDATA[<h1 id="折腾ubutnu-2404-的那些事情">折腾ubutnu 24.04 的那些事情</h1>
-<h2 id="do-release-upgrade">do-release-upgrade</h2>
+If someone else wants to re-create your package from scratch, they can easily do so using the above three files.</description><content:encoded><![CDATA[<h2 id="do-release-upgrade">do-release-upgrade</h2>
 <p>千万不要中途暂停，否则会出现升级一半的情况
 然后你就可以使用强制解决dpkg依赖冲突</p>
 <h2 id="如何强制解决dpkg依赖冲突">如何强制解决dpkg依赖冲突</h2>

@@ -160,7 +160,8 @@ Detailed design 我在原有的分支做了一定修改至少证明了这个拦�
 </span></span></span><span class="line"><span class="cl"><span class="w">    
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre></div>
-<p>接下来就是需要参考vscode的原始代码我们能发现由若干个动画构成</p>
+<p>接下来就是需要参考vscode的原始代码我们能发现由若干个动画构成
+这里可以在动画包里面找到</p>
 
 
 
@@ -252,9 +253,9 @@ Detailed design 我在原有的分支做了一定修改至少证明了这个拦�
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
 <p>未完待续</p>
 <p>参考资料</p>
-<p><a href="https://github.com/zed-industries/zed/discussions/21982">https://github.com/zed-industries/zed/discussions/21982</a>
-<a href="https://github.com/djeedai/bevy_tweening">https://github.com/djeedai/bevy_tweening</a>
-<a href="https://github.com/zed-industries/zed/pull/24604">https://github.com/zed-industries/zed/pull/24604</a></p>
+<p><a href="https://github.com/zed-industries/zed/discussions/21982">https://github.com/zed-industries/zed/discussions/21982</a></p>
+<p><a href="https://github.com/djeedai/bevy_tweening">https://github.com/djeedai/bevy_tweening</a></p>
+<p><a href="https://github.com/zed-industries/zed/pull/24604">https://github.com/zed-industries/zed/pull/24604</a></p>
 <p>github.com/zed-industries/zed/issues/4355</p>
 <h2 id="design-discussion">Design discussion</h2>
 ]]></content:encoded></item></channel></rss>
