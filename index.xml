@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Noirkel 's blog</title><link>https://noirkelo.github.io/</link><description>Recent content in ᕦʕ •ᴥ•ʔᕤ on Noirkel 's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><lastBuildDate>Sun, 14 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://noirkelo.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Zed Smooth Scroll</title><link>https://noirkelo.github.io/box/zed-smooth-scroll/</link><pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/zed-smooth-scroll/</guid><description>以下是未完工的想法
 Summary 给zed添加smooth scroll
 Motivation 更好的视觉效果
-Detailed design 具体来说主要是不应该像已经被拒绝过的那个人的pr一样手动编写动画相关组件 思路是在SmoothScroll保存一个WeakEntity&amp;lt;SmoothScroll&amp;gt;这样就可以创建一个不可见的gpui::Component 然后通过animation_ix和保存的SmoothScroll获取WeakEntity&amp;lt;SmoothScroll&amp;gt; 我们只需要拦截并计算每次set_anchor的值即可
-impl RenderOnce for SmoothScroll { fn render(self, window: &amp;amp;mut Window, cx: &amp;amp;mut App) -&amp;gt; impl IntoElement { AnimationExt::with_animations(self, &amp;#34;placehoder&amp;#34;, vec![ Animation::new(Duration::from_secs(1)), Animation::new(Duration::from_secs(1)), ], move |scroll, animation_ix, delta| { match animation_ix { 0 =&amp;gt; { dbg!(delta); } 1 =&amp;gt;{ dbg!(delta); } _ =&amp;gt; {} } scroll } ) } } 我在原有的分支做了一定修改至少证明了这个拦截修改思路其实没错就是没有做动画补间 我搞清楚neovide 计算vsync计算每一帧的时间 如果滚动距离过长那就截取到达地点的作为动画 使用阻尼弹簧并且截断部分动画实现这个效果 https://github.com/Noirkelo/zed/tree/hocman2-smooth-scroll
-... fn animate(&amp;amp;mut self) { if self.</description><content:encoded><![CDATA[<blockquote>
+Detailed design 我在原有的分支做了一定修改至少证明了这个拦截修改思路其实没错就是没有做动画补间 我搞清楚neovide 计算vsync计算每一帧的时间 如果滚动距离过长那就截取到达地点的作为动画 使用阻尼弹簧并且截断部分动画实现这个效果 https://github.com/Noirkelo/zed/tree/hocman2-smooth-scroll
+... fn animate(&amp;amp;mut self) { if self.window_wrapper.skia_renderer.is_none() { return; } let skia_renderer = self.window_wrapper.skia_renderer.as_ref().unwrap(); let vsync = self.window_wrapper.vsync.as_ref().unwrap(); let dt = Duration::from_secs_f32(vsync.get_refresh_rate(skia_renderer.window(), &amp;amp;self.settings)); let now = Instant::now(); let target_animation_time = now - self.animation_start; let mut delta = target_animation_time.saturating_sub(self.animation_time); // Don&amp;#39;t try to animate way too big deltas // Instead reset the animation times, and simulate a single frame if delta &amp;gt; Duration::from_millis(1000) { self.</description><content:encoded><![CDATA[<blockquote>
 <p>以下是未完工的想法</p>
 </blockquote>
 <h2 id="summary">Summary</h2>
@@ -11,39 +10,6 @@ impl RenderOnce for SmoothScroll { fn render(self, window: &amp;amp;mut Window, 
 <h2 id="motivation">Motivation</h2>
 <p>更好的视觉效果</p>
 <h2 id="detailed-design">Detailed design</h2>
-<p>具体来说主要是不应该像已经被拒绝过的那个人的pr一样手动编写动画相关组件
-思路是在SmoothScroll保存一个WeakEntity&lt;SmoothScroll&gt;这样就可以创建一个不可见的gpui::Component
-然后通过animation_ix和保存的SmoothScroll获取WeakEntity&lt;SmoothScroll&gt;
-我们只需要拦截并计算每次set_anchor的值即可</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">impl</span><span class="w"> </span><span class="n">RenderOnce</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">SmoothScroll</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">fn</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">window</span>: <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Window</span><span class="p">,</span><span class="w"> </span><span class="n">cx</span>: <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">App</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">impl</span><span class="w"> </span><span class="n">IntoElement</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">AnimationExt</span>::<span class="n">with_animations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;placehoder&#34;</span><span class="p">,</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="fm">vec!</span><span class="p">[</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="n">Animation</span>::<span class="n">new</span><span class="p">(</span><span class="n">Duration</span>::<span class="n">from_secs</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="n">Animation</span>::<span class="n">new</span><span class="p">(</span><span class="n">Duration</span>::<span class="n">from_secs</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">],</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">move</span><span class="w"> </span><span class="o">|</span><span class="n">scroll</span><span class="p">,</span><span class="w"> </span><span class="n">animation_ix</span><span class="p">,</span><span class="w"> </span><span class="n">delta</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="k">match</span><span class="w"> </span><span class="n">animation_ix</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="mi">0</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">							</span><span class="fm">dbg!</span><span class="p">(</span><span class="n">delta</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="mi">1</span><span class="w"> </span><span class="o">=&gt;</span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">							</span><span class="fm">dbg!</span><span class="p">(</span><span class="n">delta</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">						</span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">scroll</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">	
-</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    
-</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre></div>
 <p>我在原有的分支做了一定修改至少证明了这个拦截修改思路其实没错就是没有做动画补间
 我搞清楚neovide 计算vsync计算每一帧的时间
 如果滚动距离过长那就截取到达地点的作为动画
@@ -95,6 +61,39 @@ impl RenderOnce for SmoothScroll { fn render(self, window: &amp;amp;mut Window, 
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">..</span><span class="p">.</span></span></span></code></pre></div>
+<p>具体来说主要是不应该像已经被拒绝过的那个人的pr一样手动编写动画相关组件
+思路是在SmoothScroll保存一个WeakEntity&lt;SmoothScroll&gt;这样就可以创建一个不可见的gpui::Component
+然后通过animation_ix和保存的SmoothScroll获取WeakEntity&lt;SmoothScroll&gt;
+我们只需要拦截并计算每次set_anchor的值即可</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">impl</span><span class="w"> </span><span class="n">RenderOnce</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">SmoothScroll</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">fn</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">window</span>: <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Window</span><span class="p">,</span><span class="w"> </span><span class="n">cx</span>: <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">App</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">impl</span><span class="w"> </span><span class="n">IntoElement</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">AnimationExt</span>::<span class="n">with_animations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;placehoder&#34;</span><span class="p">,</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="fm">vec!</span><span class="p">[</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="n">Animation</span>::<span class="n">new</span><span class="p">(</span><span class="n">Duration</span>::<span class="n">from_secs</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="n">Animation</span>::<span class="n">new</span><span class="p">(</span><span class="n">Duration</span>::<span class="n">from_secs</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">],</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">move</span><span class="w"> </span><span class="o">|</span><span class="n">scroll</span><span class="p">,</span><span class="w"> </span><span class="n">animation_ix</span><span class="p">,</span><span class="w"> </span><span class="n">delta</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="k">match</span><span class="w"> </span><span class="n">animation_ix</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="mi">0</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">							</span><span class="fm">dbg!</span><span class="p">(</span><span class="n">delta</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="mi">1</span><span class="w"> </span><span class="o">=&gt;</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">							</span><span class="fm">dbg!</span><span class="p">(</span><span class="n">delta</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">						</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">scroll</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre></div>
 <p>接下来就是需要参考vscode的原始代码我们能发现由若干个动画构成</p>
 
 
