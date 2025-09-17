@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Noirkel 's blog</title><link>https://noirkelo.github.io/blog/rfc/</link><description>Recent content in rfc on Noirkel 's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><lastBuildDate>Sun, 14 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://noirkelo.github.io/blog/rfc/index.xml" rel="self" type="application/rss+xml"/><item><title>Zed Smooth Scroll</title><link>https://noirkelo.github.io/box/zed-smooth-scroll/</link><pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/zed-smooth-scroll/</guid><description>以下是未完工的想法
 Summary 给zed添加smooth scroll
 Motivation 更好的视觉效果
-Detailed design 具体来说主要是不应该像已经被拒绝过的那个人的pr一样手动编写动画相关组件 思路是在SmoothScroll保存一个WeakEntity&amp;lt;SmoothScroll&amp;gt;这样就可以创建一个不可见的gpui::Component 然后通过animation_ix和保存的SmoothScroll获取WeakEntity&amp;lt;SmoothScroll&amp;gt;
-我们需要拦截并计算每次set_anchor的值
-impl RenderOnce for SmoothScroll { fn render(self, window: &amp;amp;mut Window, cx: &amp;amp;mut App) -&amp;gt; impl IntoElement { AnimationExt::with_animations(self, &amp;#34;placehoder&amp;#34;, vec![ Animation::new(Duration::from_secs(1)), Animation::new(Duration::from_secs(1)), ], move |scroll, animation_ix, delta| { match animation_ix { 0 =&amp;gt; { dbg!(delta); } 1 =&amp;gt;{ dbg!(delta); } _ =&amp;gt; {} } scroll } ) } } 参考vscode的原始代码
+Detailed design 具体来说主要是不应该像已经被拒绝过的那个人的pr一样手动编写动画相关组件 思路是在SmoothScroll保存一个WeakEntity&amp;lt;SmoothScroll&amp;gt;这样就可以创建一个不可见的gpui::Component 然后通过animation_ix和保存的SmoothScroll获取WeakEntity&amp;lt;SmoothScroll&amp;gt; 我们需要拦截并计算每次set_anchor的值
+impl RenderOnce for SmoothScroll { fn render(self, window: &amp;amp;mut Window, cx: &amp;amp;mut App) -&amp;gt; impl IntoElement { AnimationExt::with_animations(self, &amp;#34;placehoder&amp;#34;, vec![ Animation::new(Duration::from_secs(1)), Animation::new(Duration::from_secs(1)), ], move |scroll, animation_ix, delta| { match animation_ix { 0 =&amp;gt; { dbg!(delta); } 1 =&amp;gt;{ dbg!(delta); } _ =&amp;gt; {} } scroll } ) } } 参考vscode的原始代码我们能发现
 export class SmoothScrollingOperation { public readonly from: ISmoothScrollPosition; public to: ISmoothScrollPosition; public readonly duration: number; public readonly startTime: number; public animationFrameDisposable: IDisposable | null; private scrollLeft!</description><content:encoded><![CDATA[<blockquote>
 <p>以下是未完工的想法</p>
 </blockquote>
@@ -14,8 +13,8 @@ export class SmoothScrollingOperation { public readonly from: ISmoothScrollPosit
 <h2 id="detailed-design">Detailed design</h2>
 <p>具体来说主要是不应该像已经被拒绝过的那个人的pr一样手动编写动画相关组件
 思路是在SmoothScroll保存一个WeakEntity&lt;SmoothScroll&gt;这样就可以创建一个不可见的gpui::Component
-然后通过animation_ix和保存的SmoothScroll获取WeakEntity&lt;SmoothScroll&gt;</p>
-<p>我们需要拦截并计算每次set_anchor的值</p>
+然后通过animation_ix和保存的SmoothScroll获取WeakEntity&lt;SmoothScroll&gt;
+我们需要拦截并计算每次set_anchor的值</p>
 
 
 
@@ -45,7 +44,7 @@ export class SmoothScrollingOperation { public readonly from: ISmoothScrollPosit
 </span></span></span><span class="line"><span class="cl"><span class="w">    
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre></div>
-<p>参考vscode的原始代码</p>
+<p>参考vscode的原始代码我们能发现</p>
 
 
 
