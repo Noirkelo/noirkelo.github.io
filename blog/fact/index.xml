@@ -112,7 +112,7 @@ apt 没有走代理 1sudo vim /etc/apt/apt.conf.d/proxy.conf 2Acquire::http::Pro
 查询上游issue发现可能是版本太低了
 1.0.7 pipewire-debian 的打包版本(并且我怀疑他打包搞错了)
 最终的解决方法是用别人做的ppa
-piled with libpipewire 1.4.7
+Compiled with libpipewire 1.4.7
 Linked with libpipewire 1.4.7
 https://launchpad.net/~savoury1/+archive/ubuntu/pipewire
 mpd相关 因为我的cantata是直接以alsa到我的dac里面所以obs是没有办法监听
@@ -121,7 +121,14 @@ sudo modprobe snd-aloop
 然后设定cantata有两个output 一个是pluse
 https://bbs.nga.cn/read.php?tid=32515680&amp;amp;rand=760
 设定包括界面窗口都打不开 logout 选择gome桌面登录
-dracut 在24是因为这个bug用不了 https://bugs.launchpad.net/ubuntu/+source/plymouth/+bug/1596220 文末有个人弄了个反向移植[https://launchpad.net/~jocke/+archive/ubuntu/dracut-noble-backports] dracut -f &amp;ndash;regenerate-all (下面是还没发现ppa时候的想法) 这里不能用dracut-ng的版本因为这是ubuntu的bug补丁也在这里,如果想反向移植可以把上游的包拿过来重新生成原始代码 再重新打包一次就可以 https://www.debian.org/doc/manuals/maint-guide/build.html
+dracut 在24是因为这个bug用不了
+https://bugs.launchpad.net/ubuntu/+source/plymouth/+bug/1596220
+文末有个人弄了个反向移植[https://launchpad.net/~jocke/+archive/ubuntu/dracut-noble-backports]
+dracut -f &amp;ndash;regenerate-all
+(下面是还没发现ppa时候的想法)
+这里不能用dracut-ng的版本因为这是ubuntu的bug补丁也在这里,如果想反向移植可以把上游的包拿过来重新生成原始代码
+再重新打包一次就可以
+https://www.debian.org/doc/manuals/maint-guide/build.html
 If someone else wants to re-create your package from scratch, they can easily do so using the above three files.</description><content:encoded><![CDATA[<h2 id="do-release-upgrade">do-release-upgrade</h2>
 <p>千万不要中途暂停，否则会出现升级一半的情况
 然后你就可以使用强制解决dpkg依赖冲突</p>
@@ -148,7 +155,7 @@ If someone else wants to re-create your package from scratch, they can easily do
 <p>查询上游issue发现可能是版本太低了</p>
 <p>1.0.7 pipewire-debian 的打包版本(并且我怀疑他打包搞错了)</p>
 <p>最终的解决方法是用别人做的ppa</p>
-<p>piled with libpipewire 1.4.7</p>
+<p>Compiled with libpipewire 1.4.7</p>
 <p>Linked with libpipewire 1.4.7</p>
 <p><a href="https://launchpad.net/~savoury1/+archive/ubuntu/pipewire">https://launchpad.net/~savoury1/+archive/ubuntu/pipewire</a></p>
 <h2 id="mpd相关">mpd相关</h2>
@@ -160,26 +167,26 @@ If someone else wants to re-create your package from scratch, they can easily do
 <h2 id="设定包括界面窗口都打不开">设定包括界面窗口都打不开</h2>
 <p>logout 选择gome桌面登录</p>
 <h2 id="dracut">dracut</h2>
-<p>在24是因为这个bug用不了
-<a href="https://bugs.launchpad.net/ubuntu/+source/plymouth/+bug/1596220">https://bugs.launchpad.net/ubuntu/+source/plymouth/+bug/1596220</a>
-文末有个人弄了个反向移植[https://launchpad.net/~jocke/+archive/ubuntu/dracut-noble-backports]
-dracut -f &ndash;regenerate-all
-(下面是还没发现ppa时候的想法)
-这里不能用dracut-ng的版本因为这是ubuntu的bug补丁也在这里,如果想反向移植可以把上游的包拿过来重新生成原始代码
-再重新打包一次就可以
-<a href="https://www.debian.org/doc/manuals/maint-guide/build.html">https://www.debian.org/doc/manuals/maint-guide/build.html</a></p>
+<p>在24是因为这个bug用不了</p>
+<p><a href="https://bugs.launchpad.net/ubuntu/+source/plymouth/+bug/1596220">https://bugs.launchpad.net/ubuntu/+source/plymouth/+bug/1596220</a></p>
+<p>文末有个人弄了个反向移植[https://launchpad.net/~jocke/+archive/ubuntu/dracut-noble-backports]</p>
+<p>dracut -f &ndash;regenerate-all</p>
+<p>(下面是还没发现ppa时候的想法)</p>
+<p>这里不能用dracut-ng的版本因为这是ubuntu的bug补丁也在这里,如果想反向移植可以把上游的包拿过来重新生成原始代码</p>
+<p>再重新打包一次就可以</p>
+<p><a href="https://www.debian.org/doc/manuals/maint-guide/build.html">https://www.debian.org/doc/manuals/maint-guide/build.html</a></p>
 <blockquote>
 <p>If someone else wants to re-create your package from scratch, they can easily do so using the above three files. The extraction procedure is trivial: just copy the three files somewhere else and run <code>dpkg-source -x gentoo_0.9.12-1.dsc</code>.</p>
 </blockquote>
 <h2 id="gtktitlebar">gtktitlebar</h2>
 <p>gnome去强制安装unite</p>
 <h2 id="ｕbuntu-系统禁止或者改变中文简体切换繁体">Ｕbuntu 系统禁止或者改变中文简体切换繁体</h2>
-<p><a href="https://blog.csdn.net/qq_33210042/article/details/108368089">https://blog.csdn.net/qq_33210042/article/details/108368089</a>
-刪除输入法addon</p>
+<p><a href="https://blog.csdn.net/qq_33210042/article/details/108368089">https://blog.csdn.net/qq_33210042/article/details/108368089</a></p>
+<p>刪除输入法addon</p>
 <h2 id="msi-风扇控制和风扇硬件">Msi 风扇控制和风扇硬件</h2>
-<p><a href="https://github.com/dmitry-s93/MControlCenter">https://github.com/dmitry-s93/MControlCenter</a>
-<a href="https://github.com/BeardOverflow/msi-ec?tab=readme-ov-file#installation">https://github.com/BeardOverflow/msi-ec?tab=readme-ov-file#installation</a>
-24.04直接安装就行了不需要手动编译</p>
+<p><a href="https://github.com/dmitry-s93/MControlCenter">https://github.com/dmitry-s93/MControlCenter</a></p>
+<p><a href="https://github.com/BeardOverflow/msi-ec?tab=readme-ov-file#installation">https://github.com/BeardOverflow/msi-ec?tab=readme-ov-file#installation</a></p>
+<p>24.04直接安装就行了不需要手动编译</p>
 <h2 id="设定文件管理器默认以type排序">设定文件管理器默认以type排序</h2>
 <p>gsettings set org.gnome.nautilus.preferences default-sort-order &rsquo;type'
 或者使用dconf editor</p>
