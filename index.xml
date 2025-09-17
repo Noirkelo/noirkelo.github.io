@@ -62,6 +62,12 @@ Detailed design 我在原有的分支做了一定修改至少证明了这个拦�
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">..</span><span class="p">.</span></span></span></code></pre></div>
 <p>我在原有分支做了如下
 <a href="https://github.com/Noirkelo/zed/tree/hocman2-smooth-scroll">https://github.com/Noirkelo/zed/tree/hocman2-smooth-scroll</a></p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"></code></pre></div>
 <p>具体来说主要是不应该像已经被拒绝过的那个人的pr一样手动编写动画相关组件
 思路是在SmoothScroll保存一个WeakEntity&lt;SmoothScroll&gt;这样就可以创建一个不可见的gpui::Component
 然后通过animation_ix和保存的SmoothScroll获取WeakEntity&lt;SmoothScroll&gt;
