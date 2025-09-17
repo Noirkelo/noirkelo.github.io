@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Noirkel 's blog</title><link>https://noirkelo.github.io/blog/idea/</link><description>Recent content in idea on Noirkel 's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><lastBuildDate>Sun, 14 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://noirkelo.github.io/blog/idea/index.xml" rel="self" type="application/rss+xml"/><item><title>Zed Smooth Scroll</title><link>https://noirkelo.github.io/box/zed-smooth-scroll/</link><pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/zed-smooth-scroll/</guid><description>Smooth Scroll 以下是未完工的想法
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Noirkel 's blog</title><link>https://noirkelo.github.io/blog/idea/</link><description>Recent content in idea on Noirkel 's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><lastBuildDate>Sun, 14 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://noirkelo.github.io/blog/idea/index.xml" rel="self" type="application/rss+xml"/><item><title>Zed Smooth Scroll</title><link>https://noirkelo.github.io/box/zed-smooth-scroll/</link><pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/zed-smooth-scroll/</guid><description>以下是未完工的想法
 Summary 给zed添加smooth scroll
 Motivation 更好的视觉效果
 Detailed design 目前open的讨论 https://github.com/zed-industries/zed/discussions/21982
@@ -13,8 +13,7 @@ fn paint_scroll_wheel_listener{ } 我监听滚动事件如果滚动结束应该�
 找到scroll layout 对他附加一个animate 使用类似vscode的渐变控制即可
 他是怎么截取buffer渲染的? anime对着的是element来进行的 我的想法是目前动画基建已经有了
 参考以下vscode源码
-export class SmoothScrollingOperation { public readonly from: ISmoothScrollPosition; public to: ISmoothScrollPosition; public readonly duration: number; public readonly startTime: number; public animationFrameDisposable: IDisposable | null; private scrollLeft!</description><content:encoded><![CDATA[<h1 id="smooth-scroll">Smooth Scroll</h1>
-<blockquote>
+export class SmoothScrollingOperation { public readonly from: ISmoothScrollPosition; public to: ISmoothScrollPosition; public readonly duration: number; public readonly startTime: number; public animationFrameDisposable: IDisposable | null; private scrollLeft!</description><content:encoded><![CDATA[<blockquote>
 <p>以下是未完工的想法</p>
 </blockquote>
 <h2 id="summary">Summary</h2>
