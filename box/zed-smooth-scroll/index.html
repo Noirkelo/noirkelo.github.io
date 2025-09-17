@@ -121,7 +121,7 @@ Detailed design 我在原有的分支做了一定修改至少证明了这个拦�
 </span></span></span><span class=line><span class=cl><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w></span><span class=p>}</span></span></span></code></pre></div><p>接下来具体来说主要是不应该像已经被拒绝过的那个人的pr一样手动编写动画相关组件
-思路是在SmoothScroll保存一个WeakEntity&lt;SmoothScroll>这样就可以创建一个不可见的gpui::Component
+思路是在SmoothScroll保存一个WeakEntity&lt;Editor>这样就可以创建一个不可见的gpui::Component
 然后通过animation_ix和保存的SmoothScroll获取WeakEntity&lt;SmoothScroll>
 我们只需要拦截并计算每次set_anchor的值即可</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-rust data-lang=rust><span class=line><span class=cl><span class=k>impl</span><span class=w> </span><span class=n>RenderOnce</span><span class=w> </span><span class=k>for</span><span class=w> </span><span class=n>SmoothScroll</span><span class=w> </span><span class=p>{</span><span class=w>
 </span></span></span><span class=line><span class=cl><span class=w>	</span><span class=k>fn</span> <span class=nf>render</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span><span class=w> </span><span class=n>window</span>: <span class=kp>&amp;</span><span class=nc>mut</span><span class=w> </span><span class=n>Window</span><span class=p>,</span><span class=w> </span><span class=n>cx</span>: <span class=kp>&amp;</span><span class=nc>mut</span><span class=w> </span><span class=n>App</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nc>impl</span><span class=w> </span><span class=n>IntoElement</span><span class=w> </span><span class=p>{</span><span class=w>

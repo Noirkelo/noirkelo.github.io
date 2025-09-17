@@ -128,7 +128,7 @@ Detailed design 我在原有的分支做了一定修改至少证明了这个拦�
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre></div>
 <p>接下来具体来说主要是不应该像已经被拒绝过的那个人的pr一样手动编写动画相关组件
-思路是在SmoothScroll保存一个WeakEntity&lt;SmoothScroll&gt;这样就可以创建一个不可见的gpui::Component
+思路是在SmoothScroll保存一个WeakEntity&lt;Editor&gt;这样就可以创建一个不可见的gpui::Component
 然后通过animation_ix和保存的SmoothScroll获取WeakEntity&lt;SmoothScroll&gt;
 我们只需要拦截并计算每次set_anchor的值即可</p>
 
