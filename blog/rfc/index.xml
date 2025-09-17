@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Noirkel 's blog</title><link>https://noirkelo.github.io/</link><description>Recent content in ᕦʕ •ᴥ•ʔᕤ on Noirkel 's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><lastBuildDate>Sun, 14 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://noirkelo.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Zed Smooth Scroll</title><link>https://noirkelo.github.io/box/zed-smooth-scroll/</link><pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/zed-smooth-scroll/</guid><description>Smooth Scroll 以下是未完工的想法
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Noirkel 's blog</title><link>https://noirkelo.github.io/blog/rfc/</link><description>Recent content in rfc on Noirkel 's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><lastBuildDate>Sun, 14 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://noirkelo.github.io/blog/rfc/index.xml" rel="self" type="application/rss+xml"/><item><title>Zed Smooth Scroll</title><link>https://noirkelo.github.io/box/zed-smooth-scroll/</link><pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/zed-smooth-scroll/</guid><description>Smooth Scroll 以下是未完工的想法
 Summary 给zed添加smooth scroll
 Motivation 更好的视觉效果
 Detailed design 目前open的讨论 https://github.com/zed-industries/zed/discussions/21982
@@ -190,73 +190,4 @@ anime对着的是element来进行的
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre></div>
 <h2 id="design-discussion">Design discussion</h2>
-]]></content:encoded></item><item><title>折腾ubutnu 24.04 的那些事情</title><link>https://noirkelo.github.io/box/%E6%8A%98%E8%85%BEubutnu-24.04-%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E6%83%85/</link><pubDate>Mon, 09 Jun 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/%E6%8A%98%E8%85%BEubutnu-24.04-%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E6%83%85/</guid><description>折腾ubutnu 24.04 的那些事情 do-release-upgrade 千万不要中途暂停，否则会出现升级一半的情况 然后你就可以使用强制解决dpkg依赖冲突
-如何强制解决dpkg依赖冲突 直接强行删除dpkg 的status里面引发冲突的条目这样就不会一直出现unmet 你一定要知道你在做什么 这一步最好备份一下 这里目标是直接让他以为还没安装就可以走fix broken
-archieve镜像 切换到国内的cn镜像或者us镜像
-apt 没有走代理 sudo vim /etc/apt/apt.conf.d/proxy.conf Acquire::http::Proxy &amp;ldquo;http://127.0.0.1:7890/&amp;rdquo;; Acquire::https::Proxy &amp;ldquo;http://127.0.0.1:7890/&amp;rdquo;;
-进去没有声音 ubuntu24.04 经过查询是 pipewire-pluse 中的一个lib 一直出现seg 然后一直反复重启 查询上游issue发现可能是版本太低了 1.0.7 pipewire-debian 的打包版本(并且我怀疑他打包搞错了)
-最终的解决方法是用别人做的ppa piled with libpipewire 1.4.7 Linked with libpipewire 1.4.7 https://launchpad.net/~savoury1/+archive/ubuntu/pipewire
-mpd相关 因为我的cantata是直接以alsa到我的dac里面所以obs是没有办法监听 sudo modprobe snd-aloop 创建一个loopback设备 然后设定cantata有两个output 一个是pluse [https://bbs.nga.cn/read.php?tid=32515680&amp;amp;rand=760]
-设定包括界面窗口都打不开 logout 选择gome桌面登录
-dracut 在24是因为这个bug用不了 https://bugs.launchpad.net/ubuntu/+source/plymouth/+bug/1596220 文末有个人弄了个反向移植[https://launchpad.net/~jocke/+archive/ubuntu/dracut-noble-backports] dracut -f &amp;ndash;regenerate-all (下面是还没发现ppa时候的想法) 这里不能用dracut-ng的版本因为这是ubuntu的bug补丁也在这里,如果想反向移植可以把上游的包拿过来重新生成原始代码 再重新打包一次就可以 https://www.debian.org/doc/manuals/maint-guide/build.html
-If someone else wants to re-create your package from scratch, they can easily do so using the above three files.</description><content:encoded><![CDATA[<h1 id="折腾ubutnu-2404-的那些事情">折腾ubutnu 24.04 的那些事情</h1>
-<h2 id="do-release-upgrade">do-release-upgrade</h2>
-<p>千万不要中途暂停，否则会出现升级一半的情况
-然后你就可以使用强制解决dpkg依赖冲突</p>
-<h2 id="如何强制解决dpkg依赖冲突">如何强制解决dpkg依赖冲突</h2>
-<p>直接强行删除dpkg 的status里面引发冲突的条目这样就不会一直出现unmet
-<strong>你一定要知道你在做什么</strong>
-这一步最好备份一下
-这里目标是直接让他以为还没安装就可以走fix broken</p>
-<h2 id="archieve镜像">archieve镜像</h2>
-<p>切换到国内的cn镜像或者us镜像</p>
-<h2 id="apt-没有走代理">apt 没有走代理</h2>
-<p>sudo vim /etc/apt/apt.conf.d/proxy.conf
-Acquire::http::Proxy &ldquo;http://127.0.0.1:7890/&rdquo;;
-Acquire::https::Proxy &ldquo;http://127.0.0.1:7890/&rdquo;;</p>
-<h2 id="进去没有声音">进去没有声音</h2>
-<p>ubuntu24.04
-经过查询是 pipewire-pluse 中的一个lib 一直出现seg
-然后一直反复重启
-查询上游issue发现可能是版本太低了
-1.0.7 pipewire-debian 的打包版本(并且我怀疑他打包搞错了)</p>
-<p>最终的解决方法是用别人做的ppa
-piled with libpipewire 1.4.7
-Linked with libpipewire 1.4.7
-<a href="https://launchpad.net/~savoury1/+archive/ubuntu/pipewire">https://launchpad.net/~savoury1/+archive/ubuntu/pipewire</a></p>
-<h2 id="mpd相关">mpd相关</h2>
-<p>因为我的cantata是直接以alsa到我的dac里面所以obs是没有办法监听
-sudo modprobe snd-aloop
-创建一个loopback设备
-然后设定cantata有两个output 一个是pluse
-[https://bbs.nga.cn/read.php?tid=32515680&amp;rand=760]</p>
-<h2 id="设定包括界面窗口都打不开">设定包括界面窗口都打不开</h2>
-<p>logout 选择gome桌面登录</p>
-<h2 id="dracut">dracut</h2>
-<p>在24是因为这个bug用不了
-<a href="https://bugs.launchpad.net/ubuntu/+source/plymouth/+bug/1596220">https://bugs.launchpad.net/ubuntu/+source/plymouth/+bug/1596220</a>
-文末有个人弄了个反向移植[https://launchpad.net/~jocke/+archive/ubuntu/dracut-noble-backports]
-dracut -f &ndash;regenerate-all
-(下面是还没发现ppa时候的想法)
-这里不能用dracut-ng的版本因为这是ubuntu的bug补丁也在这里,如果想反向移植可以把上游的包拿过来重新生成原始代码
-再重新打包一次就可以
-<a href="https://www.debian.org/doc/manuals/maint-guide/build.html">https://www.debian.org/doc/manuals/maint-guide/build.html</a></p>
-<blockquote>
-<p>If someone else wants to re-create your package from scratch, they can easily do so using the above three files. The extraction procedure is trivial: just copy the three files somewhere else and run <code>dpkg-source -x gentoo_0.9.12-1.dsc</code>.</p>
-</blockquote>
-<h2 id="gtktitlebar">gtktitlebar</h2>
-<p>gnome去强制安装unite</p>
-<h2 id="ｕbuntu-系统禁止或者改变中文简体切换繁体">Ｕbuntu 系统禁止或者改变中文简体切换繁体</h2>
-<p><a href="https://blog.csdn.net/qq_33210042/article/details/108368089">https://blog.csdn.net/qq_33210042/article/details/108368089</a>
-刪除输入法addon</p>
-<h2 id="msi-风扇控制和风扇硬件">Msi 风扇控制和风扇硬件</h2>
-<p><a href="https://github.com/dmitry-s93/MControlCenter">https://github.com/dmitry-s93/MControlCenter</a>
-<a href="https://github.com/BeardOverflow/msi-ec?tab=readme-ov-file#installation">https://github.com/BeardOverflow/msi-ec?tab=readme-ov-file#installation</a>
-24.04直接安装就行了不需要手动编译</p>
-<h2 id="设定文件管理器默认以type排序">设定文件管理器默认以type排序</h2>
-<p>gsettings set org.gnome.nautilus.preferences default-sort-order &rsquo;type'
-或者使用dconf editor</p>
-<h2 id="connect">Connect</h2>
-<hr>
-<h1 id="reference">Reference</h1>
 ]]></content:encoded></item></channel></rss>
