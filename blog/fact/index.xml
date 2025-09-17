@@ -101,9 +101,20 @@ AFIT-&gt; RPITIT -&gt; GAT/关联类型</p>
 ]]></content:encoded></item><item><title>折腾ubutnu 24.04 的那些事情</title><link>https://noirkelo.github.io/box/%E6%8A%98%E8%85%BEubutnu-24.04-%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E6%83%85/</link><pubDate>Mon, 09 Jun 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/%E6%8A%98%E8%85%BEubutnu-24.04-%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E6%83%85/</guid><description>do-release-upgrade 千万不要中途暂停，否则会出现升级一半的情况 然后你就可以使用强制解决dpkg依赖冲突
 如何强制解决dpkg依赖冲突 直接强行删除dpkg 的status里面引发冲突的条目这样就不会一直出现unmet 你一定要知道你在做什么 这一步最好备份一下 这里目标是直接让他以为还没安装就可以走fix broken
 archieve镜像 切换到国内的cn镜像或者us镜像
-apt 没有走代理 sudo vim /etc/apt/apt.conf.d/proxy.conf Acquire::http::Proxy &amp;#34;http://127.0.0.1:7890/&amp;#34;; Acquire::https::Proxy &amp;#34;http://127.0.0.1:7890/&amp;#34;; 进去没有声音 ubuntu24.04 经过查询是 pipewire-pluse 中的一个lib 一直出现seg 然后一直反复重启 查询上游issue发现可能是版本太低了 1.0.7 pipewire-debian 的打包版本(并且我怀疑他打包搞错了)
-最终的解决方法是用别人做的ppa piled with libpipewire 1.4.7 Linked with libpipewire 1.4.7 https://launchpad.net/~savoury1/+archive/ubuntu/pipewire
-mpd相关 因为我的cantata是直接以alsa到我的dac里面所以obs是没有办法监听 sudo modprobe snd-aloop 创建一个loopback设备 然后设定cantata有两个output 一个是pluse [https://bbs.nga.cn/read.php?tid=32515680&amp;amp;rand=760]
+apt 没有走代理 sudo vim /etc/apt/apt.conf.d/proxy.conf Acquire::http::Proxy &amp;#34;http://127.0.0.1:7890/&amp;#34;; Acquire::https::Proxy &amp;#34;http://127.0.0.1:7890/&amp;#34;; 进去没有声音 ubuntu24.04
+经过查询是 pipewire-pluse 中的一个lib 一直出现seg
+然后一直反复重启
+查询上游issue发现可能是版本太低了
+1.0.7 pipewire-debian 的打包版本(并且我怀疑他打包搞错了)
+最终的解决方法是用别人做的ppa
+piled with libpipewire 1.4.7
+Linked with libpipewire 1.4.7
+https://launchpad.net/~savoury1/+archive/ubuntu/pipewire
+mpd相关 因为我的cantata是直接以alsa到我的dac里面所以obs是没有办法监听
+sudo modprobe snd-aloop
+创建一个loopback设备
+然后设定cantata有两个output 一个是pluse
+https://bbs.nga.cn/read.php?tid=32515680&amp;amp;rand=760
 设定包括界面窗口都打不开 logout 选择gome桌面登录
 dracut 在24是因为这个bug用不了 https://bugs.launchpad.net/ubuntu/+source/plymouth/+bug/1596220 文末有个人弄了个反向移植[https://launchpad.net/~jocke/+archive/ubuntu/dracut-noble-backports] dracut -f &amp;ndash;regenerate-all (下面是还没发现ppa时候的想法) 这里不能用dracut-ng的版本因为这是ubuntu的bug补丁也在这里,如果想反向移植可以把上游的包拿过来重新生成原始代码 再重新打包一次就可以 https://www.debian.org/doc/manuals/maint-guide/build.html
 If someone else wants to re-create your package from scratch, they can easily do so using the above three files.</description><content:encoded><![CDATA[<h2 id="do-release-upgrade">do-release-upgrade</h2>
@@ -126,21 +137,21 @@ If someone else wants to re-create your package from scratch, they can easily do
 </span></span><span class="line"><span class="cl">Acquire::http::Proxy <span class="s2">&#34;http://127.0.0.1:7890/&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">Acquire::https::Proxy <span class="s2">&#34;http://127.0.0.1:7890/&#34;</span><span class="p">;</span></span></span></code></pre></div>
 <h2 id="进去没有声音">进去没有声音</h2>
-<p>ubuntu24.04
-经过查询是 pipewire-pluse 中的一个lib 一直出现seg
-然后一直反复重启
-查询上游issue发现可能是版本太低了
-1.0.7 pipewire-debian 的打包版本(并且我怀疑他打包搞错了)</p>
-<p>最终的解决方法是用别人做的ppa
-piled with libpipewire 1.4.7
-Linked with libpipewire 1.4.7
-<a href="https://launchpad.net/~savoury1/+archive/ubuntu/pipewire">https://launchpad.net/~savoury1/+archive/ubuntu/pipewire</a></p>
+<p>ubuntu24.04</p>
+<p>经过查询是 pipewire-pluse 中的一个lib 一直出现seg</p>
+<p>然后一直反复重启</p>
+<p>查询上游issue发现可能是版本太低了</p>
+<p>1.0.7 pipewire-debian 的打包版本(并且我怀疑他打包搞错了)</p>
+<p>最终的解决方法是用别人做的ppa</p>
+<p>piled with libpipewire 1.4.7</p>
+<p>Linked with libpipewire 1.4.7</p>
+<p><a href="https://launchpad.net/~savoury1/+archive/ubuntu/pipewire">https://launchpad.net/~savoury1/+archive/ubuntu/pipewire</a></p>
 <h2 id="mpd相关">mpd相关</h2>
-<p>因为我的cantata是直接以alsa到我的dac里面所以obs是没有办法监听
-sudo modprobe snd-aloop
-创建一个loopback设备
-然后设定cantata有两个output 一个是pluse
-[https://bbs.nga.cn/read.php?tid=32515680&amp;rand=760]</p>
+<p>因为我的cantata是直接以alsa到我的dac里面所以obs是没有办法监听</p>
+<p>sudo modprobe snd-aloop</p>
+<p>创建一个loopback设备</p>
+<p>然后设定cantata有两个output 一个是pluse</p>
+<p><a href="https://bbs.nga.cn/read.php?tid=32515680&amp;rand=760">https://bbs.nga.cn/read.php?tid=32515680&amp;rand=760</a></p>
 <h2 id="设定包括界面窗口都打不开">设定包括界面窗口都打不开</h2>
 <p>logout 选择gome桌面登录</p>
 <h2 id="dracut">dracut</h2>
