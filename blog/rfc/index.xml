@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Noirkel 's blog</title><link>https://noirkelo.github.io/blog/rfc/</link><description>Recent content in rfc on Noirkel 's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><lastBuildDate>Sun, 14 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://noirkelo.github.io/blog/rfc/index.xml" rel="self" type="application/rss+xml"/><item><title>Zed Smooth Scroll</title><link>https://noirkelo.github.io/box/zed-smooth-scroll/</link><pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/zed-smooth-scroll/</guid><description>以下是未完工的想法
 Summary 给zed添加smooth scroll
 Motivation 更好的视觉效果
-Detailed design 我在原有的分支做了一定修改至少证明了这个拦截修改思路其实没错就是没有做动画补间 我搞清楚neovide 计算vsync计算每一帧的时间 如果滚动距离过长那就截取到达地点的作为动画 使用阻尼弹簧并且截断部分动画实现这个效果 https://github.com/Noirkelo/zed/tree/hocman2-smooth-scroll
+Detailed design 我在原有的分支做了一定修改至少证明了这个拦截修改思路其实没错就是没有做动画补间 我搞清楚neovide 计算vsync计算每一帧的时间 如果滚动距离过长那就截取到达地点的作为动画 使用阻尼弹簧并且截断部分动画实现这个效果
 ... fn animate(&amp;amp;mut self) { if self.window_wrapper.skia_renderer.is_none() { return; } let skia_renderer = self.window_wrapper.skia_renderer.as_ref().unwrap(); let vsync = self.window_wrapper.vsync.as_ref().unwrap(); let dt = Duration::from_secs_f32(vsync.get_refresh_rate(skia_renderer.window(), &amp;amp;self.settings)); let now = Instant::now(); let target_animation_time = now - self.animation_start; let mut delta = target_animation_time.saturating_sub(self.animation_time); // Don&amp;#39;t try to animate way too big deltas // Instead reset the animation times, and simulate a single frame if delta &amp;gt; Duration::from_millis(1000) { self.</description><content:encoded><![CDATA[<blockquote>
 <p>以下是未完工的想法</p>
 </blockquote>
@@ -13,8 +13,7 @@ Detailed design 我在原有的分支做了一定修改至少证明了这个拦�
 <p>我在原有的分支做了一定修改至少证明了这个拦截修改思路其实没错就是没有做动画补间
 我搞清楚neovide 计算vsync计算每一帧的时间
 如果滚动距离过长那就截取到达地点的作为动画
-使用阻尼弹簧并且截断部分动画实现这个效果
-<a href="https://github.com/Noirkelo/zed/tree/hocman2-smooth-scroll">https://github.com/Noirkelo/zed/tree/hocman2-smooth-scroll</a></p>
+使用阻尼弹簧并且截断部分动画实现这个效果</p>
 
 
 
@@ -61,6 +60,8 @@ Detailed design 我在原有的分支做了一定修改至少证明了这个拦�
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">..</span><span class="p">.</span></span></span></code></pre></div>
+<p>我在原有分支做了如下
+<a href="https://github.com/Noirkelo/zed/tree/hocman2-smooth-scroll">https://github.com/Noirkelo/zed/tree/hocman2-smooth-scroll</a></p>
 <p>具体来说主要是不应该像已经被拒绝过的那个人的pr一样手动编写动画相关组件
 思路是在SmoothScroll保存一个WeakEntity&lt;SmoothScroll&gt;这样就可以创建一个不可见的gpui::Component
 然后通过animation_ix和保存的SmoothScroll获取WeakEntity&lt;SmoothScroll&gt;
