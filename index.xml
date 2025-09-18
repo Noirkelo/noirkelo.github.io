@@ -429,7 +429,7 @@ Tuple&lt;T1,T2&hellip;.Tn&gt;=&gt;Tupe&lt;T1,Tuple&lt;T2,&hellip;.&gt;&gt;
 **For a generic type to soundly implement drop, its generics arguments must strictly outlive it.
 drop order 顺序
 我知道有Drop 和RAII但是这个名字对不上号
-扩展问题就是Async 里面的Drop Check</p>
+扩展问题就是Async 里面的Async Drop</p>
 <h3 id="生命周期的逆变-协变">生命周期的逆变 协变</h3>
 <p><a href="https://zhuanlan.zhihu.com/p/682880532">https://zhuanlan.zhihu.com/p/682880532</a>
 逆变的话就可以变成fn(&amp;str)-&gt;impl ToString 参数可以变成impl ToString,    impl ToString-&gt;string</p>
