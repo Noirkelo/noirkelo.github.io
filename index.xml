@@ -397,6 +397,7 @@ break 可以通过label 标记作用域跳出去</p>
 <h3 id="unsafe">Unsafe</h3>
 <p>基本跟C++没差了</p>
 <h3 id="风格">风格</h3>
+<p>clippy</p>
 <h2 id="没对上号的">没对上号的</h2>
 <h3 id="drop-check">Drop Check</h3>
 <p>类似C++的RAII
@@ -469,15 +470,16 @@ RefCell &amp; Cell &amp; UnsafeCell</p>
 
 
 
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#75715e">//将生命周期推迟到调用者来决定
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#75715e"></span>serde DeserializeOwn
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">with_nested_refcell</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;nested</span><span style="color:#f92672">&gt;</span> (
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>   nested: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;nested</span> <span style="color:#a6e22e">RefCell</span><span style="color:#f92672">&lt;</span>RefCell<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;&gt;</span>,
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>   f: <span style="color:#a6e22e">for</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;arg</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">fn</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">&#39;arg</span> <span style="color:#66d9ef">str</span>), <span style="color:#75715e">// ≈ fn&lt;&#39;arg&gt; (&amp;&#39;arg str),
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#75715e"></span>)
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>{
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>   f(<span style="color:#f92672">&amp;*</span>nested.borrow().borrow())
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span>}</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">//将生命周期推迟到调用者来决定
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#75715e"></span>serde DeserializeOwned
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">with_nested_refcell</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;nested</span><span style="color:#f92672">&gt;</span> (
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>   nested: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">&#39;nested</span> <span style="color:#a6e22e">RefCell</span><span style="color:#f92672">&lt;</span>RefCell<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;&gt;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>   f: <span style="color:#a6e22e">for</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;arg</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">fn</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">&#39;arg</span> <span style="color:#66d9ef">str</span>), <span style="color:#75715e">// ≈ fn&lt;&#39;arg&gt; (&amp;&#39;arg str),
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#75715e"></span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>   f(<span style="color:#f92672">&amp;*</span>nested.borrow().borrow())
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>}</span></span></code></pre></div>
 <h4 id="rpit">RPIT</h4>
 <p>return position impl Trait
 <strong>RPIT 并不是泛型</strong></p>
