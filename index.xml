@@ -481,7 +481,8 @@ RefCell &amp; Cell &amp; UnsafeCell
 <h2 id="异步">异步</h2>
 <p>主要是以tokio为主的异步库
 然后和thread-per-core 类型的特殊异步库
-以及使用了Io_uring的特殊库=&gt;monoio</p>
+以及使用了Io_uring的特殊库=&gt;monoio
+linux 包括epoll,poll,</p>
 <h2 id="trait-泛型">trait 泛型</h2>
 <h3 id="sendsync">Send/Sync</h3>
 <p>Send 是 我可以将其移动到另一个线程而不创建非线程安全的隐藏共享状态吗？ Rc 移动后保持共享状态</p>
