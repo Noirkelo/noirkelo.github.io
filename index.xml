@@ -334,15 +334,15 @@ match 匹配 match
 风格 生命周期 View Type https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/
 所有权 例外就是Cell&amp;lt;T&amp;gt;
 MutexGuard&amp;lt;&amp;rsquo;_,T&amp;gt;
-内部可变性 RefCell &amp;amp; Cell
+内部可变性 Rc Weak UniqueRc RefCell &amp;amp; Cell
 trait 泛型 Send/Sync Send 是 我可以将其移动到另一个线程而不创建非线程安全的隐藏共享状态吗？ Rc 移动后保持共享状态
 Sync 是 多个线程是否可以保存对此的引用，而不会发生突变竞争（当且仅当&amp;amp;T是Send的时候T才是Sync）
 特例:
 e.g. 通过通过libloading载入dll,为了防止线程局部变量出问题!Send(需要由创建他的线程释放),!Sync(并没有做读写访问控制)
-e.g. MutexGuard&amp;lt;T&amp;gt; 由于pthread平台限制(如果你把它发送到别的线程那么析构函数会在被发送到的线程执行,但是你可以Send &amp;amp;MutexGuard&amp;lt;T&amp;gt;)
+e.g. MutexGuard&amp;lt;T&amp;gt; 由于pthread平台限制(如果你把它发送到别的线程那么析构函数会在被发送到的线程执行,但是你可以Send &amp;amp;MutexGuard&amp;lt;T&amp;gt;) !Send Sync(能直接访问)
 https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur
 奇怪语法糖 泛型相关 HRTB 具体表现是for&amp;lt;‘a&amp;gt;:Trait&amp;lt;&amp;lsquo;a&amp;gt;
-1//将生命周期推迟到调用者来决定 2fn with_nested_refcell&amp;lt;&amp;#39;nested&amp;gt; ( 3 nested: &amp;amp;&amp;#39;nested RefCell&amp;lt;RefCell&amp;lt;str&amp;gt;&amp;gt;, 4 f: for&amp;lt;&amp;#39;arg&amp;gt; fn(&amp;amp;&amp;#39;arg str), // ≈ fn&amp;lt;&amp;#39;arg&amp;gt; (&amp;amp;&amp;#39;arg str), 5) 6{ 7 f(&amp;amp;*nested.borrow().borrow()) 8} RPIT return position impl Trait RPIT 并不是泛型</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
+1//将生命周期推迟到调用者来决定 2fn with_nested_refcell&amp;lt;&amp;#39;nested&amp;gt; ( 3 nested: &amp;amp;&amp;#39;nested RefCell&amp;lt;RefCell&amp;lt;str&amp;gt;&amp;gt;, 4 f: for&amp;lt;&amp;#39;arg&amp;gt; fn(&amp;amp;&amp;#39;arg str), // ≈ fn&amp;lt;&amp;#39;arg&amp;gt; (&amp;amp;&amp;#39;arg str), 5) 6{ 7 f(&amp;amp;*nested.</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
 <blockquote>
 <p>针对概念性的，如果不看就会忘掉的东西
 并且对相对比较复杂的地方需要做一下自己的理解
@@ -361,14 +361,16 @@ https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amate
 <p>例外就是Cell&lt;T&gt;</p>
 <p>MutexGuard&lt;&rsquo;_,T&gt;</p>
 <h2 id="内部可变性">内部可变性</h2>
-<p>RefCell &amp; Cell</p>
+<p>Rc Weak  <a href="https://doc.rust-lang.org/std/rc/struct.UniqueRc.html" title="struct std::rc::UniqueRc">UniqueRc</a>
+RefCell &amp; Cell</p>
 <h2 id="trait-泛型">trait 泛型</h2>
 <h2 id="sendsync">Send/Sync</h2>
 <p>Send 是 我可以将其移动到另一个线程而不创建非线程安全的隐藏共享状态吗？ Rc 移动后保持共享状态</p>
 <p>Sync 是 多个线程是否可以保存对此的引用，而不会发生突变竞争（当且仅当&amp;T是Send的时候T才是Sync）</p>
 <p>特例:</p>
 <p>e.g. 通过通过libloading载入dll,为了防止线程局部变量出问题!Send(需要由创建他的线程释放),!Sync(并没有做读写访问控制)</p>
-<p>e.g. MutexGuard&lt;T&gt; 由于pthread平台限制(如果你把它发送到别的线程那么析构函数会在被发送到的线程执行,但是你可以Send &amp;MutexGuard&lt;T&gt;)</p>
+<p>e.g. MutexGuard&lt;T&gt; 由于pthread平台限制(如果你把它发送到别的线程那么析构函数会在被发送到的线程执行,但是你可以Send &amp;MutexGuard&lt;T&gt;)
+!Send Sync(能直接访问)</p>
 <p><a href="https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur">https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur</a></p>
 <h2 id="奇怪语法糖">奇怪语法糖</h2>
 <h3 id="泛型相关">泛型相关</h3>
