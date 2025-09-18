@@ -65,11 +65,11 @@ break 可以通过label 标记作用域跳出去</p>
 比如说我可以用PhantomData保留一个Status 只有当所有</p>
 <h3 id="future--pin-trait-pin-project">Future  Pin trait &amp;Pin Project</h3>
 <p>Future表现为一个通过不断调用poll直到Ready(T)的一个抽象定义
-取出来信息</p>
-<p>为了解决rust Pin trait 导致的</p>
-<p>super let 本质是有缺陷的</p>
-<p>可以通过tokio_codec 以及</p>
-<p>这也是要使用super let 的一大原因</p>
+取出来信息
+为了解决rust Pin trait 导致的
+super let 本质是有缺陷的
+可以通过tokio_codec 以及
+这也是要使用super let 的一大原因</p>
 <h3 id="maybeuninit">MaybeUninit</h3>
 <p>延迟初始化,也就是我可以一部分初始化
 比如提前声明足够大的CAP</p>
@@ -82,6 +82,11 @@ break 可以通过label 标记作用域跳出去</p>
 <h3 id="nicheoptimization">NicheOptimization</h3>
 <p>rust 会通过各种方式记录访问的值域，如果用不到的值域就会被用去做这个优化(enum)
 <a href="https://www.0xatticus.com/posts/understanding_rust_niche/">https://www.0xatticus.com/posts/understanding_rust_niche/</a></p>
+<h3 id="tuple-可变参数泛型">Tuple 可变参数泛型</h3>
+<p>这个
+使用tuple来实现一个非同质的列表，并且可以编译期去指定他的类型名称
+目前我理解的rust实现的方案是
+Tuple&lt;T1,T2&hellip;.Tn&gt;=&gt;Tupe&lt;T1,Tuple&lt;T2,&hellip;.&gt;&gt;</p>
 <h2 id="没对上号的">没对上号的</h2>
 <h3 id="drop-check">Drop Check</h3>
 <p>类似C++的RAII
@@ -127,9 +132,9 @@ dll内的日志的话有说法是调整link的包就可以解决我选择一个�
 就是暴力直接设定指针在dll的全局变量(这个东西在哪里释放我也不是很清楚,我的dll设置成NO_DELETE)</p>
 <h2 id="内部可变性">内部可变性</h2>
 <p>Rc Weak UniqueRc Arc
-RefCell &amp; Cell &amp; UnsafeCell</p>
-<p>由于 <code>Rust</code> 的 <code>mutable</code> 特性，一个结构体中的字段，要么全都是 <code>immutable</code>，要么全部是 <code>mutable</code>，<strong>不支持针对部分字段进行设置</strong>。比如，在一个 <code>struct</code> 中，<strong>可能只有个别的字段需要修改，而其他字段并不需要修改</strong>，为了一个字段而将整个 <code>struct</code> 变为 <code>&amp;mut</code> 也是不合理的。</p>
-<p>所以，实现 <strong>内部可变性</strong> 的 <code>Cell</code> 和 <code>RefCell</code> 正是为了解决诸如这类问题存在的，通过它们可以实现 <code>struct</code> 部分字段可变，而不用将整个 <code>struct</code> 设置为 <code>mutable</code>。</p>
+RefCell &amp; Cell &amp; UnsafeCell
+由于 <code>Rust</code> 的 <code>mutable</code> 特性，一个结构体中的字段，要么全都是 <code>immutable</code>，要么全部是 <code>mutable</code>，<strong>不支持针对部分字段进行设置</strong>。比如，在一个 <code>struct</code> 中，<strong>可能只有个别的字段需要修改，而其他字段并不需要修改</strong>，为了一个字段而将整个 <code>struct</code> 变为 <code>&amp;mut</code> 也是不合理的。
+所以，实现 <strong>内部可变性</strong> 的 <code>Cell</code> 和 <code>RefCell</code> 正是为了解决诸如这类问题存在的，通过它们可以实现 <code>struct</code> 部分字段可变，而不用将整个 <code>struct</code> 设置为 <code>mutable</code>。</p>
 <h3 id="一个比较漂亮的方案-view-type">一个比较漂亮的方案 View Type</h3>
 <p>所以有view type 出现,因为大多数情况我们都是同一个结构体部分借用
 <a href="https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/">https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/</a>
