@@ -5,7 +5,7 @@ match 匹配 match
 所有权 例外就是Cell&amp;lt;T&amp;gt;
 MutexGuard&amp;lt;&amp;rsquo;_,T&amp;gt;
 内部可变性 Rc Weak UniqueRc Arc RefCell &amp;amp; Cell
-trait 泛型 Send/Sync Send 是 我可以将其移动到另一个线程而不创建非线程安全的隐藏共享状态吗？ Rc 移动后保持共享状态
+Tokio trait 泛型 Send/Sync Send 是 我可以将其移动到另一个线程而不创建非线程安全的隐藏共享状态吗？ Rc 移动后保持共享状态
 Sync 是 多个线程是否可以保存对此的引用，而不会发生突变竞争（当且仅当&amp;amp;T是Send的时候T才是Sync）
 特例:
 e.g. 通过通过libloading载入dll,为了防止线程局部变量出问题!Send(需要由创建他的线程释放),!Sync(并没有做读写访问控制)
@@ -34,8 +34,9 @@ https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amate
 <h2 id="内部可变性">内部可变性</h2>
 <p>Rc Weak  UniqueRc   Arc
 RefCell &amp; Cell</p>
+<h2 id="tokio">Tokio</h2>
 <h2 id="trait-泛型">trait 泛型</h2>
-<h2 id="sendsync">Send/Sync</h2>
+<h3 id="sendsync">Send/Sync</h3>
 <p>Send 是 我可以将其移动到另一个线程而不创建非线程安全的隐藏共享状态吗？ Rc 移动后保持共享状态</p>
 <p>Sync 是 多个线程是否可以保存对此的引用，而不会发生突变竞争（当且仅当&amp;T是Send的时候T才是Sync）</p>
 <p>特例:</p>
