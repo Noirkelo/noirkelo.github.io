@@ -70,7 +70,7 @@ break 可以通过label 标记作用域跳出去</p>
 <p>可以通过tokio_codec 以及</p>
 <p>这也是要使用super let 的一大原因</p>
 <h3 id="maybeuninit">MaybeUninit</h3>
-<p>延迟初始化</p>
+<p>延迟初始化,也就是我可以一部分初始化</p>
 <h3 id="unsafe">Unsafe</h3>
 <p>如果用上unsafe跟C++没差了</p>
 <h3 id="superlet">SuperLet</h3>

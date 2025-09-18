@@ -51,7 +51,7 @@ break 可以通过label 标记作用域跳出去</p><h3 id=match-匹配>match �
 +-------------------------------+</code></pre><h4 id=specialization>Specialization</h4><p>这个理解成对Trait 的方法实现默认的不完全方法
 可以通过泛型参数T的约束或者具体的类型来覆盖</p><h3 id=union>Union</h3><p>竟然有union？没见什么项目用过,更多感觉是为了兼容c</p><h3 id=atomic相关>Atomic相关</h3><p>基本是C++模型</p><h2 id=有点黑科技>有点黑科技</h2><h3 id=manuallydrop>ManuallyDrop</h3><p>延迟Drop</p><h3 id=phantomdata>PhantomData</h3><p>伪造生命周期或者各种东西
 比如说我可以用PhantomData保留一个Status 只有当所有</p><h3 id=future--pin-trait-pin-project>Future Pin trait &amp;Pin Project</h3><p>Future表现为一个通过不断调用poll直到Ready(T)的一个抽象定义
-取出来信息</p><p>为了解决rust Pin trait 导致的</p><p>super let 本质是有缺陷的</p><p>可以通过tokio_codec 以及</p><p>这也是要使用super let 的一大原因</p><h3 id=maybeuninit>MaybeUninit</h3><p>延迟初始化</p><h3 id=unsafe>Unsafe</h3><p>如果用上unsafe跟C++没差了</p><h3 id=superlet>SuperLet</h3><p>形如f(g(&amp;T))
+取出来信息</p><p>为了解决rust Pin trait 导致的</p><p>super let 本质是有缺陷的</p><p>可以通过tokio_codec 以及</p><p>这也是要使用super let 的一大原因</p><h3 id=maybeuninit>MaybeUninit</h3><p>延迟初始化,也就是我可以一部分初始化</p><h3 id=unsafe>Unsafe</h3><p>如果用上unsafe跟C++没差了</p><h3 id=superlet>SuperLet</h3><p>形如f(g(&amp;T))
 以及在if 和if let 语句里面最内层引用会被自动的生命周期延长
 这块实践过程中间一般都是通过直接拆成单句来解决</p><h2 id=没对上号的>没对上号的</h2><h3 id=drop-check>Drop Check</h3><p>类似C++的RAII
 为了使泛型类型能够正确实现 drop，其泛型参数必须严格地比其存活时间长。
