@@ -378,7 +378,7 @@ match 匹配 match
 <p>MutexGuard&lt;&rsquo;_,T&gt;</p>
 <h2 id="内部可变性">内部可变性</h2>
 <p>Rc Weak UniqueRc Arc
-RefCell &amp; Cell</p>
+RefCell &amp; Cell &amp; UnsafeCell</p>
 <h2 id="tokio">Tokio</h2>
 <h2 id="trait-泛型">trait 泛型</h2>
 <h3 id="sendsync">Send/Sync</h3>
