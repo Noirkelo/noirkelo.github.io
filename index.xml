@@ -437,6 +437,8 @@ drop order 顺序
 然后通过DeriveInput来解析成目标代码
 只需要一个#[\Something]就可以解析
 日志的话有说法是调整link的包就可以解决我选择一个比较易懂的方案来实现</p>
+<h3 id="pin-project">Pin Project</h3>
+<p>super let</p>
 <h2 id="内部可变性">内部可变性</h2>
 <p>Rc Weak UniqueRc Arc
 RefCell &amp; Cell &amp; UnsafeCell</p>
