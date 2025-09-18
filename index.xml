@@ -398,7 +398,7 @@ break 可以通过label 标记作用域跳出去</p>
 <h3 id="maybeuninit">MaybeUninit</h3>
 <p>延迟初始化</p>
 <h3 id="unsafe">Unsafe</h3>
-<p>基本跟C++没差了</p>
+<p>如果用上unsafe跟C++没差了</p>
 <h3 id="风格">风格</h3>
 <p>clippy</p>
 <h2 id="没对上号的">没对上号的</h2>
