@@ -435,6 +435,7 @@ drop order 顺序
 逆变的话就可以变成fn(&amp;str)-&gt;impl ToString 参数可以变成impl ToString,    impl ToString-&gt;string</p>
 <h2 id="heading"></h2>
 <h2 id="从样例中间学习">从样例中间学习</h2>
+<h3 id="data-layout">data layout</h3>
 <h3 id="redis-rs--redis_ts-rs">redis-rs + redis_ts-rs</h3>
 <p>在内部的fork中我在里面添加了AsyncTsCommands就是使用了这个Specialization</p>
 
