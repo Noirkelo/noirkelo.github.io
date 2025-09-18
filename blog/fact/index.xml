@@ -2,7 +2,7 @@
 常规语法 循环控制结构 for/while/loop
 match 匹配 match
 生命周期 Trait dyn Trait 虚表结构
-+-------------------------------+ | fn drop_in_place(*mut T) | +-------------------------------+ | size of T | +-------------------------------+ | align of T | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun1 | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun2 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun1 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun2 | +-------------------------------+ | fn &amp;lt;T as Trait&amp;gt;::fun | +-------------------------------+ Trait Specialization Union 竟然有union？没见什么项目用过,更多感觉是为了兼容</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
++-------------------------------+ | fn drop_in_place(*mut T) | +-------------------------------+ | size of T | +-------------------------------+ | align of T | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun1 | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun2 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun1 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun2 | +-------------------------------+ | fn &amp;lt;T as Trait&amp;gt;::fun | +-------------------------------+ Trait Specialization 这个理解成对Trait 实现默认的不完全方法 可以通过泛型参数T的约束或者具体的类型来覆盖</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
 <blockquote>
 <p>针对概念性的，如果不看就会忘掉的东西
 并且对相对比较复杂的地方需要做一下自己的理解
@@ -41,6 +41,8 @@ match 匹配 match
 | fn &lt;T as Trait&gt;::fun          |
 +-------------------------------+</code></pre>
 <h4 id="trait-specialization">Trait Specialization</h4>
+<p>这个理解成对Trait 实现默认的不完全方法
+可以通过泛型参数T的约束或者具体的类型来覆盖</p>
 <h3 id="union">Union</h3>
 <p>竟然有union？没见什么项目用过,更多感觉是为了兼容</p>
 <h2 id="有点黑科技">有点黑科技</h2>
@@ -62,13 +64,15 @@ match 匹配 match
 drop order 顺序
 我知道有Drop 和RAII但是这个名字对不上号</p>
 <h2 id="从样例中间学习">从样例中间学习</h2>
+<h3 id="redis-rs">Redis-rs</h3>
+<p>在内部的fork中我在里面</p>
 <h3 id="可变参数泛型">可变参数泛型</h3>
 <h3 id="io_uring">io_uring</h3>
 <p>了解到是因为有一个字节开发的monoio，使用thread per core 模型
 高性能的proxy</p>
 <h2 id="所有权">所有权</h2>
-<p>例外就是Cell&lt;T&gt;</p>
-<p>MutexGuard&lt;&rsquo;_,T&gt;</p>
+<p>例外就是Cell&lt;T&gt;
+MutexGuard&lt;&rsquo;_,T&gt;</p>
 <h2 id="内部可变性">内部可变性</h2>
 <p>Rc Weak UniqueRc Arc
 RefCell &amp; Cell &amp; UnsafeCell</p>
