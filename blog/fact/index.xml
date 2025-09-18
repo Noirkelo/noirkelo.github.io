@@ -2,7 +2,7 @@
 常规语法 循环控制结构 for/while/loop
 match 匹配 match
 生命周期 dyn Trait 虚表结构
-+-------------------------------+ | fn drop_in_place(*mut T) | +-------------------------------+ | size of T | +-------------------------------+ | align of T | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun1 | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun2 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun1 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun2 | +-------------------------------+ | fn &amp;lt;T as Trait&amp;gt;::fun | +-------------------------------+ 风格 生命周期 所有权 例外就是Cell&amp;lt;T&amp;gt;</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
++-------------------------------+ | fn drop_in_place(*mut T) | +-------------------------------+ | size of T | +-------------------------------+ | align of T | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun1 | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun2 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun1 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun2 | +-------------------------------+ | fn &amp;lt;T as Trait&amp;gt;::fun | +-------------------------------+ 风格 Drop Check 类似C++的RAII 为了使泛型类型能够正确实现 drop，其泛型参数必须严格地比其存活时间长。 **For a generic type to soundly implement drop, its generics arguments must strictly outlive it.</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
 <blockquote>
 <p>针对概念性的，如果不看就会忘掉的东西
 并且对相对比较复杂的地方需要做一下自己的理解
@@ -40,7 +40,13 @@ match 匹配 match
 | fn &lt;T as Trait&gt;::fun          |
 +-------------------------------+</code></pre>
 <h3 id="风格">风格</h3>
+<h2 id="drop-check">Drop Check</h2>
+<p>类似C++的RAII
+为了使泛型类型能够正确实现 drop，其泛型参数必须严格地比其存活时间长。
+**For a generic type to soundly implement drop, its generics arguments must strictly outlive it.<br>
+drop order 顺序</p>
 <h2 id="生命周期-1">生命周期</h2>
+<p>生命周期</p>
 <h2 id="所有权">所有权</h2>
 <p>例外就是Cell&lt;T&gt;</p>
 <p>MutexGuard&lt;&rsquo;_,T&gt;</p>
