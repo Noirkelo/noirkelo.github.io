@@ -331,8 +331,8 @@ Detailed design 我在原有的分支做了一定修改至少证明了这个拦�
 ]]></content:encoded></item><item><title>rust</title><link>https://noirkelo.github.io/box/rust/</link><pubDate>Mon, 18 Aug 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/rust/</guid><description>Summary 针对概念性的，如果不看就会忘掉的东西 并且对相对比较复杂的地方需要做一下自己的理解 不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行 这里根据我看到的东西
 常规语法 循环控制结构 for/while/loop
 match 匹配 match
-生命周期 dyn Trait 虚表结构
-+-------------------------------+ | fn drop_in_place(*mut T) | +-------------------------------+ | size of T | +-------------------------------+ | align of T | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun1 | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun2 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun1 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun2 | +-------------------------------+ | fn &amp;lt;T as Trait&amp;gt;::fun | +-------------------------------+ Trait Specialization 风格 Drop Check 类似C++的RAII 为了使泛型类型能够正确实现 drop，其泛型参数必须严格地比其存活时间长。 **For a generic type to soundly implement drop, its generics arguments must strictly outlive it.</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
+生命周期 Trait dyn Trait 虚表结构
++-------------------------------+ | fn drop_in_place(*mut T) | +-------------------------------+ | size of T | +-------------------------------+ | align of T | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun1 | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun2 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun1 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun2 | +-------------------------------+ | fn &amp;lt;T as Trait&amp;gt;::fun | +-------------------------------+ Trait Specialization Union 竟然有union</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
 <blockquote>
 <p>针对概念性的，如果不看就会忘掉的东西
 并且对相对比较复杂的地方需要做一下自己的理解
@@ -345,7 +345,8 @@ match 匹配 match
 <h3 id="match-匹配">match 匹配</h3>
 <p>match</p>
 <h3 id="生命周期">生命周期</h3>
-<h3 id="dyn-trait">dyn Trait</h3>
+<h3 id="trait">Trait</h3>
+<h4 id="dyn-trait">dyn Trait</h4>
 <p>虚表结构</p>
 
 
@@ -369,7 +370,9 @@ match 匹配 match
 +-------------------------------+
 | fn &lt;T as Trait&gt;::fun          |
 +-------------------------------+</code></pre>
-<h3 id="trait-specialization">Trait Specialization</h3>
+<h4 id="trait-specialization">Trait Specialization</h4>
+<h3 id="union">Union</h3>
+<p>竟然有union</p>
 <h3 id="风格">风格</h3>
 <h2 id="drop-check">Drop Check</h2>
 <p>类似C++的RAII
@@ -388,7 +391,8 @@ RefCell &amp; Cell &amp; UnsafeCell</p>
 <p>所以，实现 <strong>内部可变性</strong> 的 <code>Cell</code> 和 <code>RefCell</code> 正是为了解决诸如这类问题存在的，通过它们可以实现 <code>struct</code> 部分字段可变，而不用将整个 <code>struct</code> 设置为 <code>mutable</code>。</p>
 <h3 id="view-type">View Type</h3>
 <p>所以有view type 出现,大多数情况我们都是同一个结构体部分借用
-<a href="https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/">https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/</a></p>
+<a href="https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/">https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/</a>
+<a href="https://hackmd.io/J5aGp1ptT46lqLmPVVOxzg?view">https://hackmd.io/J5aGp1ptT46lqLmPVVOxzg?view</a>&lt;&gt;</p>
 <h2 id="tokio">Tokio</h2>
 <h2 id="trait-泛型">trait 泛型</h2>
 <h3 id="sendsync">Send/Sync</h3>
