@@ -109,7 +109,7 @@ drop order 顺序
 <h3 id="插件形式动态调用">插件形式动态调用</h3>
 <p>具体是首先写出来最小的WIP
 然后通过DeriveInput来解析成目标代码
-只需要一个#[\Something]就可以解析
+只需要一个#[Something]就可以解析
 日志的话有说法是调整link的包就可以解决我选择一个比较易懂的方案来实现</p>
 <h3 id="pin-project">Pin Project</h3>
 <p>super let</p>

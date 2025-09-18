@@ -76,7 +76,7 @@ drop order 顺序
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19</span><span>        })
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20</span><span>    }</span></span></code></pre></div><h3 id=插件形式动态调用>插件形式动态调用</h3><p>具体是首先写出来最小的WIP
 然后通过DeriveInput来解析成目标代码
-只需要一个#[\Something]就可以解析
+只需要一个#[Something]就可以解析
 日志的话有说法是调整link的包就可以解决我选择一个比较易懂的方案来实现</p><h3 id=pin-project>Pin Project</h3><p>super let</p><h2 id=内部可变性>内部可变性</h2><p>Rc Weak UniqueRc Arc
 RefCell & Cell & UnsafeCell</p><p>由于 <code>Rust</code> 的 <code>mutable</code> 特性，一个结构体中的字段，要么全都是 <code>immutable</code>，要么全部是 <code>mutable</code>，<strong>不支持针对部分字段进行设置</strong>。比如，在一个 <code>struct</code> 中，<strong>可能只有个别的字段需要修改，而其他字段并不需要修改</strong>，为了一个字段而将整个 <code>struct</code> 变为 <code>&amp;mut</code> 也是不合理的。</p><p>所以，实现 <strong>内部可变性</strong> 的 <code>Cell</code> 和 <code>RefCell</code> 正是为了解决诸如这类问题存在的，通过它们可以实现 <code>struct</code> 部分字段可变，而不用将整个 <code>struct</code> 设置为 <code>mutable</code>。</p><h3 id=一个比较漂亮的方案-view-type>一个比较漂亮的方案 View Type</h3><p>所以有view type 出现,因为大多数情况我们都是同一个结构体部分借用
 <a href=https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/>https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/</a>
