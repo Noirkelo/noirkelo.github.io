@@ -422,6 +422,10 @@ Tuple&lt;T1,T2&hellip;.Tn&gt;=&gt;Tupe&lt;T1,Tuple&lt;T2,&hellip;.&gt;&gt;
 对于想实现impl Mytrait&lt;(T1)&gt; for T{</p>
 <p>}
 &hellip;直到T1,T2,T3&hellip;.Tn只能使用宏来实现</p>
+<h3 id="zstdst">ZST/DST</h3>
+<p>trait object
+str,[u8]</p>
+<p>ZST=&gt; ()</p>
 <h2 id="没对上号的">没对上号的</h2>
 <h3 id="drop-check">Drop Check</h3>
 <p>类似C++的RAII
