@@ -2,7 +2,8 @@
 <meta name=title content="rust"><meta name=description content="Summary 针对概念性的，如果不看就会忘掉的东西 并且对相对比较复杂的地方需要做一下自己的理解 不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行
 常规语法 循环控制结构 for/while/loop
 match 匹配 match
-风格 生命周期 所有权 例外就是Cell<T>
+风格 生命周期 View Type https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/
+所有权 例外就是Cell<T>
 trait 泛型 Send/Sync Send 是 我可以将其移动到另一个线程而不创建非线程安全的隐藏共享状态吗？ Rc 移动后保持共享状态
 Sync 是 多个线程是否可以保存对此的引用，而不会发生突变竞争（当且仅当&amp;T是Send的时候T才是Sync）
 特例:
@@ -10,11 +11,11 @@ e.g. 通过通过libloading载入dll,为了防止线程局部变量出问题!Sen
 e.g. MutexGuard<T> 由于pthread平台限制(如果你把它发送到别的线程那么析构函数会在被发送到的线程执行,但是你可以Send &amp;MutexGuard<T>)
 https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur
 奇怪语法糖 泛型相关 HRTB 具体表现是for<‘a>:Trait<&lsquo;a>
-1//将生命周期推迟到调用者来决定 2fn with_nested_refcell<'nested> ( 3 nested: &'nested RefCell<RefCell<str>>, 4 f: for<'arg> fn(&'arg str), // ≈ fn<'arg> (&'arg str), 5) 6{ 7 f(&*nested.borrow().borrow()) 8} RPIT return position impl Trait RPIT 并不是泛型
-1fn test_rpit() -> impl Iterator<Item = i32> { 2	[1, 2, 3, 4]."><meta name=keywords content="fact,"><meta property="og:title" content="rust"><meta property="og:description" content="Summary 针对概念性的，如果不看就会忘掉的东西 并且对相对比较复杂的地方需要做一下自己的理解 不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行
+1//将生命周期推迟到调用者来决定 2fn with_nested_refcell<'nested> ( 3 nested: &'nested RefCell<RefCell<str>>, 4 f: for<'arg> fn(&'arg str), // ≈ fn<'arg> (&'arg str), 5) 6{ 7 f(&*nested.borrow().borrow()) 8} RPIT return position impl Trait RPIT 并不是泛型"><meta name=keywords content="fact,"><meta property="og:title" content="rust"><meta property="og:description" content="Summary 针对概念性的，如果不看就会忘掉的东西 并且对相对比较复杂的地方需要做一下自己的理解 不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行
 常规语法 循环控制结构 for/while/loop
 match 匹配 match
-风格 生命周期 所有权 例外就是Cell<T>
+风格 生命周期 View Type https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/
+所有权 例外就是Cell<T>
 trait 泛型 Send/Sync Send 是 我可以将其移动到另一个线程而不创建非线程安全的隐藏共享状态吗？ Rc 移动后保持共享状态
 Sync 是 多个线程是否可以保存对此的引用，而不会发生突变竞争（当且仅当&amp;T是Send的时候T才是Sync）
 特例:
@@ -22,11 +23,11 @@ e.g. 通过通过libloading载入dll,为了防止线程局部变量出问题!Sen
 e.g. MutexGuard<T> 由于pthread平台限制(如果你把它发送到别的线程那么析构函数会在被发送到的线程执行,但是你可以Send &amp;MutexGuard<T>)
 https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur
 奇怪语法糖 泛型相关 HRTB 具体表现是for<‘a>:Trait<&lsquo;a>
-1//将生命周期推迟到调用者来决定 2fn with_nested_refcell<'nested> ( 3 nested: &'nested RefCell<RefCell<str>>, 4 f: for<'arg> fn(&'arg str), // ≈ fn<'arg> (&'arg str), 5) 6{ 7 f(&*nested.borrow().borrow()) 8} RPIT return position impl Trait RPIT 并不是泛型
-1fn test_rpit() -> impl Iterator<Item = i32> { 2	[1, 2, 3, 4]."><meta property="og:type" content="article"><meta property="og:url" content="https://noirkelo.github.io/box/rust/"><meta property="article:section" content="box"><meta property="article:published_time" content="2025-08-18T00:00:00+00:00"><meta property="article:modified_time" content="2025-09-17T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="rust"><meta name=twitter:description content="Summary 针对概念性的，如果不看就会忘掉的东西 并且对相对比较复杂的地方需要做一下自己的理解 不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行
+1//将生命周期推迟到调用者来决定 2fn with_nested_refcell<'nested> ( 3 nested: &'nested RefCell<RefCell<str>>, 4 f: for<'arg> fn(&'arg str), // ≈ fn<'arg> (&'arg str), 5) 6{ 7 f(&*nested.borrow().borrow()) 8} RPIT return position impl Trait RPIT 并不是泛型"><meta property="og:type" content="article"><meta property="og:url" content="https://noirkelo.github.io/box/rust/"><meta property="article:section" content="box"><meta property="article:published_time" content="2025-08-18T00:00:00+00:00"><meta property="article:modified_time" content="2025-09-17T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="rust"><meta name=twitter:description content="Summary 针对概念性的，如果不看就会忘掉的东西 并且对相对比较复杂的地方需要做一下自己的理解 不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行
 常规语法 循环控制结构 for/while/loop
 match 匹配 match
-风格 生命周期 所有权 例外就是Cell<T>
+风格 生命周期 View Type https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/
+所有权 例外就是Cell<T>
 trait 泛型 Send/Sync Send 是 我可以将其移动到另一个线程而不创建非线程安全的隐藏共享状态吗？ Rc 移动后保持共享状态
 Sync 是 多个线程是否可以保存对此的引用，而不会发生突变竞争（当且仅当&amp;T是Send的时候T才是Sync）
 特例:
@@ -34,11 +35,11 @@ e.g. 通过通过libloading载入dll,为了防止线程局部变量出问题!Sen
 e.g. MutexGuard<T> 由于pthread平台限制(如果你把它发送到别的线程那么析构函数会在被发送到的线程执行,但是你可以Send &amp;MutexGuard<T>)
 https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur
 奇怪语法糖 泛型相关 HRTB 具体表现是for<‘a>:Trait<&lsquo;a>
-1//将生命周期推迟到调用者来决定 2fn with_nested_refcell<'nested> ( 3 nested: &'nested RefCell<RefCell<str>>, 4 f: for<'arg> fn(&'arg str), // ≈ fn<'arg> (&'arg str), 5) 6{ 7 f(&*nested.borrow().borrow()) 8} RPIT return position impl Trait RPIT 并不是泛型
-1fn test_rpit() -> impl Iterator<Item = i32> { 2	[1, 2, 3, 4]."><meta itemprop=name content="rust"><meta itemprop=description content="Summary 针对概念性的，如果不看就会忘掉的东西 并且对相对比较复杂的地方需要做一下自己的理解 不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行
+1//将生命周期推迟到调用者来决定 2fn with_nested_refcell<'nested> ( 3 nested: &'nested RefCell<RefCell<str>>, 4 f: for<'arg> fn(&'arg str), // ≈ fn<'arg> (&'arg str), 5) 6{ 7 f(&*nested.borrow().borrow()) 8} RPIT return position impl Trait RPIT 并不是泛型"><meta itemprop=name content="rust"><meta itemprop=description content="Summary 针对概念性的，如果不看就会忘掉的东西 并且对相对比较复杂的地方需要做一下自己的理解 不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行
 常规语法 循环控制结构 for/while/loop
 match 匹配 match
-风格 生命周期 所有权 例外就是Cell<T>
+风格 生命周期 View Type https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/
+所有权 例外就是Cell<T>
 trait 泛型 Send/Sync Send 是 我可以将其移动到另一个线程而不创建非线程安全的隐藏共享状态吗？ Rc 移动后保持共享状态
 Sync 是 多个线程是否可以保存对此的引用，而不会发生突变竞争（当且仅当&amp;T是Send的时候T才是Sync）
 特例:
@@ -46,12 +47,11 @@ e.g. 通过通过libloading载入dll,为了防止线程局部变量出问题!Sen
 e.g. MutexGuard<T> 由于pthread平台限制(如果你把它发送到别的线程那么析构函数会在被发送到的线程执行,但是你可以Send &amp;MutexGuard<T>)
 https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur
 奇怪语法糖 泛型相关 HRTB 具体表现是for<‘a>:Trait<&lsquo;a>
-1//将生命周期推迟到调用者来决定 2fn with_nested_refcell<'nested> ( 3 nested: &'nested RefCell<RefCell<str>>, 4 f: for<'arg> fn(&'arg str), // ≈ fn<'arg> (&'arg str), 5) 6{ 7 f(&*nested.borrow().borrow()) 8} RPIT return position impl Trait RPIT 并不是泛型
-1fn test_rpit() -> impl Iterator<Item = i32> { 2	[1, 2, 3, 4]."><meta itemprop=datePublished content="2025-08-18T00:00:00+00:00"><meta itemprop=dateModified content="2025-09-17T00:00:00+00:00"><meta itemprop=wordCount content="153"><meta itemprop=keywords content="fact,"><meta name=referrer content="no-referrer-when-downgrade"><link href=/simple.min.css rel=stylesheet><link href=/style.min.css rel=stylesheet><link href=/syntax.min.css rel=stylesheet></head><body><header><nav><a href=/>Home</a>
+1//将生命周期推迟到调用者来决定 2fn with_nested_refcell<'nested> ( 3 nested: &'nested RefCell<RefCell<str>>, 4 f: for<'arg> fn(&'arg str), // ≈ fn<'arg> (&'arg str), 5) 6{ 7 f(&*nested.borrow().borrow()) 8} RPIT return position impl Trait RPIT 并不是泛型"><meta itemprop=datePublished content="2025-08-18T00:00:00+00:00"><meta itemprop=dateModified content="2025-09-17T00:00:00+00:00"><meta itemprop=wordCount content="156"><meta itemprop=keywords content="fact,"><meta name=referrer content="no-referrer-when-downgrade"><link href=/simple.min.css rel=stylesheet><link href=/style.min.css rel=stylesheet><link href=/syntax.min.css rel=stylesheet></head><body><header><nav><a href=/>Home</a>
 <a href=/box/>Box</a>
 <a href=https://noirkelo.github.io/index.xml>RSS</a></nav><h1>rust</h1></header><main><content><h2 id=summary>Summary</h2><blockquote><p>针对概念性的，如果不看就会忘掉的东西
 并且对相对比较复杂的地方需要做一下自己的理解
-不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行</p></blockquote><h2 id=常规语法>常规语法</h2><h3 id=循环控制结构>循环控制结构</h3><p>for/while/loop</p><h3 id=match-匹配>match 匹配</h3><p>match</p><h3 id=风格>风格</h3><h2 id=生命周期>生命周期</h2><h2 id=所有权>所有权</h2><p>例外就是Cell&lt;T></p><h2 id=trait-泛型>trait 泛型</h2><h2 id=sendsync>Send/Sync</h2><p>Send 是 我可以将其移动到另一个线程而不创建非线程安全的隐藏共享状态吗？ Rc 移动后保持共享状态</p><p>Sync 是 多个线程是否可以保存对此的引用，而不会发生突变竞争（当且仅当&amp;T是Send的时候T才是Sync）</p><p>特例:</p><p>e.g. 通过通过libloading载入dll,为了防止线程局部变量出问题!Send(需要由创建他的线程释放),!Sync(并没有做读写访问控制)</p><p>e.g. MutexGuard&lt;T> 由于pthread平台限制(如果你把它发送到别的线程那么析构函数会在被发送到的线程执行,但是你可以Send &amp;MutexGuard&lt;T>)</p><p><a href=https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur>https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur</a></p><h2 id=奇怪语法糖>奇怪语法糖</h2><h3 id=泛型相关>泛型相关</h3><h4 id=hrtb>HRTB</h4><p>具体表现是for&lt;‘a>:Trait&lt;&lsquo;a></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#75715e>//将生命周期推迟到调用者来决定
+不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行</p></blockquote><h2 id=常规语法>常规语法</h2><h3 id=循环控制结构>循环控制结构</h3><p>for/while/loop</p><h3 id=match-匹配>match 匹配</h3><p>match</p><h3 id=风格>风格</h3><h2 id=生命周期>生命周期</h2><h3 id=view-type>View Type</h3><p><a href=https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/>https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/</a></p><h2 id=所有权>所有权</h2><p>例外就是Cell&lt;T></p><h2 id=trait-泛型>trait 泛型</h2><h2 id=sendsync>Send/Sync</h2><p>Send 是 我可以将其移动到另一个线程而不创建非线程安全的隐藏共享状态吗？ Rc 移动后保持共享状态</p><p>Sync 是 多个线程是否可以保存对此的引用，而不会发生突变竞争（当且仅当&amp;T是Send的时候T才是Sync）</p><p>特例:</p><p>e.g. 通过通过libloading载入dll,为了防止线程局部变量出问题!Send(需要由创建他的线程释放),!Sync(并没有做读写访问控制)</p><p>e.g. MutexGuard&lt;T> 由于pthread平台限制(如果你把它发送到别的线程那么析构函数会在被发送到的线程执行,但是你可以Send &amp;MutexGuard&lt;T>)</p><p><a href=https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur>https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur</a></p><h2 id=奇怪语法糖>奇怪语法糖</h2><h3 id=泛型相关>泛型相关</h3><h4 id=hrtb>HRTB</h4><p>具体表现是for&lt;‘a>:Trait&lt;&lsquo;a></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#75715e>//将生命周期推迟到调用者来决定
 </span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span><span style=color:#75715e></span><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>with_nested_refcell</span><span style=color:#f92672>&lt;</span><span style=color:#a6e22e>&#39;nested</span><span style=color:#f92672>&gt;</span> (
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span>   nested: <span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>&#39;nested</span> <span style=color:#a6e22e>RefCell</span><span style=color:#f92672>&lt;</span>RefCell<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>str</span><span style=color:#f92672>&gt;&gt;</span>,
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span>   f: <span style=color:#a6e22e>for</span><span style=color:#f92672>&lt;</span><span style=color:#a6e22e>&#39;arg</span><span style=color:#f92672>&gt;</span> <span style=color:#66d9ef>fn</span>(<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>&#39;arg</span> <span style=color:#66d9ef>str</span>), <span style=color:#75715e>// ≈ fn&lt;&#39;arg&gt; (&amp;&#39;arg str),
