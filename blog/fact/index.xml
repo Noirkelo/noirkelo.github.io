@@ -83,10 +83,15 @@ super let 本质是有缺陷的
 <p>rust 会通过各种方式记录访问的值域，如果用不到的值域就会被用去做这个优化(enum)
 <a href="https://www.0xatticus.com/posts/understanding_rust_niche/">https://www.0xatticus.com/posts/understanding_rust_niche/</a></p>
 <h3 id="tuple-可变参数泛型">Tuple 可变参数泛型</h3>
-<p>这个
-使用tuple来实现一个非同质的列表，并且可以编译期去指定他的类型名称
+<p><a href="https://github.com/rust-lang/lang-team/blob/master/src/design_notes/variadic_generics.md">https://github.com/rust-lang/lang-team/blob/master/src/design_notes/variadic_generics.md</a>
+<a href="https://docs.rs/frunk/latest/frunk/index.html">frunk</a>
+可以设计一个tuple来实现一个非同质的列表，并且可以编译期去指定他的类型名称(利用自动的函数推导)
 目前我理解的rust实现的方案是
-Tuple&lt;T1,T2&hellip;.Tn&gt;=&gt;Tupe&lt;T1,Tuple&lt;T2,&hellip;.&gt;&gt;</p>
+Tuple&lt;T1,T2&hellip;.Tn&gt;=&gt;Tupe&lt;T1,Tuple&lt;T2,&hellip;.&gt;&gt;
+这个也可以在axum和bevy中看到
+对于想实现impl Mytrait&lt;(T1)&gt; for T{</p>
+<p>}
+&hellip;直到T1,T2,T3&hellip;.Tn只能使用宏来实现</p>
 <h2 id="没对上号的">没对上号的</h2>
 <h3 id="drop-check">Drop Check</h3>
 <p>类似C++的RAII
