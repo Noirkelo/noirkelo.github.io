@@ -69,6 +69,7 @@ RefCell &amp; Cell &amp; UnsafeCell</p>
 !Send Sync(因为要Deref)</p>
 <p><a href="https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur">https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur</a></p>
 <h2 id="ffi">FFI</h2>
+<h2 id="宏">宏</h2>
 <h2 id="奇怪语法糖">奇怪语法糖</h2>
 <h3 id="泛型相关">泛型相关</h3>
 <h4 id="hrtb">HRTB</h4>
