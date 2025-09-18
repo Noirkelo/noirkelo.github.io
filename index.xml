@@ -408,6 +408,9 @@ break 可以通过label 标记作用域跳出去</p>
 <p>形如f(g(&amp;T))
 以及在if 和if let 语句里面最内层引用会被自动的生命周期延长
 这块实践过程中间一般都是通过直接拆成单句来解决</p>
+<h3 id="nicheoptimization">NicheOptimization</h3>
+<p>rust 会通过各种方式记录访问的值域，如果用不到的值域就会被用去做这个优化(enum)
+<a href="https://www.0xatticus.com/posts/understanding_rust_niche/">https://www.0xatticus.com/posts/understanding_rust_niche/</a></p>
 <h2 id="没对上号的">没对上号的</h2>
 <h3 id="drop-check">Drop Check</h3>
 <p>类似C++的RAII
