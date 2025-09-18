@@ -55,16 +55,17 @@ break 可以通过label 标记作用域跳出去</p><h3 id=match>match</h3><p><a
 比如提前声明足够大的CAP</p><h3 id=unsafe>Unsafe</h3><p>如果用上unsafe跟C++没差了</p><h3 id=superlet>SuperLet</h3><p>形如f(g(&amp;T))
 以及在if 和if let 语句里面最内层引用会被自动的生命周期延长
 这块实践过程中间一般都是通过直接拆成单句来解决
-这里super let</p><h3 id=nicheoptimization>NicheOptimization</h3><p>rust 会通过各种方式记录访问的值域，如果用不到的值域就会被用去做这个优化(enum)
+这里super let 用来把pin!改成</p><h3 id=nicheoptimization>NicheOptimization</h3><p>rust 会通过各种方式记录访问的值域，如果用不到的值域就会被用去做这个优化(enum)
 <a href=https://www.0xatticus.com/posts/understanding_rust_niche/>https://www.0xatticus.com/posts/understanding_rust_niche/</a></p><h3 id=tuple-可变参数泛型>Tuple 可变参数泛型</h3><p><a href=https://github.com/rust-lang/lang-team/blob/master/src/design_notes/variadic_generics.md>https://github.com/rust-lang/lang-team/blob/master/src/design_notes/variadic_generics.md</a>
 <a href=https://docs.rs/frunk/latest/frunk/index.html>frunk</a>
 可以设计一个tuple来实现一个非同质的列表，并且可以编译期去指定他的类型名称(利用自动的函数推导)
 目前我理解的rust实现的方案是
 Tuple&lt;T1,T2&mldr;.Tn>=>Tupe&lt;T1,Tuple&lt;T2,&mldr;.>>
 这个也可以在axum和bevy中看到
-对于想实现impl Mytrait&lt;(T1)> for T{</p><p>}
+对于想实现impl Mytrait&lt;(T1)> for T
 &mldr;直到T1,T2,T3&mldr;.Tn只能使用宏来实现</p><h3 id=zstdst>ZST/DST</h3><p>trait object
-str,[u8]</p><p>ZST=> ()</p><h2 id=没对上号的>没对上号的</h2><h3 id=drop-check>Drop Check</h3><p>类似C++的RAII
+str,[u8]
+ZST=> ()</p><h2 id=没对上号的>没对上号的</h2><h3 id=drop-check>Drop Check</h3><p>类似C++的RAII
 为了使泛型类型能够正确实现 drop，其泛型参数必须严格地比其存活时间长。
 **For a generic type to soundly implement drop, its generics arguments must strictly outlive it.
 drop order 顺序

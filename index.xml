@@ -404,7 +404,7 @@ break 可以通过label 标记作用域跳出去</p>
 <p>形如f(g(&amp;T))
 以及在if 和if let 语句里面最内层引用会被自动的生命周期延长
 这块实践过程中间一般都是通过直接拆成单句来解决
-这里super let</p>
+这里super let 用来把pin!改成</p>
 <h3 id="nicheoptimization">NicheOptimization</h3>
 <p>rust 会通过各种方式记录访问的值域，如果用不到的值域就会被用去做这个优化(enum)
 <a href="https://www.0xatticus.com/posts/understanding_rust_niche/">https://www.0xatticus.com/posts/understanding_rust_niche/</a></p>
@@ -415,13 +415,12 @@ break 可以通过label 标记作用域跳出去</p>
 目前我理解的rust实现的方案是
 Tuple&lt;T1,T2&hellip;.Tn&gt;=&gt;Tupe&lt;T1,Tuple&lt;T2,&hellip;.&gt;&gt;
 这个也可以在axum和bevy中看到
-对于想实现impl Mytrait&lt;(T1)&gt; for T{</p>
-<p>}
+对于想实现impl Mytrait&lt;(T1)&gt; for T
 &hellip;直到T1,T2,T3&hellip;.Tn只能使用宏来实现</p>
 <h3 id="zstdst">ZST/DST</h3>
 <p>trait object
-str,[u8]</p>
-<p>ZST=&gt; ()</p>
+str,[u8]
+ZST=&gt; ()</p>
 <h2 id="没对上号的">没对上号的</h2>
 <h3 id="drop-check">Drop Check</h3>
 <p>类似C++的RAII
