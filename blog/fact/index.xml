@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Noirkel 's blog</title><link>https://noirkelo.github.io/blog/fact/</link><description>Recent content in fact on Noirkel 's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><lastBuildDate>Mon, 18 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://noirkelo.github.io/blog/fact/index.xml" rel="self" type="application/rss+xml"/><item><title>rust</title><link>https://noirkelo.github.io/box/rust/</link><pubDate>Mon, 18 Aug 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/rust/</guid><description>Summary 针对概念性的，如果不看就会忘掉的东西 并且对相对比较复杂的地方需要做一下自己的理解 不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Noirkel 's blog</title><link>https://noirkelo.github.io/blog/fact/</link><description>Recent content in fact on Noirkel 's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><lastBuildDate>Mon, 18 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://noirkelo.github.io/blog/fact/index.xml" rel="self" type="application/rss+xml"/><item><title>rust</title><link>https://noirkelo.github.io/box/rust/</link><pubDate>Mon, 18 Aug 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/rust/</guid><description>Summary 针对概念性的，如果不看就会忘掉的东西 并且对相对比较复杂的地方需要做一下自己的理解 不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行 这里根据我看到的东西
 常规语法 循环控制结构 for/while/loop
 match 匹配 match
 风格 生命周期 View Type https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/
@@ -16,7 +16,8 @@ https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amate
 <blockquote>
 <p>针对概念性的，如果不看就会忘掉的东西
 并且对相对比较复杂的地方需要做一下自己的理解
-不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行</p>
+不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行
+这里根据我看到的东西</p>
 </blockquote>
 <h2 id="常规语法">常规语法</h2>
 <h3 id="循环控制结构">循环控制结构</h3>
