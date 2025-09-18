@@ -332,7 +332,7 @@ Detailed design 我在原有的分支做了一定修改至少证明了这个拦�
 常规语法 循环控制结构 for/while/loop
 match 匹配 match
 生命周期 dyn Trait 虚表结构
-+-------------------------------+ | fn drop_in_place(*mut T) | +-------------------------------+ | size of T | +-------------------------------+ | align of T | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun1 | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun2 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun1 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun2 | +-------------------------------+ | fn &amp;lt;T as Trait&amp;gt;::fun | +-------------------------------+ 风格 生命周期 View Type https://smallcultfollowing.</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
++-------------------------------+ | fn drop_in_place(*mut T) | +-------------------------------+ | size of T | +-------------------------------+ | align of T | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun1 | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun2 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun1 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun2 | +-------------------------------+ | fn &amp;lt;T as Trait&amp;gt;::fun | +-------------------------------+ 风格 生命周期 所有权 例外就是Cell&amp;lt;T&amp;gt;</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
 <blockquote>
 <p>针对概念性的，如果不看就会忘掉的东西
 并且对相对比较复杂的地方需要做一下自己的理解
@@ -371,14 +371,17 @@ match 匹配 match
 +-------------------------------+</code></pre>
 <h3 id="风格">风格</h3>
 <h2 id="生命周期-1">生命周期</h2>
-<h3 id="view-type">View Type</h3>
-<p><a href="https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/">https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/</a></p>
 <h2 id="所有权">所有权</h2>
 <p>例外就是Cell&lt;T&gt;</p>
 <p>MutexGuard&lt;&rsquo;_,T&gt;</p>
 <h2 id="内部可变性">内部可变性</h2>
 <p>Rc Weak UniqueRc Arc
 RefCell &amp; Cell &amp; UnsafeCell</p>
+<p>由于 <code>Rust</code> 的 <code>mutable</code> 特性，一个结构体中的字段，要么全都是 <code>immutable</code>，要么全部是 <code>mutable</code>，<strong>不支持针对部分字段进行设置</strong>。比如，在一个 <code>struct</code> 中，<strong>可能只有个别的字段需要修改，而其他字段并不需要修改</strong>，为了一个字段而将整个 <code>struct</code> 变为 <code>&amp;mut</code> 也是不合理的。</p>
+<p>所以，实现 <strong>内部可变性</strong> 的 <code>Cell</code> 和 <code>RefCell</code> 正是为了解决诸如这类问题存在的，通过它们可以实现 <code>struct</code> 部分字段可变，而不用将整个 <code>struct</code> 设置为 <code>mutable</code>。</p>
+<h3 id="view-type">View Type</h3>
+<p>所以有view type 出现
+<a href="https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/">https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/</a></p>
 <h2 id="tokio">Tokio</h2>
 <h2 id="trait-泛型">trait 泛型</h2>
 <h3 id="sendsync">Send/Sync</h3>
@@ -389,6 +392,7 @@ RefCell &amp; Cell &amp; UnsafeCell</p>
 <p>e.g. MutexGuard&lt;T&gt; 由于pthread平台限制(如果你把它发送到别的线程那么析构函数会在被发送到的线程执行,但是你可以Send &amp;MutexGuard&lt;T&gt;)
 !Send Sync(因为要Deref)</p>
 <p><a href="https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur">https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur</a></p>
+<h2 id="ffi">FFI</h2>
 <h2 id="奇怪语法糖">奇怪语法糖</h2>
 <h3 id="泛型相关">泛型相关</h3>
 <h4 id="hrtb">HRTB</h4>
