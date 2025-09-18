@@ -333,7 +333,7 @@ Detailed design 我在原有的分支做了一定修改至少证明了这个拦�
 match 匹配 match
 生命周期 更小的生命周期可以被比他大的生命周期覆盖 &amp;lsquo;a 能被 &amp;lsquo;static替代 衍生话题就是hrtb
 可变参数泛型 这个在axum的handler模型里面有见到过
-Trait dyn Trait 虚表结构 多重继承他们不是连续的这也是
+Trait dyn Trait 虚表结构 多重继承里面就必须在保存一个指向虚表的指针 https://lancern.xyz/posts/2024/01/rust-vtable
 +-------------------------------+ | fn drop_in_place(*mut T) | +-------------------------------+ | size of T | +-------------------------------+ | align of T | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun1 | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun2 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun1 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun2 | +-------------------------------+ | fn &amp;lt;T as Trait&amp;gt;::fun | +-------------------------------+ Specialization 这个理解成对Trait 的方法实现默认的不完全方法 可以通过泛型参数T的约束或者具体的类型来覆盖</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
 <blockquote>
 <p>针对概念性的，如果不看就会忘掉的东西
@@ -356,7 +356,8 @@ break 可以通过label 标记作用域跳出去</p>
 <h3 id="trait">Trait</h3>
 <h4 id="dyn-trait">dyn Trait</h4>
 <p>虚表结构
-多重继承他们不是连续的这也是</p>
+多重继承里面就必须在保存一个指向虚表的指针
+<a href="https://lancern.xyz/posts/2024/01/rust-vtable">https://lancern.xyz/posts/2024/01/rust-vtable</a></p>
 
 
 
