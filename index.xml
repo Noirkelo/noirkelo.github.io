@@ -382,7 +382,9 @@ match 匹配 match
 <p>伪造生命周期或者各种东西
 比如说我可以用PhantomData保留一个Status 只有当所有</p>
 <h3 id="pin-trait-pin-project">Pin trait &amp;Pin Project</h3>
+<p>解决自引用问题</p>
 <h3 id="maybeuninit">MaybeUninit</h3>
+<p>延迟初始化</p>
 <h3 id="unsafe">Unsafe</h3>
 <p>基本跟C++没差了</p>
 <h3 id="风格">风格</h3>
