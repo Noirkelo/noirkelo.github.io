@@ -167,7 +167,8 @@ linux 包括epoll,poll,</p>
 <h2 id="奇怪语法糖">奇怪语法糖</h2>
 <h3 id="泛型相关">泛型相关</h3>
 <h4 id="hrtb">HRTB</h4>
-<p>具体表现是for&lt;‘a&gt;:Trait&lt;&lsquo;a&gt;</p>
+<p>具体表现是for&lt;‘a&gt;:Trait&lt;&lsquo;a&gt;
+将生命周期推迟到调用者来决定</p>
 
 
 
