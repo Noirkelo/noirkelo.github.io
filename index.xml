@@ -400,7 +400,7 @@ break 可以通过label 标记作用域跳出去</p>
 <h3 id="unsafe">Unsafe</h3>
 <p>如果用上unsafe跟C++没差了</p>
 <h3 id="风格">风格</h3>
-<p>clippy</p>
+<p>clippy lints</p>
 <h2 id="没对上号的">没对上号的</h2>
 <h3 id="drop-check">Drop Check</h3>
 <p>类似C++的RAII
