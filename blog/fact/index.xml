@@ -57,6 +57,11 @@ break 可以通过label 标记作用域跳出去</p>
 <p>竟然有union？没见什么项目用过,更多感觉是为了兼容c</p>
 <h3 id="atomic相关">Atomic相关</h3>
 <p>基本是C++模型</p>
+<h3 id="了解过的三方包">了解过的三方包</h3>
+<p><a href="https://docs.rs/socket2/latest/socket2/">https://docs.rs/socket2/latest/socket2/</a>
+如果需要手动构建调整一些socket选项必须用这个
+github.com/dtolnay/anyhow
+经可能</p>
 <h2 id="有点黑科技">有点黑科技</h2>
 <h3 id="manuallydrop">ManuallyDrop</h3>
 <p>延迟Drop</p>
