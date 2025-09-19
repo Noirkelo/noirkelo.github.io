@@ -714,14 +714,15 @@ If someone else wants to re-create your package from scratch, they can easily do
 <p>gnome去强制安装unite</p>
 <h2 id="ｕbuntu-系统禁止或者改变中文简体切换繁体">Ｕbuntu 系统禁止或者改变中文简体切换繁体</h2>
 <p><a href="https://blog.csdn.net/qq_33210042/article/details/108368089">https://blog.csdn.net/qq_33210042/article/details/108368089</a></p>
-<p>刪除输入法addon</p>
+<p>刪除输入法addon
+我就说我怎么老是繁体的</p>
 <h2 id="msi-风扇控制和风扇硬件">Msi 风扇控制和风扇硬件</h2>
 <p><a href="https://github.com/dmitry-s93/MControlCenter">https://github.com/dmitry-s93/MControlCenter</a></p>
 <p><a href="https://github.com/BeardOverflow/msi-ec?tab=readme-ov-file#installation">https://github.com/BeardOverflow/msi-ec?tab=readme-ov-file#installation</a></p>
 <p>24.04直接安装就行了不需要手动编译</p>
 <h2 id="设定文件管理器默认以type排序">设定文件管理器默认以type排序</h2>
 <p>gsettings set org.gnome.nautilus.preferences default-sort-order &rsquo;type'
-或者使用dconf editor</p>
+或者使用dconf editor来编辑</p>
 <h2 id="connect">Connect</h2>
 <hr>
 <h1 id="reference">Reference</h1>
