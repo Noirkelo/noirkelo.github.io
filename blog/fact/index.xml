@@ -67,6 +67,8 @@ arcswap
 fnv/fxhashmap/ahash
 serde/simdjson/snoic-rs
 rkyv</p>
+<p><a href="https://docs.rs/unsigned-varint/latest/unsigned_varint/">https://docs.rs/unsigned-varint/latest/unsigned_varint/</a>
+可以实现可变长编码</p>
 <h2 id="有点黑科技">有点黑科技</h2>
 <h3 id="try-trait-v2">try-trait v2</h3>
 <p>没仔细看，但是这个貌似把result还有任何产生某值的做了一个泛化</p>
