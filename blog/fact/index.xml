@@ -62,11 +62,12 @@ break 可以通过label 标记作用域跳出去</p>
 如果需要手动构建调整一些socket选项必须用这个
 github.com/dtolnay/anyhow
 thiserror
-scc/dashmap
+scc/dashmap 并发哈希图
 arcswap
 fnv/fxhashmap/ahash
 serde/simdjson/snoic-rs
-rkyv</p>
+rkyv
+insta/next test/</p>
 <p><a href="https://docs.rs/unsigned-varint/latest/unsigned_varint/">https://docs.rs/unsigned-varint/latest/unsigned_varint/</a>
 可以实现可变长编码</p>
 <h2 id="有点黑科技">有点黑科技</h2>
