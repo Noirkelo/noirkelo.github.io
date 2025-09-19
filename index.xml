@@ -427,6 +427,19 @@ Tuple&lt;T1,T2&hellip;.Tn&gt;=&gt;Tupe&lt;T1,Tuple&lt;T2,&hellip;.&gt;&gt;
 <h3 id="zstdst">ZST/DST</h3>
 <p>trait object &amp; str,[u8]
 ZST=&gt; () 还有enum sth{}</p>
+<h3 id="substructural-types">Substructural Types</h3>
+<ol>
+<li>can be used any number of times (no name - the default)<br>
+可以使用任意次数（无名称 - 默认）
+Copy 和Clone</li>
+<li>can’t be used more than once (affine™)<br>
+不能使用超过一次（affine™）
+当我移动了就不能用之前的变量,以及</li>
+<li>must be used at least once (relevant™ - this one is a decent name)<br>
+必须至少使用一次（relevant™ - 这是一个不错的名字）</li>
+<li>must be used exactly once (linear™)<br>
+必须使用一次（线性™）</li>
+</ol>
 <h2 id="没对上号的">没对上号的</h2>
 <h3 id="drop-check">Drop Check</h3>
 <p>类似C++的RAII
