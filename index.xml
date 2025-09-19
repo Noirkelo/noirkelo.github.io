@@ -203,7 +203,7 @@ Detailed design 我在原有的分支做了一定修改至少证明了这个拦�
 我们只需要拦截并计算每次set_anchor的值即可
 这里有个比较抽象的问题是访问Entity需要访问&amp;mut App但是Animation里面是没有办法在动画之间访问到ctx的
 所以我们可能需要在AnimationElement 里面访问ctx
-也就是控件只能控制自己的相关类型而不能控制别</p>
+也就是控件只能控制自己的相关类型而不能控制别的控件</p>
 
 
 
