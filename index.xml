@@ -391,7 +391,12 @@ break 可以通过label 标记作用域跳出去</p>
 <p><a href="https://docs.rs/socket2/latest/socket2/">https://docs.rs/socket2/latest/socket2/</a>
 如果需要手动构建调整一些socket选项必须用这个
 github.com/dtolnay/anyhow
-经可能</p>
+thiserror
+scc/dashmap
+arcswap
+fnv/fxhashmap/ahash
+serde/simdjson/snoic-rs
+rkyv</p>
 <h2 id="有点黑科技">有点黑科技</h2>
 <h3 id="try-trait-v2">try-trait v2</h3>
 <p>没仔细看，但是这个貌似把result还有任何产生某值的做了一个泛化</p>
