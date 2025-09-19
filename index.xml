@@ -393,6 +393,21 @@ break 可以通过label 标记作用域跳出去</p>
 github.com/dtolnay/anyhow
 经可能</p>
 <h2 id="有点黑科技">有点黑科技</h2>
+<h3 id="try-trait-v2">try-trait v2</h3>
+<p>没仔细看，但是这个貌似把result还有任何产生某值的做了一个泛化</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Try: <span style="color:#a6e22e">FromResidual</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>    <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Output</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>    <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Residual</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>    <span style="color:#75715e">// Required methods
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">from_output</span>(output: <span style="color:#a6e22e">Self</span>::Output) -&gt; <span style="color:#a6e22e">Self</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">branch</span>(self) -&gt; <span style="color:#a6e22e">ControlFlow</span><span style="color:#f92672">&lt;</span>Self::Residual, Self::Output<span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>}</span></span></code></pre></div>
 <h3 id="manuallydrop">ManuallyDrop</h3>
 <p>延迟Drop</p>
 <h3 id="phantomdata">PhantomData</h3>
