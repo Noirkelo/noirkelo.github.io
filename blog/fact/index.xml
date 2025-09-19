@@ -132,13 +132,10 @@ dorp可以通过mem::forget这样去移除行为</li>
 <p>类似C++的RAII
 为了使泛型类型能够正确实现 drop，其泛型参数必须严格地比其存活时间长。
 **For a generic type to soundly implement drop, its generics arguments must strictly outlive it.
-drop order 顺序
-我知道有Drop 和RAII但是这个名字对不上号
-扩展问题就是Async 里面的Async Drop</p>
+drop order 顺序</p>
 <h3 id="生命周期的逆变-协变">生命周期的逆变 协变</h3>
 <p><a href="https://zhuanlan.zhihu.com/p/682880532">https://zhuanlan.zhihu.com/p/682880532</a>
 逆变的话就可以变成fn(&amp;str)-&gt;impl ToString 参数可以变成impl ToString, impl ToString-&gt;string</p>
-<h2 id="heading"></h2>
 <h2 id="从样例中间学习">从样例中间学习</h2>
 <h3 id="reprrust-repec">repr(Rust) repe(C)</h3>
 <p>rkyv 使用的时候严格要求内存对齐相关的约束
@@ -177,6 +174,9 @@ repr(Rust) repe(C)</p>
 目前我还没有实践过ui-test相关
 dll内的日志的话有说法是调整link的包就可以解决我选择一个比较易懂的方案来实现
 就是暴力直接设定指针在dll的全局变量(这个东西在哪里释放我也不是很清楚,我的dll设置成NO_DELETE)</p>
+<h3 id="自行实现某种编码">自行实现某种编码</h3>
+<p>使用tokio_codec
+可以非常方便实现基于rkyv的字节流编码</p>
 <h2 id="内部可变性">内部可变性</h2>
 <p>Rc Weak UniqueRc Arc
 RefCell &amp; Cell &amp; UnsafeCell
