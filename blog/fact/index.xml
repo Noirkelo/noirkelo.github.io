@@ -180,6 +180,7 @@ repr(Rust) repe(C)</p>
 dll内的日志的话有说法是调整link的包就可以解决我选择一个比较易懂的方案来实现
 就是暴力直接设定指针在dll的全局变量(这个东西在哪里释放我也不是很清楚,我的dll设置成NO_DELETE)</p>
 <h3 id="包和大型workspace管理">包和大型workspace管理</h3>
+<p>cargo hakari /workspace hack</p>
 <h3 id="自行实现某种编码">自行实现某种编码</h3>
 <p>使用tokio_codec
 可以非常方便实现基于rkyv的字节流编码</p>
