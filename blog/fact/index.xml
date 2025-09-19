@@ -67,8 +67,9 @@ arcswap
 fnv/fxhashmap/ahash
 serde/simdjson/snoic-rs
 rkyv
-insta/next test/</p>
-<p><a href="https://docs.rs/unsigned-varint/latest/unsigned_varint/">https://docs.rs/unsigned-varint/latest/unsigned_varint/</a>
+insta/next test/
+fastwebsocket
+<a href="https://docs.rs/unsigned-varint/latest/unsigned_varint/">https://docs.rs/unsigned-varint/latest/unsigned_varint/</a>
 可以实现可变长编码</p>
 <h2 id="有点黑科技">有点黑科技</h2>
 <h3 id="try-trait-v2">try-trait v2</h3>
