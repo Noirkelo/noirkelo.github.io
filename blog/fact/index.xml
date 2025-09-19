@@ -121,17 +121,17 @@ Tuple&lt;T1,T2&hellip;.Tn&gt;=&gt;Tupe&lt;T1,Tuple&lt;T2,&hellip;.&gt;&gt;
 ZST=&gt; () 还有enum sth{}</p>
 <h3 id="substructural-types">Substructural Types</h3>
 <ol>
-<li>can be used any number of times (no name - the default)<br>
+<li>can be used any number of times (no name - the default)
 可以使用任意次数（无名称 - 默认）
 Copy 和Clone</li>
-<li>can’t be used more than once (affine™)<br>
+<li>can’t be used more than once (affine™)
 不能使用超过一次（affine™）
 当我移动了就不能用之前的变量,以及变量遮蔽</li>
-<li>must be used at least once (relevant™ - this one is a decent name)<br>
+<li>must be used at least once (relevant™ - this one is a decent name)
 必须至少使用一次（relevant™ - 这是一个不错的名字）
 drop 和lint就是这个性质
 dorp可以通过mem::forget这样去移除行为</li>
-<li>must be used exactly once (linear™)<br>
+<li>must be used exactly once (linear™)
 必须使用一次（线性™）</li>
 </ol>
 <h2 id="没对上号的">没对上号的</h2>
