@@ -497,11 +497,14 @@ linux 包括epoll,poll,</p>
 <p><a href="https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur">https://blog.cuongle.dev/p/this-sendsync-secret-separates-professional-and-amateur</a></p>
 <h2 id="ffi">FFI</h2>
 <h2 id="宏">宏</h2>
+<h3 id="过程宏">过程宏</h3>
+<h3 id="tt咀嚼机">tt咀嚼机</h3>
 <h2 id="奇怪语法糖">奇怪语法糖</h2>
 <h3 id="泛型相关">泛型相关</h3>
 <h4 id="hrtb">HRTB</h4>
 <p>具体表现是for&lt;‘a&gt;:Trait&lt;&lsquo;a&gt;
-将生命周期推迟到调用者来决定</p>
+将生命周期推迟到调用者来决定
+最经典是serde里面的使用</p>
 
 
 
