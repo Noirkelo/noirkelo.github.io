@@ -144,7 +144,8 @@ dorp可以通过mem::forget这样去移除行为</li>
 drop order 顺序</p>
 <h3 id="生命周期的逆变-协变">生命周期的逆变 协变</h3>
 <p><a href="https://zhuanlan.zhihu.com/p/682880532">https://zhuanlan.zhihu.com/p/682880532</a>
-逆变的话就可以变成fn(&amp;str)-&gt;impl ToString 参数可以变成impl ToString, impl ToString-&gt;string</p>
+逆变的话就可以变成fn(&amp;str)-&gt;impl ToString 参数可以变成impl ToString, implToString-&gt;string
+只有函数的</p>
 <h2 id="从样例中间学习">从样例中间学习</h2>
 <h3 id="reprrust-repec">repr(Rust) repe(C)</h3>
 <p>rkyv 使用的时候严格要求内存对齐相关的约束
