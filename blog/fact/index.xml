@@ -1,17 +1,112 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Noirkel 's blog</title><link>https://noirkelo.github.io/blog/fact/</link><description>Recent content in fact on Noirkel 's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><lastBuildDate>Mon, 18 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://noirkelo.github.io/blog/fact/index.xml" rel="self" type="application/rss+xml"/><item><title>rust</title><link>https://noirkelo.github.io/box/rust/</link><pubDate>Mon, 18 Aug 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/rust/</guid><description>Summary 针对概念性的，如果不看就会忘掉的东西 并且对相对比较复杂的地方需要做一下自己的理解 不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行 这里根据我看到的东西查缺补漏,之前一直没有做系统化的整理
-常规语法 循环控制结构 for/while/loop break 可以通过label 标记作用域跳出去
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Noirkel 's blog</title><link>https://noirkelo.github.io/blog/fact/</link><description>Recent content in fact on Noirkel 's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><lastBuildDate>Sun, 21 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://noirkelo.github.io/blog/fact/index.xml" rel="self" type="application/rss+xml"/><item><title>rust-trick</title><link>https://noirkelo.github.io/box/rust-trick/</link><pubDate>Sun, 21 Sep 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/rust-trick/</guid><description>rust-trick Summary 主要用来记录使用过程中的
+编译时间优化 主要是增量编译+各种trick
+cargo hakari /workspace hack 这个主要是保证不管你使用包的方式,让所有的包Feature映射到一个并集里面，这样使用sccache也不会触发重新编译 mold 高性能链接不解释( cranelift 除了llvm以外的另一个backend 目标是最快编译时间 serde-core serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏 测试相关 instra 包含vscode插件可以直接内联插入测试 ui test https://docs.rs/ui_test/latest/ui_test/ 如果有过程宏必须要使用这个保证用户界面使用正确 git 相关 git cliff 制作版本代际相关的changelog 项目构建相关 mise 管理env,甚至加密的token还有不同版本的各种工具 目前还可以管理启动项目的脚本等等并且相比起justfile 可以分体式管理脚本,唯一感觉槽点就是 justfile 轻量级make Debug https://github.com/rr-debugger/rr 这个可以完美支持rust有个gist里面有详细指南 可以直接记录并回放,也就是直接在历史执行过的地方进行单步调试,可以随意的前进和后退,并且可以直接看当时情况下各种变量等等到底有啥 Connect Reference</description><content:encoded><![CDATA[<h1 id="rust-trick">rust-trick</h1>
+<h2 id="summary">Summary</h2>
+<p>主要用来记录使用过程中的</p>
+<h3 id="编译时间优化">编译时间优化</h3>
+<p>主要是增量编译+各种trick</p>
+<ul>
+<li>cargo hakari /workspace hack
+这个主要是保证不管你使用包的方式,让所有的包Feature映射到一个并集里面，这样使用sccache也不会触发重新编译</li>
+<li>mold
+高性能链接不解释(</li>
+<li>cranelift
+除了llvm以外的另一个backend 目标是最快编译时间</li>
+<li>serde-core
+serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏</li>
+</ul>
+<h3 id="测试相关">测试相关</h3>
+<ul>
+<li>instra
+包含vscode插件可以直接内联插入测试</li>
+<li>ui test
+<a href="https://docs.rs/ui_test/latest/ui_test/">https://docs.rs/ui_test/latest/ui_test/</a>
+如果有过程宏必须要使用这个保证用户界面使用正确</li>
+</ul>
+<h3 id="git-相关">git 相关</h3>
+<ul>
+<li>git cliff
+制作版本代际相关的changelog</li>
+</ul>
+<h3 id="项目构建相关">项目构建相关</h3>
+<ul>
+<li>mise
+管理env,甚至加密的token还有不同版本的各种工具
+目前还可以管理启动项目的脚本等等并且相比起justfile
+可以分体式管理脚本,唯一感觉槽点就是</li>
+<li>justfile
+轻量级make</li>
+</ul>
+<h3 id="debug">Debug</h3>
+<ul>
+<li><a href="https://github.com/rr-debugger/rr">https://github.com/rr-debugger/rr</a>
+这个可以完美支持rust有个gist里面有详细指南
+可以直接记录并回放,也就是直接在历史执行过的地方进行单步调试,可以随意的前进和后退,并且可以直接看当时情况下各种变量等等到底有啥</li>
+</ul>
+<h2 id="connect">Connect</h2>
+<hr>
+<h1 id="reference">Reference</h1>
+]]></content:encoded></item><item><title>awsome-tech</title><link>https://noirkelo.github.io/box/awsome-tech/</link><pubDate>Fri, 19 Sep 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/awsome-tech/</guid><description>Summary 罗列最近看到的不错的技术文章/新的东西 如果实际上用了会移动到具体方面
+Rust https://github.com/TimelyDataflow/timely-dataflow https://github.com/TimelyDataflow/differential-dataflow 对于某些要求全局正确性的强状态服务的可能是必须的，看起来是可以做一个分布式的计算,并且根据增量的数据自动更新结果，缺点是需要把很多现有算法都重新实现成图对工程要求非常高 可能需要了解下datalog才能理解这种范式 https://github.com/frankmcsherry/blog 他的产品就是Materialize.io
+https://salsa-rs.github.io/salsa/about_salsa.html 另一种增量计算框架
+https://github.com/j178/prek 工具链需要用到的git钩子，主要是为了学库的结构 https://github.com/astral-sh/uv python版本管理 这个uv对python的版本依赖使用的PubGrub算法来进行的 这也是下一代cargo要替换到的算法 介绍性博客 https://medium.com/@nex3/pubgrub-2fb6470504f https://github.com/dart-lang/pub/blob/master/doc/solver.md (详细解释) 基于 https://potassco.org/book/ ASP (Answer Set Programming) https://rust-lang.github.io/rust-project-goals/2024h2/pubgrub-in-cargo.html
+https://github.com/astral-sh/ruff 类似python black但是更快 https://docs.rs/good_lp/latest/good_lp/index.html 线性规划求解器 https://docs.rs/lol_html/latest/lol_html/ html重写，他的api风格非常有趣
+https://github.com/rust-lang/rust/issues/92985 LendingIterator 需要下一代求解器才能工作,不损耗性能的情况下，能证明生命周期的话，可以直接使用裸指针绕过 而不是把结构体设计成包含RefCell/Cell的结构，最好是从行为上封装,把unsafe的地区压到最低
+https://docs.rs/dynosaur/latest/dynosaur/ 提供一个方案来dyn调用async 函数,并且还能保留静态调度的优势是async_trait的直接上位替代品 https://rust-for-linux.com/arc-in-the-linux-kernel 这个其实也是为啥要搞arbitrary_self_types的原因 而且需要一个SmartPointer 的drive https://rust-for-linux.com/ rrdebug 得阅读看看感觉实现原理挺神奇的 https://arxiv.org/pdf/1705.05937
+Connect Reference</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
+<p>罗列最近看到的不错的技术文章/新的东西
+如果实际上用了会移动到具体方面</p>
+<h2 id="rust">Rust</h2>
+<p><a href="https://github.com/TimelyDataflow/timely-dataflow">https://github.com/TimelyDataflow/timely-dataflow</a>
+<a href="https://github.com/TimelyDataflow/differential-dataflow">https://github.com/TimelyDataflow/differential-dataflow</a>
+对于某些要求全局正确性的强状态服务的可能是必须的，看起来是可以做一个分布式的计算,并且根据增量的数据自动更新结果，缺点是需要把很多现有算法都重新实现成图对工程要求非常高
+可能需要了解下datalog才能理解这种范式
+<a href="https://github.com/frankmcsherry/blog">https://github.com/frankmcsherry/blog</a>
+他的产品就是<a href="http://materialize.io/">Materialize.io</a></p>
+<p><a href="https://salsa-rs.github.io/salsa/about_salsa.html">https://salsa-rs.github.io/salsa/about_salsa.html</a>
+另一种增量计算框架</p>
+<p><a href="https://github.com/j178/prek">https://github.com/j178/prek</a>
+工具链需要用到的git钩子，主要是为了学库的结构
+<a href="https://github.com/astral-sh/uv">https://github.com/astral-sh/uv</a>
+python版本管理
+这个uv对python的版本依赖使用的PubGrub算法来进行的
+这也是下一代cargo要替换到的算法
+介绍性博客 <a href="https://medium.com/@nex3/pubgrub-2fb6470504f">https://medium.com/@nex3/pubgrub-2fb6470504f</a>
+<a href="https://github.com/dart-lang/pub/blob/master/doc/solver.md">https://github.com/dart-lang/pub/blob/master/doc/solver.md</a> (详细解释)
+基于 <a href="https://potassco.org/book/">https://potassco.org/book/</a> ASP (Answer Set Programming)
+<a href="https://rust-lang.github.io/rust-project-goals/2024h2/pubgrub-in-cargo.html">https://rust-lang.github.io/rust-project-goals/2024h2/pubgrub-in-cargo.html</a></p>
+<p><a href="https://github.com/astral-sh/ruff">https://github.com/astral-sh/ruff</a>
+类似python black但是更快
+<a href="https://docs.rs/good_lp/latest/good_lp/index.html">https://docs.rs/good_lp/latest/good_lp/index.html</a>
+线性规划求解器
+<a href="https://docs.rs/lol_html/latest/lol_html/">https://docs.rs/lol_html/latest/lol_html/</a>
+html重写，他的api风格非常有趣</p>
+<p><a href="https://github.com/rust-lang/rust/issues/92985">https://github.com/rust-lang/rust/issues/92985</a>
+LendingIterator 需要下一代求解器才能工作,不损耗性能的情况下，能证明生命周期的话，可以直接使用裸指针绕过
+而不是把结构体设计成包含RefCell/Cell的结构，最好是从行为上封装,把unsafe的地区压到最低</p>
+<p><a href="https://docs.rs/dynosaur/latest/dynosaur/">https://docs.rs/dynosaur/latest/dynosaur/</a>
+提供一个方案来dyn调用async 函数,并且还能保留静态调度的优势是async_trait的直接上位替代品
+<a href="https://rust-for-linux.com/arc-in-the-linux-kernel">https://rust-for-linux.com/arc-in-the-linux-kernel</a>
+这个其实也是为啥要搞<a href="https://github.com/rust-lang/rust/issues/44874"><code>arbitrary_self_types</code></a>的原因
+而且需要一个SmartPointer 的drive
+<a href="https://rust-for-linux.com/">https://rust-for-linux.com/</a>
+rrdebug 得阅读看看感觉实现原理挺神奇的
+<a href="https://arxiv.org/pdf/1705.05937">https://arxiv.org/pdf/1705.05937</a></p>
+<h2 id="connect">Connect</h2>
+<hr>
+<h1 id="reference">Reference</h1>
+]]></content:encoded></item><item><title>rust</title><link>https://noirkelo.github.io/box/rust/</link><pubDate>Mon, 18 Aug 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/rust/</guid><description>Summary 针对概念性的，如果不看就会忘掉的东西 并且对相对比较复杂的地方需要做一下自己的理解 不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行 这里根据我看到的东西查缺补漏,之前一直没有做系统化的整理
+循环控制结构 for/while/loop break 可以通过label 标记作用域跳出去
 match https://doc.rust-lang.org/stable/reference/expressions/match-expr.html
-生命周期 更小的生命周期可以被比他大的生命周期覆盖 &amp;lsquo;a 能被 &amp;lsquo;static替代 衍生话题就是hrtb
-可变参数泛型 这个在axum的handler模型里面有见到过
-Trait dyn Trait 虚表结构 多重继承里面就必须在保存一个指向虚表的指针 https://lancern.xyz/posts/2024/01/rust-vtable
-+-------------------------------+ | fn drop_in_place(*mut T) | +-------------------------------+ | size of T | +-------------------------------+ | align of T | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun1 | +-------------------------------+ | fn &amp;lt;T as Grand&amp;gt;::grand_fun2 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun1 | +-------------------------------+ | fn &amp;lt;T as Parent&amp;gt;::parent_fun2 | +-------------------------------+ | fn &amp;lt;T as Trait&amp;gt;::fun | +-------------------------------+ Specialization 这个理解成对Trait 的方法实现默认的不完全方法 可以通过泛型参数T的约束或者具体的类型来覆盖</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
+生命周期 更小的生命周期可以被比他大的生命周期覆盖 &amp;lsquo;a 能被 &amp;lsquo;static替代 衍生话题就是hrtb,实际上rust的subtyping只有在生命周期有这个概念 即需求&amp;rsquo;a生命周期的能用比他更大的&amp;rsquo;b来实现 这个貌似内部是通过hrtb for&amp;lt;&amp;lsquo;a&amp;gt;这样去在调用者生成&amp;rsquo;a,延长到跟更长的生命周期里面去，或者说调用者的生命周期(这个理解需要后续确认) 生命周期的逆变 协变 https://zhuanlan.zhihu.com/p/682880532 逆变的话就可以变成fn(&amp;amp;str)-&amp;gt;impl ToString 参数可以变成impl ToString, implToString-&amp;gt;string
+A &amp;lt;: B 代表A是B的子类型 A -&amp;gt; B 以 A 为参数类型, 以 B 为返回值类型的函数类型 x : A x是一个变量, 其类型为A
+Drop Check 类似C++的RAII 为了使泛型类型能够正确实现 drop，其泛型参数必须严格地比其存活时间长。 **For a generic type to soundly implement drop, its generics arguments must strictly outlive it. drop order 顺序</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
 <blockquote>
 <p>针对概念性的，如果不看就会忘掉的东西
 并且对相对比较复杂的地方需要做一下自己的理解
 不要把精力放在过于花哨的类型系统和语法糖，只需要知道有这个东西就行
 这里根据我看到的东西查缺补漏,之前一直没有做系统化的整理</p>
 </blockquote>
-<h2 id="常规语法">常规语法</h2>
 <h3 id="循环控制结构">循环控制结构</h3>
 <p>for/while/loop
 break 可以通过label 标记作用域跳出去</p>
@@ -20,13 +115,26 @@ break 可以通过label 标记作用域跳出去</p>
 <h3 id="生命周期">生命周期</h3>
 <p>更小的生命周期可以被比他大的生命周期覆盖
 &lsquo;a 能被 &lsquo;static替代
-衍生话题就是hrtb</p>
-<h3 id="可变参数泛型">可变参数泛型</h3>
-<p>这个在axum的handler模型里面有见到过</p>
-<h3 id="trait">Trait</h3>
+衍生话题就是hrtb,实际上rust的subtyping只有在生命周期有这个概念
+即需求&rsquo;a生命周期的能用比他更大的&rsquo;b来实现
+这个貌似内部是通过hrtb for&lt;&lsquo;a&gt;这样去在调用者生成&rsquo;a,延长到跟更长的生命周期里面去，或者说调用者的生命周期(这个理解需要后续确认)
+生命周期的逆变 协变
+<a href="https://zhuanlan.zhihu.com/p/682880532">https://zhuanlan.zhihu.com/p/682880532</a>
+逆变的话就可以变成fn(&amp;str)-&gt;impl ToString 参数可以变成impl ToString, implToString-&gt;string</p>
+<blockquote>
+<p><code>A &lt;: B</code> 代表A是B的子类型
+<code>A -&gt; B</code> 以 <code>A</code> 为参数类型, 以 <code>B</code> 为返回值类型的<strong>函数类型</strong>
+<code>x : A</code> x是一个变量, 其类型为A</p>
+</blockquote>
+<h3 id="drop-check">Drop Check</h3>
+<p>类似C++的RAII
+为了使泛型类型能够正确实现 drop，其泛型参数必须严格地比其存活时间长。
+**For a generic type to soundly implement drop, its generics arguments must strictly outlive it.
+drop order 顺序</p>
 <h4 id="dyn-trait">dyn Trait</h4>
 <p>虚表结构
 多重继承里面就必须在保存一个指向虚表的指针
+从实践来说的话就是如果使用组合继承的dyn Trait 是有一定性能上的影响的
 <a href="https://lancern.xyz/posts/2024/01/rust-vtable">https://lancern.xyz/posts/2024/01/rust-vtable</a></p>
 
 
@@ -52,28 +160,14 @@ break 可以通过label 标记作用域跳出去</p>
 +-------------------------------+</code></pre>
 <h4 id="specialization">Specialization</h4>
 <p>这个理解成对Trait 的方法实现默认的不完全方法
-可以通过泛型参数T的约束或者具体的类型来覆盖</p>
+可以通过泛型参数T的约束或者具体的类型来覆盖
+目前可以通过mini specialization 开启</p>
 <h3 id="union">Union</h3>
-<p>竟然有union？没见什么项目用过,更多感觉是为了兼容c</p>
+<p>可能会用到?</p>
 <h3 id="atomic相关">Atomic相关</h3>
 <p>基本是C++的心智模型</p>
-<h3 id="了解过的三方包">了解过的三方包</h3>
-<p><a href="https://docs.rs/socket2/latest/socket2/">https://docs.rs/socket2/latest/socket2/</a>
-如果需要手动构建调整一些socket选项必须用这个
-github.com/dtolnay/anyhow
-thiserror
-scc/dashmap 并发哈希图
-arcswap
-fnv/fxhashmap/ahash
-serde/simdjson/snoic-rs
-rkyv
-insta/next test/
-fastwebsocket
-<a href="https://docs.rs/unsigned-varint/latest/unsigned_varint/">https://docs.rs/unsigned-varint/latest/unsigned_varint/</a>
-可以实现可变长编码</p>
-<h2 id="有点黑科技">有点黑科技</h2>
 <h3 id="try-trait-v2">try-trait v2</h3>
-<p>没仔细看，但是这个貌似把result还有任何产生某值的做了一个泛化</p>
+<p>没仔细看，但是这个貌似把result,option 等等全部做了一个抽象</p>
 
 
 
@@ -88,7 +182,7 @@ fastwebsocket
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">branch</span>(self) -&gt; <span style="color:#a6e22e">ControlFlow</span><span style="color:#f92672">&lt;</span>Self::Residual, Self::Output<span style="color:#f92672">&gt;</span>;
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>}</span></span></code></pre></div>
 <h3 id="manuallydrop">ManuallyDrop</h3>
-<p>延迟Drop</p>
+<p>延迟Drop，对应的还有修改drop的行为</p>
 <h3 id="phantomdata">PhantomData</h3>
 <p>伪造生命周期或者各种东西
 也可以用来模拟持有某一个数据的所有权</p>
@@ -98,18 +192,29 @@ fastwebsocket
 <p>延迟初始化,也就是我可以一部分初始化
 比如提前声明足够大的CAP</p>
 <h3 id="unsafe">Unsafe</h3>
-<p>如果用上unsafe跟C++没差了</p>
-<h3 id="superlet">SuperLet</h3>
-<p>形如f(g(&amp;T))
+<p>如果用上unsafe跟C++没差了
+如果你能证明生命周期上没问题的话你可以自己绕过去</p>
+<h3 id="temporary-lifetimes-in-tail-expressions">temporary-lifetimes-in-tail-expressions</h3>
+<p><a href="https://rust-lang.github.io/rfcs/3606-temporary-lifetimes-in-tail-expressions.html">https://rust-lang.github.io/rfcs/3606-temporary-lifetimes-in-tail-expressions.html</a>
+作为解决方法之一是super let ,rust目前在不同的语句里面的释放周期并没有一致的规则
+可能会导致死锁</p>
+<ul>
+<li>super let
+形如f(g(&amp;T))
 以及在if 和if let 语句里面最内层引用会被自动的生命周期延长
 这块实践过程中间一般都是通过直接拆成单句来解决
 在结构体中间放置指针会阻止他释放直到结束
 这里super let 用来把pin!改成普通函数,format_arg
-但是这个目前有一定争议</p>
+但是这个目前有一定争议</li>
+</ul>
 <h3 id="nicheoptimization">NicheOptimization</h3>
 <p>rust 会通过各种方式记录访问的值域，如果用不到的值域就会被用去做这个优化(enum)
 <a href="https://www.0xatticus.com/posts/understanding_rust_niche/">https://www.0xatticus.com/posts/understanding_rust_niche/</a></p>
-<h3 id="tuple-可变参数泛型">Tuple 可变参数泛型</h3>
+<h3 id="precise-capturing">precise-capturing</h3>
+<p>用于指定哪些泛型参数应在类似 RPIT 的 <code>impl Trait</code> 类型中捕获
+比如目前不允许嵌套透明对象中间捕获更高的生命周期可以通过use&lt;&gt; 来防止捕获进而通过编译
+<a href="https://rust-lang.github.io/rfcs/3617-precise-capturing.html">https://rust-lang.github.io/rfcs/3617-precise-capturing.html</a></p>
+<h3 id="可变参数泛型">可变参数泛型</h3>
 <p><a href="https://github.com/rust-lang/lang-team/blob/master/src/design_notes/variadic_generics.md">https://github.com/rust-lang/lang-team/blob/master/src/design_notes/variadic_generics.md</a>
 <a href="https://docs.rs/frunk/latest/frunk/index.html">frunk</a>
 可以设计一个tuple来实现一个非同质的列表，并且可以编译期去指定他的类型名称(利用自动的函数推导)
@@ -117,87 +222,66 @@ fastwebsocket
 Tuple&lt;T1,T2&hellip;.Tn&gt;=&gt;Tupe&lt;T1,Tuple&lt;T2,&hellip;.&gt;&gt;
 这个也可以在axum和bevy中看到
 对于想实现impl Mytrait&lt;(T1)&gt; for T
-&hellip;直到T1,T2,T3&hellip;.Tn只能使用宏来实现</p>
+&hellip;直到T1,T2,T3&hellip;.Tn只能使用宏来实现
+这个在axum的handler模型里面有见到过
+这个也是属于万恶之源的一部分,只能使用形如这种形式来做到
+e.g. axum</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>macro_rules<span style="color:#f92672">!</span> all_the_tuples {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    (<span style="color:#75715e">$name</span>:<span style="color:#a6e22e">ident</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>        <span style="color:#75715e">$name</span><span style="color:#f92672">!</span>([], T1);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>        <span style="color:#75715e">$name</span><span style="color:#f92672">!</span>([T1], T2);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>        <span style="color:#75715e">$name</span><span style="color:#f92672">!</span>([T1, T2], T3);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>        <span style="color:#75715e">$name</span><span style="color:#f92672">!</span>([T1, T2, T3], T4);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>        <span style="color:#75715e">$name</span><span style="color:#f92672">!</span>([T1, T2, T3, T4], T5);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>        <span style="color:#75715e">$name</span><span style="color:#f92672">!</span>([T1, T2, T3, T4, T5], T6);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>        <span style="color:#75715e">$name</span><span style="color:#f92672">!</span>([T1, T2, T3, T4, T5, T6], T7);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>        <span style="color:#75715e">$name</span><span style="color:#f92672">!</span>([T1, T2, T3, T4, T5, T6, T7], T8);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>        <span style="color:#75715e">$name</span><span style="color:#f92672">!</span>([T1, T2, T3, T4, T5, T6, T7, T8], T9);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>        <span style="color:#75715e">$name</span><span style="color:#f92672">!</span>([T1, T2, T3, T4, T5, T6, T7, T8, T9], T10);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>        <span style="color:#75715e">$name</span><span style="color:#f92672">!</span>([T1, T2, T3, T4, T5, T6, T7, T8, T9, T10], T11);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>        <span style="color:#75715e">$name</span><span style="color:#f92672">!</span>([T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11], T12);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>        <span style="color:#75715e">$name</span><span style="color:#f92672">!</span>([T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12], T13);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>        <span style="color:#75715e">$name</span><span style="color:#f92672">!</span>([T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13], T14);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>        <span style="color:#75715e">$name</span><span style="color:#f92672">!</span>([T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14], T15);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>        <span style="color:#75715e">$name</span><span style="color:#f92672">!</span>([T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15], T16);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>    };
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>}</span></span></code></pre></div>
 <h3 id="zstdst">ZST/DST</h3>
 <p>trait object &amp; str,[u8]
 ZST=&gt; () 还有enum sth{}</p>
 <h3 id="substructural-types">Substructural Types</h3>
+<p><a href="https://faultlore.com/blah/linear-rust/">https://faultlore.com/blah/linear-rust/</a> 需要再读一读</p>
 <ol>
 <li>can be used any number of times (no name - the default)
 可以使用任意次数（无名称 - 默认）
 Copy 和Clone</li>
 <li>can’t be used more than once (affine™)
-不能使用超过一次（affine™）
+不能使用超过一次（affine™） &lt;=1
 当我移动了就不能用之前的变量,以及变量遮蔽</li>
-<li>must be used at least once (relevant™ - this one is a decent name)
+<li>must be used at least once (relevant™ - this one is a decent name) &gt;=1
 必须至少使用一次（relevant™ - 这是一个不错的名字）
 drop 和lint就是这个性质
 dorp可以通过mem::forget这样去移除行为</li>
-<li>must be used exactly once (linear™)
+<li>must be used exactly once (linear™) =1
 必须使用一次（线性™）</li>
 </ol>
-<h2 id="没对上号的">没对上号的</h2>
-<h3 id="drop-check">Drop Check</h3>
-<p>类似C++的RAII
-为了使泛型类型能够正确实现 drop，其泛型参数必须严格地比其存活时间长。
-**For a generic type to soundly implement drop, its generics arguments must strictly outlive it.
-drop order 顺序</p>
-<h3 id="生命周期的逆变-协变">生命周期的逆变 协变</h3>
-<p><a href="https://zhuanlan.zhihu.com/p/682880532">https://zhuanlan.zhihu.com/p/682880532</a>
-逆变的话就可以变成fn(&amp;str)-&gt;impl ToString 参数可以变成impl ToString, implToString-&gt;string
-只有函数的</p>
-<h2 id="从样例中间学习">从样例中间学习</h2>
-<h3 id="reprrust-repec">repr(Rust) repe(C)</h3>
-<p>rkyv 使用的时候严格要求内存对齐相关的约束
-repr(Rust) repe(C)</p>
-<h3 id="redis-rs--redis_ts-rs">redis-rs + redis_ts-rs</h3>
-<p>在内部的fork中我在里面添加了AsyncTsCommands就是使用了这个Specialization</p>
-
-
-
-
-
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> AsyncTsCommands: <span style="color:#a6e22e">ConnectionLike</span> <span style="color:#f92672">+</span> Send <span style="color:#f92672">+</span> Sized {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    <span style="color:#e6db74">/// Returns information about a redis time series key.
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#e6db74"></span>    <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">fn</span> ts_info<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span>, K: <span style="color:#a6e22e">ToRedisArgs</span> <span style="color:#f92672">+</span> Send <span style="color:#f92672">+</span> Sync <span style="color:#f92672">+</span> <span style="color:#a6e22e">&#39;a</span><span style="color:#f92672">&gt;</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">mut</span> self, key: <span style="color:#a6e22e">K</span>) -&gt; <span style="color:#a6e22e">RedisFuture</span><span style="color:#f92672">&lt;</span>TsInfo<span style="color:#f92672">&gt;</span> {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>        Box::pin(<span style="color:#66d9ef">async</span> <span style="color:#66d9ef">move</span> { cmd(<span style="color:#e6db74">&#34;TS.INFO&#34;</span>).arg(key).query_async(self).<span style="color:#66d9ef">await</span> })
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    }
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    <span style="color:#e6db74">/// Creates a new redis time series key.
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#e6db74"></span>    <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">fn</span> ts_create<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;a</span>, K: <span style="color:#a6e22e">ToRedisArgs</span> <span style="color:#f92672">+</span> Send <span style="color:#f92672">+</span> Sync <span style="color:#f92672">+</span> <span style="color:#a6e22e">&#39;a</span>, <span style="color:#66d9ef">RV</span>: <span style="color:#a6e22e">FromRedisValue</span><span style="color:#f92672">&gt;</span>(
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>        <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">&#39;a</span> <span style="color:#66d9ef">mut</span> self,
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>        key: <span style="color:#a6e22e">K</span>,
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>        options: <span style="color:#a6e22e">TsOptions</span>,
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    ) -&gt; <span style="color:#a6e22e">RedisFuture</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">RV</span><span style="color:#f92672">&gt;</span> {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>        Box::pin(<span style="color:#66d9ef">async</span> <span style="color:#66d9ef">move</span> {
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>            cmd(<span style="color:#e6db74">&#34;TS.CREATE&#34;</span>)
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>                .arg(key)
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>                .arg(options)
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>                .query_async(self)
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>                .<span style="color:#66d9ef">await</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>        })
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>    }</span></span></code></pre></div>
-<h3 id="插件形式动态调用">插件形式动态调用</h3>
-<p>我具体是首先写出来最小的WIP
-然后通过DeriveInput来解析成目标代码
-只需要一个#[Stragety]就可以解析成目标代码
-目前我还没有实践过ui-test相关
-dll内的日志的话有说法是调整link的包就可以解决我选择一个比较易懂的方案来实现
-就是暴力直接设定指针在dll的全局变量(这个东西在哪里释放我也不是很清楚,我的dll设置成NO_DELETE)</p>
-<h3 id="包和大型workspace管理">包和大型workspace管理</h3>
-<p>cargo hakari /workspace hack</p>
-<h3 id="自行实现某种编码">自行实现某种编码</h3>
-<p>使用tokio_codec
-可以非常方便实现基于rkyv的字节流编码</p>
 <h2 id="内部可变性">内部可变性</h2>
 <p>Rc Weak UniqueRc Arc
 RefCell &amp; Cell &amp; UnsafeCell
 由于 <code>Rust</code> 的 <code>mutable</code> 特性，一个结构体中的字段，要么全都是 <code>immutable</code>，要么全部是 <code>mutable</code>，<strong>不支持针对部分字段进行设置</strong>。比如，在一个 <code>struct</code> 中，<strong>可能只有个别的字段需要修改，而其他字段并不需要修改</strong>，为了一个字段而将整个 <code>struct</code> 变为 <code>&amp;mut</code> 也是不合理的。
 所以，实现 <strong>内部可变性</strong> 的 <code>Cell</code> 和 <code>RefCell</code> 正是为了解决诸如这类问题存在的，通过它们可以实现 <code>struct</code> 部分字段可变，而不用将整个 <code>struct</code> 设置为 <code>mutable</code>。</p>
-<h3 id="一个比较漂亮的方案-view-type">一个比较漂亮的方案 View Type</h3>
-<p>所以有view type 出现,因为大多数情况我们都是同一个结构体部分借用
+<ul>
+<li>部分借用这个问题其实在游戏领域非常常见
+所以有view type 出现,因为大多数情况我们都是同一个结构体部分借用
 <a href="https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/">https://smallcultfollowing.com/babysteps/blog/2021/11/05/view-types/</a>
-<a href="https://hackmd.io/J5aGp1ptT46lqLmPVVOxzg?view">https://hackmd.io/J5aGp1ptT46lqLmPVVOxzg?view</a></p>
+<a href="https://hackmd.io/J5aGp1ptT46lqLmPVVOxzg?view">https://hackmd.io/J5aGp1ptT46lqLmPVVOxzg?view</a>
+最近讨论到了V3阶段</li>
+</ul>
 <h2 id="异步">异步</h2>
 <p>主要是以tokio为主的异步库
 然后和thread-per-core 类型的特殊异步库
@@ -215,6 +299,9 @@ linux 包括epoll,poll,</p>
 <h2 id="ffi">FFI</h2>
 <h2 id="宏">宏</h2>
 <h3 id="过程宏">过程宏</h3>
+<blockquote>
+<p>能不用quote还是别用 因为这个会极大的印象展开时间</p>
+</blockquote>
 <h3 id="tt咀嚼机">tt咀嚼机</h3>
 <h2 id="奇怪语法糖">奇怪语法糖</h2>
 <h3 id="泛型相关">泛型相关</h3>
@@ -286,6 +373,47 @@ linux 包括epoll,poll,</p>
 <strong><code>async fn</code> In Traits</strong>
 就会脱糖到RPITIT
 AFIT-&gt; RPITIT -&gt; GAT/关联类型</p>
+<h4 id="rtn">RTN</h4>
+<p><a href="https://rust-lang.github.io/rfcs/3654-return-type-notation.html#where-rtn-can-be-used-for-now">https://rust-lang.github.io/rfcs/3654-return-type-notation.html#where-rtn-can-be-used-for-now</a>
+一个是where子句上面的</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">trait</span> Foo {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">bar</span>() -&gt; <span style="color:#a6e22e">impl</span> Sized;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">is_send</span>(_: <span style="color:#a6e22e">impl</span> Send) {}
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">test</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#66d9ef">where</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    T: <span style="color:#a6e22e">Foo</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    T::bar(<span style="color:#f92672">..</span>): Send,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    is_send(T::bar());
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>}</span></span></code></pre></div>
+<p>在关联类型上面</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">#![feature(return_type_notation)]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#66d9ef">trait</span> Foo {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">bar</span>() -&gt; <span style="color:#a6e22e">impl</span> Sized;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">is_send</span>(_: <span style="color:#a6e22e">impl</span> Send) {}
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">test</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#66d9ef">where</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    T: <span style="color:#a6e22e">Foo</span><span style="color:#f92672">&lt;</span>bar(<span style="color:#f92672">..</span>): Send<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>    is_send(T::bar());
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>}</span></span></code></pre></div>
 <h2 id="connect">Connect</h2>
 <hr>
 <h1 id="reference">Reference</h1>
