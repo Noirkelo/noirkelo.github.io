@@ -61,7 +61,10 @@ l=r=0 swap(l,r) 原地交换没问题
 ]]></content:encoded></item><item><title>Zed Smooth Scroll</title><link>https://noirkelo.github.io/box/zed-smooth-scroll/</link><pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/zed-smooth-scroll/</guid><description>以下是未完工的想法
 Summary 给zed添加smooth scroll
 Motivation 更好的视觉效果
-Detailed design 我在原有的分支做了一定修改至少证明了这个拦截修改思路其实没错就是没有做动画补间 我搞清楚neovide 计算vsync计算每一帧的时间 如果滚动距离过长那就截取到达地点的作为动画 使用阻尼弹簧并且截断部分动画实现这个效果
+Detailed design 我在原有的分支做了一定修改至少证明了这个拦截修改思路其实没错就是没有做动画补间
+我搞清楚neovide 计算vsync计算每一帧的时间
+如果滚动距离过长那就截取到达地点的作为动画
+使用阻尼弹簧并且截断部分动画实现这个效果
 1... 2fn animate(&amp;amp;mut self) { 3 if self.window_wrapper.skia_renderer.is_none() { 4 return; 5 } 6 let skia_renderer = self.window_wrapper.skia_renderer.as_ref().unwrap(); 7 let vsync = self.window_wrapper.vsync.as_ref().unwrap(); 8 9 let dt = 10 Duration::from_secs_f32(vsync.get_refresh_rate(skia_renderer.window(), &amp;amp;self.settings)); 11 12 let now = Instant::now(); 13 let target_animation_time = now - self.animation_start; 14 let mut delta = target_animation_time.saturating_sub(self.animation_time); 15 // Don&amp;#39;t try to animate way too big deltas 16 // Instead reset the animation times, and simulate a single frame 17 if delta &amp;gt; Duration::from_millis(1000) { 18 self.</description><content:encoded><![CDATA[<blockquote>
 <p>以下是未完工的想法</p>
 </blockquote>
@@ -70,10 +73,10 @@ Detailed design 我在原有的分支做了一定修改至少证明了这个拦�
 <h2 id="motivation">Motivation</h2>
 <p>更好的视觉效果</p>
 <h2 id="detailed-design">Detailed design</h2>
-<p>我在原有的分支做了一定修改至少证明了这个拦截修改思路其实没错就是没有做动画补间
-我搞清楚neovide 计算vsync计算每一帧的时间
-如果滚动距离过长那就截取到达地点的作为动画
-使用阻尼弹簧并且截断部分动画实现这个效果</p>
+<p>我在原有的分支做了一定修改至少证明了这个拦截修改思路其实没错就是没有做动画补间</p>
+<p>我搞清楚neovide 计算vsync计算每一帧的时间</p>
+<p>如果滚动距离过长那就截取到达地点的作为动画</p>
+<p>使用阻尼弹簧并且截断部分动画实现这个效果</p>
 
 
 
@@ -187,14 +190,14 @@ Detailed design 我在原有的分支做了一定修改至少证明了这个拦�
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60</span><span>}</span></span></code></pre></div>
-<p>接下来具体来说主要是不应该像已经被拒绝过的那个人的pr一样手动编写动画相关组件
-思路是在SmoothScroll保存一个WeakEntity&lt;Editor&gt;这样就可以创建一个不可见的gpui::Component
-然后通过animation_ix和保存的SmoothScroll获取WeakEntity&lt;SmoothScroll&gt;
-我们只需要拦截并计算每次set_anchor的值即可
-这里有个比较抽象的问题是访问Entity需要访问&amp;mut App但是Animation里面是没有办法在动画之间访问到ctx的
-所以我们可能需要在AnimationElement 里面访问ctx
-也就是控件只能控制自己的相关类型而不能控制别的控件
-我们这里可以通过修改参数让他添加一个&amp;mut App指针来实现</p>
+<p>接下来具体来说主要是不应该像已经被拒绝过的那个人的pr一样手动编写动画相关组件</p>
+<p>思路是在SmoothScroll保存一个WeakEntity&lt;Editor&gt;这样就可以创建一个不可见的gpui::Component</p>
+<p>然后通过animation_ix和保存的SmoothScroll获取WeakEntity&lt;SmoothScroll&gt;</p>
+<p>我们只需要拦截并计算每次set_anchor的值即可</p>
+<p>这里有个比较抽象的问题是访问Entity需要访问&amp;mut App但是Animation里面是没有办法在动画之间访问到ctx的</p>
+<p>所以我们可能需要在AnimationElement 里面访问ctx</p>
+<p>也就是控件只能控制自己的相关类型而不能控制别的控件</p>
+<p>我们这里可以通过修改参数让他添加一个&amp;mut App指针来实现</p>
 
 
 
@@ -235,8 +238,8 @@ Detailed design 我在原有的分支做了一定修改至少证明了这个拦�
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>    
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>	}
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>}</span></span></code></pre></div>
-<p>接下来就是需要参考vscode的原始代码我们能发现由若干个动画构成
-这里可以在动画包里面找到</p>
+<p>接下来就是需要参考vscode的原始代码我们能发现由若干个动画构成</p>
+<p>这里可以在动画包里面找到</p>
 
 
 

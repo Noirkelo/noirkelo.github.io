@@ -468,8 +468,12 @@ AFIT-&gt; RPITIT -&gt; GAT/关联类型</p>
 <hr>
 <h1 id="reference">Reference</h1>
 <p><a href="https://nihil.cc/posts/rust_rpitit_afit/">https://nihil.cc/posts/rust_rpitit_afit/</a></p>
-]]></content:encoded></item><item><title>折腾ubutnu 24.04 的那些事情</title><link>https://noirkelo.github.io/box/%E6%8A%98%E8%85%BEubutnu-24.04-%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E6%83%85/</link><pubDate>Mon, 09 Jun 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/%E6%8A%98%E8%85%BEubutnu-24.04-%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E6%83%85/</guid><description>do-release-upgrade 千万不要中途暂停，否则会出现升级一半的情况 然后你就可以使用强制解决dpkg依赖冲突
-如何强制解决dpkg依赖冲突 直接强行删除dpkg 的status里面引发冲突的条目这样就不会一直出现unmet 你一定要知道你在做什么 这一步最好备份一下 这里目标是直接让他以为还没安装就可以走fix broken
+]]></content:encoded></item><item><title>折腾ubutnu 24.04 的那些事情</title><link>https://noirkelo.github.io/box/%E6%8A%98%E8%85%BEubutnu-24.04-%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E6%83%85/</link><pubDate>Mon, 09 Jun 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/%E6%8A%98%E8%85%BEubutnu-24.04-%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E6%83%85/</guid><description>do-release-upgrade 千万不要中途暂停，否则会出现升级一半的情况
+然后你就可以使用强制解决dpkg依赖冲突
+如何强制解决dpkg依赖冲突 直接强行删除dpkg 的status里面引发冲突的条目这样就不会一直出现unmet
+你一定要知道你在做什么
+这一步最好备份一下
+这里目标是直接让他以为还没安装就可以走fix broken
 archieve镜像 切换到国内的cn镜像或者us镜像
 apt 没有走代理 1sudo vim /etc/apt/apt.conf.d/proxy.conf 2Acquire::http::Proxy &amp;#34;http://127.0.0.1:7890/&amp;#34;; 3Acquire::https::Proxy &amp;#34;http://127.0.0.1:7890/&amp;#34;; 进去没有声音 ubuntu24.04
 经过查询是 pipewire-pluse 中的一个lib 一直出现seg
@@ -495,13 +499,13 @@ dracut -f &amp;ndash;regenerate-all
 再重新打包一次就可以
 https://www.debian.org/doc/manuals/maint-guide/build.html
 If someone else wants to re-create your package from scratch, they can easily do so using the above three files.</description><content:encoded><![CDATA[<h2 id="do-release-upgrade">do-release-upgrade</h2>
-<p>千万不要中途暂停，否则会出现升级一半的情况
-然后你就可以使用强制解决dpkg依赖冲突</p>
+<p>千万不要中途暂停，否则会出现升级一半的情况</p>
+<p>然后你就可以使用强制解决dpkg依赖冲突</p>
 <h2 id="如何强制解决dpkg依赖冲突">如何强制解决dpkg依赖冲突</h2>
-<p>直接强行删除dpkg 的status里面引发冲突的条目这样就不会一直出现unmet
-<strong>你一定要知道你在做什么</strong>
-这一步最好备份一下
-这里目标是直接让他以为还没安装就可以走fix broken</p>
+<p>直接强行删除dpkg 的status里面引发冲突的条目这样就不会一直出现unmet</p>
+<p><strong>你一定要知道你在做什么</strong></p>
+<p>这一步最好备份一下</p>
+<p>这里目标是直接让他以为还没安装就可以走fix broken</p>
 <h2 id="archieve镜像">archieve镜像</h2>
 <p>切换到国内的cn镜像或者us镜像</p>
 <h2 id="apt-没有走代理">apt 没有走代理</h2>
@@ -547,15 +551,15 @@ If someone else wants to re-create your package from scratch, they can easily do
 <p>gnome去强制安装unite</p>
 <h2 id="ｕbuntu-系统禁止或者改变中文简体切换繁体">Ｕbuntu 系统禁止或者改变中文简体切换繁体</h2>
 <p><a href="https://blog.csdn.net/qq_33210042/article/details/108368089">https://blog.csdn.net/qq_33210042/article/details/108368089</a></p>
-<p>刪除输入法addon
-我就说我怎么老是繁体的</p>
+<p>刪除输入法addon</p>
+<p>我就说我怎么老是繁体的</p>
 <h2 id="msi-风扇控制和风扇硬件">Msi 风扇控制和风扇硬件</h2>
 <p><a href="https://github.com/dmitry-s93/MControlCenter">https://github.com/dmitry-s93/MControlCenter</a></p>
 <p><a href="https://github.com/BeardOverflow/msi-ec?tab=readme-ov-file#installation">https://github.com/BeardOverflow/msi-ec?tab=readme-ov-file#installation</a></p>
 <p>24.04直接安装就行了不需要手动编译</p>
 <h2 id="设定文件管理器默认以type排序">设定文件管理器默认以type排序</h2>
-<p>gsettings set org.gnome.nautilus.preferences default-sort-order &rsquo;type'
-或者使用dconf editor来编辑</p>
+<p>gsettings set org.gnome.nautilus.preferences default-sort-order &rsquo;type'</p>
+<p>或者使用dconf editor来编辑</p>
 <h2 id="connect">Connect</h2>
 <hr>
 <h1 id="reference">Reference</h1>
