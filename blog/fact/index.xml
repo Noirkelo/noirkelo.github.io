@@ -1,97 +1,147 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Noirkel 's blog</title><link>https://noirkelo.github.io/blog/fact/</link><description>Recent content in fact on Noirkel 's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><lastBuildDate>Sun, 21 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://noirkelo.github.io/blog/fact/index.xml" rel="self" type="application/rss+xml"/><item><title>rust-trick</title><link>https://noirkelo.github.io/box/rust-trick/</link><pubDate>Sun, 21 Sep 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/rust-trick/</guid><description>rust-trick Summary 主要用来记录使用过程中的
 编译时间优化 主要是增量编译+各种trick
-cargo hakari /workspace hack 这个主要是保证不管你使用包的方式,让所有的包Feature映射到一个并集里面，这样使用sccache也不会触发重新编译 mold 高性能链接不解释( cranelift 除了llvm以外的另一个backend 目标是最快编译时间 serde-core serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏 测试相关 instra 包含vscode插件可以直接内联插入测试 ui test https://docs.rs/ui_test/latest/ui_test/ 如果有过程宏必须要使用这个保证用户界面使用正确 git 相关 git cliff 制作版本代际相关的changelog 项目构建相关 mise 管理env,甚至加密的token还有不同版本的各种工具 目前还可以管理启动项目的脚本等等并且相比起justfile 可以分体式管理脚本,唯一感觉槽点就是 justfile 轻量级make Debug https://github.com/rr-debugger/rr 这个可以完美支持rust有个gist里面有详细指南 可以直接记录并回放,也就是直接在历史执行过的地方进行单步调试,可以随意的前进和后退,并且可以直接看当时情况下各种变量等等到底有啥 Connect Reference</description><content:encoded><![CDATA[<h1 id="rust-trick">rust-trick</h1>
+cargo hakari /workspace hack 这个主要是保证不管你使用包的方式,让所有的包Feature映射到一个并集里面，这样使用sccache也不会触发重新编译
+mold 高性能链接不解释(
+cranelift 除了llvm以外的另一个backend 目标是最快编译时间
+serde-core serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏
+测试相关 instra 包含vscode插件可以直接内联插入测试
+ui test https://docs.rs/ui_test/latest/ui_test/ 如果有过程宏必须要使用这个保证用户界面使用正确
+git 相关 git cliff 制作版本代际相关的changelog
+项目构建相关 mise 管理env,甚至加密的token还有不同版本的各种工具
+目前还可以管理启动项目的脚本等等并且相比起justfile
+可以分体式管理脚本,唯一感觉槽点就是
+justfile 轻量级make
+Debug https://github.com/rr-debugger/rr 这个可以完美支持rust有个gist里面有详细指南
+可以直接记录并回放,也就是直接在历史执行过的地方进行单步调试,可以随意的前进和后退,并且可以直接看当时情况下各种变量等等到底有啥
+Connect Reference</description><content:encoded><![CDATA[<h1 id="rust-trick">rust-trick</h1>
 <h2 id="summary">Summary</h2>
 <p>主要用来记录使用过程中的</p>
 <h3 id="编译时间优化">编译时间优化</h3>
 <p>主要是增量编译+各种trick</p>
 <ul>
-<li>cargo hakari /workspace hack
-这个主要是保证不管你使用包的方式,让所有的包Feature映射到一个并集里面，这样使用sccache也不会触发重新编译</li>
-<li>mold
-高性能链接不解释(</li>
-<li>cranelift
-除了llvm以外的另一个backend 目标是最快编译时间</li>
-<li>serde-core
-serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏</li>
+<li>cargo hakari /workspace hack</li>
 </ul>
+<p>这个主要是保证不管你使用包的方式,让所有的包Feature映射到一个并集里面，这样使用sccache也不会触发重新编译</p>
+<ul>
+<li>mold</li>
+</ul>
+<p>高性能链接不解释(</p>
+<ul>
+<li>cranelift</li>
+</ul>
+<p>除了llvm以外的另一个backend 目标是最快编译时间</p>
+<ul>
+<li>serde-core</li>
+</ul>
+<p>serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏</p>
 <h3 id="测试相关">测试相关</h3>
 <ul>
-<li>instra
-包含vscode插件可以直接内联插入测试</li>
-<li>ui test
-<a href="https://docs.rs/ui_test/latest/ui_test/">https://docs.rs/ui_test/latest/ui_test/</a>
-如果有过程宏必须要使用这个保证用户界面使用正确</li>
+<li>instra</li>
 </ul>
+<p>包含vscode插件可以直接内联插入测试</p>
+<ul>
+<li>ui test
+<a href="https://docs.rs/ui_test/latest/ui_test/">https://docs.rs/ui_test/latest/ui_test/</a></li>
+</ul>
+<p>如果有过程宏必须要使用这个保证用户界面使用正确</p>
 <h3 id="git-相关">git 相关</h3>
 <ul>
-<li>git cliff
-制作版本代际相关的changelog</li>
+<li>git cliff</li>
 </ul>
+<p>制作版本代际相关的changelog</p>
 <h3 id="项目构建相关">项目构建相关</h3>
 <ul>
-<li>mise
-管理env,甚至加密的token还有不同版本的各种工具
-目前还可以管理启动项目的脚本等等并且相比起justfile
-可以分体式管理脚本,唯一感觉槽点就是</li>
-<li>justfile
-轻量级make</li>
+<li>mise</li>
 </ul>
+<p>管理env,甚至加密的token还有不同版本的各种工具</p>
+<p>目前还可以管理启动项目的脚本等等并且相比起justfile</p>
+<p>可以分体式管理脚本,唯一感觉槽点就是</p>
+<ul>
+<li>justfile</li>
+</ul>
+<p>轻量级make</p>
 <h3 id="debug">Debug</h3>
 <ul>
-<li><a href="https://github.com/rr-debugger/rr">https://github.com/rr-debugger/rr</a>
-这个可以完美支持rust有个gist里面有详细指南
-可以直接记录并回放,也就是直接在历史执行过的地方进行单步调试,可以随意的前进和后退,并且可以直接看当时情况下各种变量等等到底有啥</li>
+<li><a href="https://github.com/rr-debugger/rr">https://github.com/rr-debugger/rr</a></li>
 </ul>
+<p>这个可以完美支持rust有个gist里面有详细指南</p>
+<p>可以直接记录并回放,也就是直接在历史执行过的地方进行单步调试,可以随意的前进和后退,并且可以直接看当时情况下各种变量等等到底有啥</p>
 <h2 id="connect">Connect</h2>
 <hr>
 <h1 id="reference">Reference</h1>
 ]]></content:encoded></item><item><title>awsome-tech</title><link>https://noirkelo.github.io/box/awsome-tech/</link><pubDate>Fri, 19 Sep 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/awsome-tech/</guid><description>Summary 罗列最近看到的不错的技术文章/新的东西 如果实际上用了会移动到具体方面
-Rust https://github.com/TimelyDataflow/timely-dataflow https://github.com/TimelyDataflow/differential-dataflow 对于某些要求全局正确性的强状态服务的可能是必须的，看起来是可以做一个分布式的计算,并且根据增量的数据自动更新结果，缺点是需要把很多现有算法都重新实现成图对工程要求非常高 可能需要了解下datalog才能理解这种范式 https://github.com/frankmcsherry/blog 他的产品就是Materialize.io
-https://salsa-rs.github.io/salsa/about_salsa.html 另一种增量计算框架
-https://github.com/j178/prek 工具链需要用到的git钩子，主要是为了学库的结构 https://github.com/astral-sh/uv python版本管理 这个uv对python的版本依赖使用的PubGrub算法来进行的 这也是下一代cargo要替换到的算法 介绍性博客 https://medium.com/@nex3/pubgrub-2fb6470504f https://github.com/dart-lang/pub/blob/master/doc/solver.md (详细解释) 基于 https://potassco.org/book/ ASP (Answer Set Programming) https://rust-lang.github.io/rust-project-goals/2024h2/pubgrub-in-cargo.html
-https://github.com/astral-sh/ruff 类似python black但是更快 https://docs.rs/good_lp/latest/good_lp/index.html 线性规划求解器 https://docs.rs/lol_html/latest/lol_html/ html重写，他的api风格非常有趣
-https://github.com/rust-lang/rust/issues/92985 LendingIterator 需要下一代求解器才能工作,不损耗性能的情况下，能证明生命周期的话，可以直接使用裸指针绕过 而不是把结构体设计成包含RefCell/Cell的结构，最好是从行为上封装,把unsafe的地区压到最低
-https://docs.rs/dynosaur/latest/dynosaur/ 提供一个方案来dyn调用async 函数,并且还能保留静态调度的优势是async_trait的直接上位替代品 https://rust-for-linux.com/arc-in-the-linux-kernel 这个其实也是为啥要搞arbitrary_self_types的原因 而且需要一个SmartPointer 的drive https://rust-for-linux.com/ rrdebug 得阅读看看感觉实现原理挺神奇的 https://arxiv.org/pdf/1705.05937
+Rust https://github.com/TimelyDataflow/timely-dataflow
+https://github.com/TimelyDataflow/differential-dataflow
+对于某些要求全局正确性的强状态服务的可能是必须的，看起来是可以做一个分布式的计算,并且根据增量的数据自动更新结果，缺点是需要把很多现有算法都重新实现成图对工程要求非常高 可能需要了解下datalog才能理解这种范式
+https://github.com/frankmcsherry/blog
+他的产品就是Materialize.io
+https://salsa-rs.github.io/salsa/about_salsa.html
+另一种增量计算框架
+https://github.com/j178/prek
+工具链需要用到的git钩子，主要是为了学库的结构
+https://github.com/astral-sh/uv
+python版本管理
+这个uv对python的版本依赖使用的PubGrub算法来进行的
+这也是下一代cargo要替换到的算法
+介绍性博客 https://medium.com/@nex3/pubgrub-2fb6470504f
+https://github.com/dart-lang/pub/blob/master/doc/solver.md (详细解释)
+基于 https://potassco.org/book/ ASP (Answer Set Programming)
+https://rust-lang.github.io/rust-project-goals/2024h2/pubgrub-in-cargo.html
+https://github.com/astral-sh/ruff
+类似python black但是更快
+https://docs.rs/good_lp/latest/good_lp/index.html
+线性规划求解器 https://docs.rs/lol_html/latest/lol_html/
+html重写，他的api风格非常有趣
+https://github.com/rust-lang/rust/issues/92985
+LendingIterator 需要下一代求解器才能工作,不损耗性能的情况下，能证明生命周期的话，可以直接使用裸指针绕过
+而不是把结构体设计成包含RefCell/Cell的结构，最好是从行为上封装,把unsafe的地区压到最低
+https://docs.rs/dynosaur/latest/dynosaur/
+提供一个方案来dyn调用async 函数,并且还能保留静态调度的优势是async_trait的直接上位替代品
+https://rust-for-linux.com/arc-in-the-linux-kernel
+这个其实也是为啥要搞arbitrary_self_types的原因
+而且需要一个SmartPointer 的drive
+https://rust-for-linux.com/
+rrdebug 得阅读看看感觉实现原理挺神奇的
+https://arxiv.org/pdf/1705.05937
 Connect Reference</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
 <p>罗列最近看到的不错的技术文章/新的东西
 如果实际上用了会移动到具体方面</p>
 <h2 id="rust">Rust</h2>
-<p><a href="https://github.com/TimelyDataflow/timely-dataflow">https://github.com/TimelyDataflow/timely-dataflow</a>
-<a href="https://github.com/TimelyDataflow/differential-dataflow">https://github.com/TimelyDataflow/differential-dataflow</a>
-对于某些要求全局正确性的强状态服务的可能是必须的，看起来是可以做一个分布式的计算,并且根据增量的数据自动更新结果，缺点是需要把很多现有算法都重新实现成图对工程要求非常高
-可能需要了解下datalog才能理解这种范式
-<a href="https://github.com/frankmcsherry/blog">https://github.com/frankmcsherry/blog</a>
-他的产品就是<a href="http://materialize.io/">Materialize.io</a></p>
-<p><a href="https://salsa-rs.github.io/salsa/about_salsa.html">https://salsa-rs.github.io/salsa/about_salsa.html</a>
-另一种增量计算框架</p>
-<p><a href="https://github.com/j178/prek">https://github.com/j178/prek</a>
-工具链需要用到的git钩子，主要是为了学库的结构
-<a href="https://github.com/astral-sh/uv">https://github.com/astral-sh/uv</a>
-python版本管理
-这个uv对python的版本依赖使用的PubGrub算法来进行的
-这也是下一代cargo要替换到的算法
-介绍性博客 <a href="https://medium.com/@nex3/pubgrub-2fb6470504f">https://medium.com/@nex3/pubgrub-2fb6470504f</a>
-<a href="https://github.com/dart-lang/pub/blob/master/doc/solver.md">https://github.com/dart-lang/pub/blob/master/doc/solver.md</a> (详细解释)
-基于 <a href="https://potassco.org/book/">https://potassco.org/book/</a> ASP (Answer Set Programming)
-<a href="https://rust-lang.github.io/rust-project-goals/2024h2/pubgrub-in-cargo.html">https://rust-lang.github.io/rust-project-goals/2024h2/pubgrub-in-cargo.html</a></p>
-<p><a href="https://github.com/astral-sh/ruff">https://github.com/astral-sh/ruff</a>
-类似python black但是更快
-<a href="https://docs.rs/good_lp/latest/good_lp/index.html">https://docs.rs/good_lp/latest/good_lp/index.html</a>
-线性规划求解器
-<a href="https://docs.rs/lol_html/latest/lol_html/">https://docs.rs/lol_html/latest/lol_html/</a>
-html重写，他的api风格非常有趣</p>
-<p><a href="https://github.com/rust-lang/rust/issues/92985">https://github.com/rust-lang/rust/issues/92985</a>
-LendingIterator 需要下一代求解器才能工作,不损耗性能的情况下，能证明生命周期的话，可以直接使用裸指针绕过
-而不是把结构体设计成包含RefCell/Cell的结构，最好是从行为上封装,把unsafe的地区压到最低</p>
-<p><a href="https://docs.rs/dynosaur/latest/dynosaur/">https://docs.rs/dynosaur/latest/dynosaur/</a>
-提供一个方案来dyn调用async 函数,并且还能保留静态调度的优势是async_trait的直接上位替代品
-<a href="https://rust-for-linux.com/arc-in-the-linux-kernel">https://rust-for-linux.com/arc-in-the-linux-kernel</a>
-这个其实也是为啥要搞<a href="https://github.com/rust-lang/rust/issues/44874"><code>arbitrary_self_types</code></a>的原因
-而且需要一个SmartPointer 的drive
-<a href="https://rust-for-linux.com/">https://rust-for-linux.com/</a>
-rrdebug 得阅读看看感觉实现原理挺神奇的
-<a href="https://arxiv.org/pdf/1705.05937">https://arxiv.org/pdf/1705.05937</a></p>
+<p><a href="https://github.com/TimelyDataflow/timely-dataflow">https://github.com/TimelyDataflow/timely-dataflow</a></p>
+<p><a href="https://github.com/TimelyDataflow/differential-dataflow">https://github.com/TimelyDataflow/differential-dataflow</a></p>
+<p>对于某些要求全局正确性的强状态服务的可能是必须的，看起来是可以做一个分布式的计算,并且根据增量的数据自动更新结果，缺点是需要把很多现有算法都重新实现成图对工程要求非常高
+可能需要了解下datalog才能理解这种范式</p>
+<p><a href="https://github.com/frankmcsherry/blog">https://github.com/frankmcsherry/blog</a></p>
+<p>他的产品就是<a href="http://materialize.io/">Materialize.io</a></p>
+<p><a href="https://salsa-rs.github.io/salsa/about_salsa.html">https://salsa-rs.github.io/salsa/about_salsa.html</a></p>
+<p>另一种增量计算框架</p>
+<p><a href="https://github.com/j178/prek">https://github.com/j178/prek</a></p>
+<p>工具链需要用到的git钩子，主要是为了学库的结构</p>
+<p><a href="https://github.com/astral-sh/uv">https://github.com/astral-sh/uv</a></p>
+<p>python版本管理</p>
+<p>这个uv对python的版本依赖使用的PubGrub算法来进行的</p>
+<p>这也是下一代cargo要替换到的算法</p>
+<p>介绍性博客 <a href="https://medium.com/@nex3/pubgrub-2fb6470504f">https://medium.com/@nex3/pubgrub-2fb6470504f</a></p>
+<p><a href="https://github.com/dart-lang/pub/blob/master/doc/solver.md">https://github.com/dart-lang/pub/blob/master/doc/solver.md</a> (详细解释)</p>
+<p>基于 <a href="https://potassco.org/book/">https://potassco.org/book/</a> ASP (Answer Set Programming)</p>
+<p><a href="https://rust-lang.github.io/rust-project-goals/2024h2/pubgrub-in-cargo.html">https://rust-lang.github.io/rust-project-goals/2024h2/pubgrub-in-cargo.html</a></p>
+<p><a href="https://github.com/astral-sh/ruff">https://github.com/astral-sh/ruff</a></p>
+<p>类似python black但是更快</p>
+<p><a href="https://docs.rs/good_lp/latest/good_lp/index.html">https://docs.rs/good_lp/latest/good_lp/index.html</a></p>
+<p>线性规划求解器
+<a href="https://docs.rs/lol_html/latest/lol_html/">https://docs.rs/lol_html/latest/lol_html/</a></p>
+<p>html重写，他的api风格非常有趣</p>
+<p><a href="https://github.com/rust-lang/rust/issues/92985">https://github.com/rust-lang/rust/issues/92985</a></p>
+<p>LendingIterator 需要下一代求解器才能工作,不损耗性能的情况下，能证明生命周期的话，可以直接使用裸指针绕过</p>
+<p>而不是把结构体设计成包含RefCell/Cell的结构，最好是从行为上封装,把unsafe的地区压到最低</p>
+<p><a href="https://docs.rs/dynosaur/latest/dynosaur/">https://docs.rs/dynosaur/latest/dynosaur/</a></p>
+<p>提供一个方案来dyn调用async 函数,并且还能保留静态调度的优势是async_trait的直接上位替代品</p>
+<p><a href="https://rust-for-linux.com/arc-in-the-linux-kernel">https://rust-for-linux.com/arc-in-the-linux-kernel</a></p>
+<p>这个其实也是为啥要搞<a href="https://github.com/rust-lang/rust/issues/44874"><code>arbitrary_self_types</code></a>的原因</p>
+<p>而且需要一个SmartPointer 的drive</p>
+<p><a href="https://rust-for-linux.com/">https://rust-for-linux.com/</a></p>
+<p>rrdebug 得阅读看看感觉实现原理挺神奇的</p>
+<p><a href="https://arxiv.org/pdf/1705.05937">https://arxiv.org/pdf/1705.05937</a></p>
 <h2 id="connect">Connect</h2>
 <hr>
 <h1 id="reference">Reference</h1>

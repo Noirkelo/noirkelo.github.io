@@ -1,4 +1,64 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Noirkel 's blog</title><link>https://noirkelo.github.io/blog/idea/</link><description>Recent content in idea on Noirkel 's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><lastBuildDate>Sun, 14 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://noirkelo.github.io/blog/idea/index.xml" rel="self" type="application/rss+xml"/><item><title>Zed Smooth Scroll</title><link>https://noirkelo.github.io/box/zed-smooth-scroll/</link><pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/zed-smooth-scroll/</guid><description>以下是未完工的想法
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Noirkel 's blog</title><link>https://noirkelo.github.io/blog/idea/</link><description>Recent content in idea on Noirkel 's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><lastBuildDate>Sun, 21 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://noirkelo.github.io/blog/idea/index.xml" rel="self" type="application/rss+xml"/><item><title>leetcode</title><link>https://noirkelo.github.io/box/leetcode/</link><pubDate>Sun, 21 Sep 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/leetcode/</guid><description>leetcode 0001 很容易发现可以倒过来找得到所以hash表
+0003 i 处的重复字符串等于i-1 处+1 （子串是自己打破还是上面打破的）可以把一个维度压缩掉 观察左边界也可以发现左边界位置单调递增 可以更改定义使用类似指针的做法
+00011 需要发现一个遍历顺序，是由小的那一边来决定的,h*i
+00030 hard 我需要划分按长度划分 词频统计的是字母到频率 这里是子串到频率 大量边界条件 尽量先不考虑多个循环合并这样不容易出错
+00015 朴素就是n^3 自然考虑一个sort nlogn 如果第一个数大于0则直接退出 当其中两个确定的时候另一个也被确定 i与i&amp;rsquo;是不能重复的 但是i和j可以重复 1 ，2 ，3
+00042 刻画这个水坑，水坑可以横着叠出来还是竖着叠出来 竖着叠出来 1.扫两遍取i处能看到的左侧最大值和右侧最大值取min -1 2.指针法，观察解i和i+1,总是能用两个指针描述，就可以描述成左右两个指针维护Lmax和Rmax 横着叠出来 考虑单调队列对于插入的i我我需要能找到比他大的（横着一块块扫过去）
+0049 统计词频直接存hash,然后
+0128 放到hash表 如果能按一个顺序遍历就可以 比如说1到n 用一个带顺序的set再每次都count set可以计算长度
+0283 左指针前面是已完成 右支架把非0交换过去 l=r=0 swap(l,r) 原地交换没问题 如果交换l++ 一直都r++
+0438 维护一个核心区域的词频然后向右和向左(可能会增加或减少某个词频) 维护differ判断是不是为0即可
+0560 转化成区间性质-&amp;gt;相扣
+Reference</description><content:encoded><![CDATA[<h1 id="leetcode">leetcode</h1>
+<hr>
+<h2 id="0001">0001</h2>
+<p>很容易发现可以倒过来找得到所以hash表</p>
+<h2 id="0003">0003</h2>
+<p>i 处的重复字符串等于i-1 处+1 （子串是自己打破还是上面打破的）可以把一个维度压缩掉
+观察左边界也可以发现左边界位置单调递增 可以更改定义使用类似指针的做法</p>
+<h2 id="00011">00011</h2>
+<p>需要发现一个遍历顺序，是由小的那一边来决定的,h*i</p>
+<h2 id="00030-hard">00030 hard</h2>
+<p>我需要划分按长度划分
+词频统计的是字母到频率
+这里是子串到频率
+大量边界条件
+尽量先不考虑多个循环合并这样不容易出错</p>
+<h2 id="00015">00015</h2>
+<p>朴素就是n^3
+自然考虑一个sort nlogn
+如果第一个数大于0则直接退出
+当其中两个确定的时候另一个也被确定
+i与i&rsquo;是不能重复的
+但是i和j可以重复
+1 ，2 ，3</p>
+<h2 id="00042">00042</h2>
+<p>刻画这个水坑，水坑可以横着叠出来还是竖着叠出来
+竖着叠出来
+1.扫两遍取i处能看到的左侧最大值和右侧最大值取min -1
+2.指针法，观察解i和i+1,总是能用两个指针描述，就可以描述成左右两个指针维护Lmax和Rmax
+横着叠出来
+考虑单调队列对于插入的i我我需要能找到比他大的（横着一块块扫过去）</p>
+<h2 id="0049">0049</h2>
+<p>统计词频直接存hash,然后</p>
+<h2 id="0128">0128</h2>
+<p>放到hash表
+如果能按一个顺序遍历就可以
+比如说1到n
+用一个带顺序的set再每次都count set可以计算长度</p>
+<h2 id="0283">0283</h2>
+<p>左指针前面是已完成
+右支架把非0交换过去
+l=r=0 swap(l,r) 原地交换没问题
+如果交换l++
+一直都r++</p>
+<h2 id="0438">0438</h2>
+<p>维护一个核心区域的词频然后向右和向左(可能会增加或减少某个词频)
+维护differ判断是不是为0即可</p>
+<h2 id="0560">0560</h2>
+<p>转化成区间性质-&gt;相扣</p>
+<h1 id="reference">Reference</h1>
+]]></content:encoded></item><item><title>Zed Smooth Scroll</title><link>https://noirkelo.github.io/box/zed-smooth-scroll/</link><pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/zed-smooth-scroll/</guid><description>以下是未完工的想法
 Summary 给zed添加smooth scroll
 Motivation 更好的视觉效果
 Detailed design 我在原有的分支做了一定修改至少证明了这个拦截修改思路其实没错就是没有做动画补间 我搞清楚neovide 计算vsync计算每一帧的时间 如果滚动距离过长那就截取到达地点的作为动画 使用阻尼弹簧并且截断部分动画实现这个效果

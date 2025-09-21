@@ -1,26 +1,65 @@
 <!doctype html><html lang=zh-Hans><head><meta http-equiv=X-Clacks-Overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" href=https://noirkelo.github.io/images/favicon.png><title>rust-trick | Noirkel 's blog</title>
 <meta name=title content="rust-trick"><meta name=description content="rust-trick Summary 主要用来记录使用过程中的
 编译时间优化 主要是增量编译+各种trick
-cargo hakari /workspace hack 这个主要是保证不管你使用包的方式,让所有的包Feature映射到一个并集里面，这样使用sccache也不会触发重新编译 mold 高性能链接不解释( cranelift 除了llvm以外的另一个backend 目标是最快编译时间 serde-core serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏 测试相关 instra 包含vscode插件可以直接内联插入测试 ui test https://docs.rs/ui_test/latest/ui_test/ 如果有过程宏必须要使用这个保证用户界面使用正确 git 相关 git cliff 制作版本代际相关的changelog 项目构建相关 mise 管理env,甚至加密的token还有不同版本的各种工具 目前还可以管理启动项目的脚本等等并且相比起justfile 可以分体式管理脚本,唯一感觉槽点就是 justfile 轻量级make Debug https://github.com/rr-debugger/rr 这个可以完美支持rust有个gist里面有详细指南 可以直接记录并回放,也就是直接在历史执行过的地方进行单步调试,可以随意的前进和后退,并且可以直接看当时情况下各种变量等等到底有啥 Connect Reference "><meta name=keywords content="fact,"><meta property="og:title" content="rust-trick"><meta property="og:description" content="rust-trick Summary 主要用来记录使用过程中的
-编译时间优化 主要是增量编译+各种trick
-cargo hakari /workspace hack 这个主要是保证不管你使用包的方式,让所有的包Feature映射到一个并集里面，这样使用sccache也不会触发重新编译 mold 高性能链接不解释( cranelift 除了llvm以外的另一个backend 目标是最快编译时间 serde-core serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏 测试相关 instra 包含vscode插件可以直接内联插入测试 ui test https://docs.rs/ui_test/latest/ui_test/ 如果有过程宏必须要使用这个保证用户界面使用正确 git 相关 git cliff 制作版本代际相关的changelog 项目构建相关 mise 管理env,甚至加密的token还有不同版本的各种工具 目前还可以管理启动项目的脚本等等并且相比起justfile 可以分体式管理脚本,唯一感觉槽点就是 justfile 轻量级make Debug https://github.com/rr-debugger/rr 这个可以完美支持rust有个gist里面有详细指南 可以直接记录并回放,也就是直接在历史执行过的地方进行单步调试,可以随意的前进和后退,并且可以直接看当时情况下各种变量等等到底有啥 Connect Reference "><meta property="og:type" content="article"><meta property="og:url" content="https://noirkelo.github.io/box/rust-trick/"><meta property="article:section" content="box"><meta property="article:published_time" content="2025-09-21T00:00:00+00:00"><meta property="article:modified_time" content="2025-09-21T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="rust-trick"><meta name=twitter:description content="rust-trick Summary 主要用来记录使用过程中的
-编译时间优化 主要是增量编译+各种trick
-cargo hakari /workspace hack 这个主要是保证不管你使用包的方式,让所有的包Feature映射到一个并集里面，这样使用sccache也不会触发重新编译 mold 高性能链接不解释( cranelift 除了llvm以外的另一个backend 目标是最快编译时间 serde-core serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏 测试相关 instra 包含vscode插件可以直接内联插入测试 ui test https://docs.rs/ui_test/latest/ui_test/ 如果有过程宏必须要使用这个保证用户界面使用正确 git 相关 git cliff 制作版本代际相关的changelog 项目构建相关 mise 管理env,甚至加密的token还有不同版本的各种工具 目前还可以管理启动项目的脚本等等并且相比起justfile 可以分体式管理脚本,唯一感觉槽点就是 justfile 轻量级make Debug https://github.com/rr-debugger/rr 这个可以完美支持rust有个gist里面有详细指南 可以直接记录并回放,也就是直接在历史执行过的地方进行单步调试,可以随意的前进和后退,并且可以直接看当时情况下各种变量等等到底有啥 Connect Reference "><meta itemprop=name content="rust-trick"><meta itemprop=description content="rust-trick Summary 主要用来记录使用过程中的
-编译时间优化 主要是增量编译+各种trick
-cargo hakari /workspace hack 这个主要是保证不管你使用包的方式,让所有的包Feature映射到一个并集里面，这样使用sccache也不会触发重新编译 mold 高性能链接不解释( cranelift 除了llvm以外的另一个backend 目标是最快编译时间 serde-core serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏 测试相关 instra 包含vscode插件可以直接内联插入测试 ui test https://docs.rs/ui_test/latest/ui_test/ 如果有过程宏必须要使用这个保证用户界面使用正确 git 相关 git cliff 制作版本代际相关的changelog 项目构建相关 mise 管理env,甚至加密的token还有不同版本的各种工具 目前还可以管理启动项目的脚本等等并且相比起justfile 可以分体式管理脚本,唯一感觉槽点就是 justfile 轻量级make Debug https://github.com/rr-debugger/rr 这个可以完美支持rust有个gist里面有详细指南 可以直接记录并回放,也就是直接在历史执行过的地方进行单步调试,可以随意的前进和后退,并且可以直接看当时情况下各种变量等等到底有啥 Connect Reference "><meta itemprop=datePublished content="2025-09-21T00:00:00+00:00"><meta itemprop=dateModified content="2025-09-21T00:00:00+00:00"><meta itemprop=wordCount content="43"><meta itemprop=keywords content="fact,"><meta name=referrer content="no-referrer-when-downgrade"><link href=/simple.min.css rel=stylesheet><link href=/style.min.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css integrity=sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js integrity=sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js integrity=sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh crossorigin=anonymous onload=renderMathInElement(document.body)></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\[",right:"\\]",display:!0},{left:"$$",right:"$$",display:!0},{left:"\\(",right:"\\)",display:!1}],throwOnError:!1})})</script></head><body><header><nav><a href=/>Home</a>
-<a href=/box/>Box</a>
-<a href=https://noirkelo.github.io/index.xml>RSS</a></nav><h1>rust-trick</h1></header><main><content><h1 id=rust-trick>rust-trick</h1><h2 id=summary>Summary</h2><p>主要用来记录使用过程中的</p><h3 id=编译时间优化>编译时间优化</h3><p>主要是增量编译+各种trick</p><ul><li>cargo hakari /workspace hack
-这个主要是保证不管你使用包的方式,让所有的包Feature映射到一个并集里面，这样使用sccache也不会触发重新编译</li><li>mold
-高性能链接不解释(</li><li>cranelift
-除了llvm以外的另一个backend 目标是最快编译时间</li><li>serde-core
-serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏</li></ul><h3 id=测试相关>测试相关</h3><ul><li>instra
-包含vscode插件可以直接内联插入测试</li><li>ui test
-<a href=https://docs.rs/ui_test/latest/ui_test/>https://docs.rs/ui_test/latest/ui_test/</a>
-如果有过程宏必须要使用这个保证用户界面使用正确</li></ul><h3 id=git-相关>git 相关</h3><ul><li>git cliff
-制作版本代际相关的changelog</li></ul><h3 id=项目构建相关>项目构建相关</h3><ul><li>mise
-管理env,甚至加密的token还有不同版本的各种工具
+cargo hakari /workspace hack 这个主要是保证不管你使用包的方式,让所有的包Feature映射到一个并集里面，这样使用sccache也不会触发重新编译
+mold 高性能链接不解释(
+cranelift 除了llvm以外的另一个backend 目标是最快编译时间
+serde-core serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏
+测试相关 instra 包含vscode插件可以直接内联插入测试
+ui test https://docs.rs/ui_test/latest/ui_test/ 如果有过程宏必须要使用这个保证用户界面使用正确
+git 相关 git cliff 制作版本代际相关的changelog
+项目构建相关 mise 管理env,甚至加密的token还有不同版本的各种工具
 目前还可以管理启动项目的脚本等等并且相比起justfile
-可以分体式管理脚本,唯一感觉槽点就是</li><li>justfile
-轻量级make</li></ul><h3 id=debug>Debug</h3><ul><li><a href=https://github.com/rr-debugger/rr>https://github.com/rr-debugger/rr</a>
-这个可以完美支持rust有个gist里面有详细指南
-可以直接记录并回放,也就是直接在历史执行过的地方进行单步调试,可以随意的前进和后退,并且可以直接看当时情况下各种变量等等到底有啥</li></ul><h2 id=connect>Connect</h2><hr><h1 id=reference>Reference</h1></content><p><a href=https://noirkelo.github.io/blog/fact/>#fact</a>&nbsp;&nbsp;</p></main><footer>Made with <a href=https://github.com/maolonglong/hugo-simple/>Hugo ʕ•ᴥ•ʔ Simple</a></footer></body></html>
+可以分体式管理脚本,唯一感觉槽点就是
+justfile 轻量级make
+Debug https://github.com/rr-debugger/rr 这个可以完美支持rust有个gist里面有详细指南
+可以直接记录并回放,也就是直接在历史执行过的地方进行单步调试,可以随意的前进和后退,并且可以直接看当时情况下各种变量等等到底有啥
+Connect Reference "><meta name=keywords content="fact,"><meta property="og:title" content="rust-trick"><meta property="og:description" content="rust-trick Summary 主要用来记录使用过程中的
+编译时间优化 主要是增量编译+各种trick
+cargo hakari /workspace hack 这个主要是保证不管你使用包的方式,让所有的包Feature映射到一个并集里面，这样使用sccache也不会触发重新编译
+mold 高性能链接不解释(
+cranelift 除了llvm以外的另一个backend 目标是最快编译时间
+serde-core serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏
+测试相关 instra 包含vscode插件可以直接内联插入测试
+ui test https://docs.rs/ui_test/latest/ui_test/ 如果有过程宏必须要使用这个保证用户界面使用正确
+git 相关 git cliff 制作版本代际相关的changelog
+项目构建相关 mise 管理env,甚至加密的token还有不同版本的各种工具
+目前还可以管理启动项目的脚本等等并且相比起justfile
+可以分体式管理脚本,唯一感觉槽点就是
+justfile 轻量级make
+Debug https://github.com/rr-debugger/rr 这个可以完美支持rust有个gist里面有详细指南
+可以直接记录并回放,也就是直接在历史执行过的地方进行单步调试,可以随意的前进和后退,并且可以直接看当时情况下各种变量等等到底有啥
+Connect Reference "><meta property="og:type" content="article"><meta property="og:url" content="https://noirkelo.github.io/box/rust-trick/"><meta property="article:section" content="box"><meta property="article:published_time" content="2025-09-21T00:00:00+00:00"><meta property="article:modified_time" content="2025-09-21T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="rust-trick"><meta name=twitter:description content="rust-trick Summary 主要用来记录使用过程中的
+编译时间优化 主要是增量编译+各种trick
+cargo hakari /workspace hack 这个主要是保证不管你使用包的方式,让所有的包Feature映射到一个并集里面，这样使用sccache也不会触发重新编译
+mold 高性能链接不解释(
+cranelift 除了llvm以外的另一个backend 目标是最快编译时间
+serde-core serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏
+测试相关 instra 包含vscode插件可以直接内联插入测试
+ui test https://docs.rs/ui_test/latest/ui_test/ 如果有过程宏必须要使用这个保证用户界面使用正确
+git 相关 git cliff 制作版本代际相关的changelog
+项目构建相关 mise 管理env,甚至加密的token还有不同版本的各种工具
+目前还可以管理启动项目的脚本等等并且相比起justfile
+可以分体式管理脚本,唯一感觉槽点就是
+justfile 轻量级make
+Debug https://github.com/rr-debugger/rr 这个可以完美支持rust有个gist里面有详细指南
+可以直接记录并回放,也就是直接在历史执行过的地方进行单步调试,可以随意的前进和后退,并且可以直接看当时情况下各种变量等等到底有啥
+Connect Reference "><meta itemprop=name content="rust-trick"><meta itemprop=description content="rust-trick Summary 主要用来记录使用过程中的
+编译时间优化 主要是增量编译+各种trick
+cargo hakari /workspace hack 这个主要是保证不管你使用包的方式,让所有的包Feature映射到一个并集里面，这样使用sccache也不会触发重新编译
+mold 高性能链接不解释(
+cranelift 除了llvm以外的另一个backend 目标是最快编译时间
+serde-core serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏
+测试相关 instra 包含vscode插件可以直接内联插入测试
+ui test https://docs.rs/ui_test/latest/ui_test/ 如果有过程宏必须要使用这个保证用户界面使用正确
+git 相关 git cliff 制作版本代际相关的changelog
+项目构建相关 mise 管理env,甚至加密的token还有不同版本的各种工具
+目前还可以管理启动项目的脚本等等并且相比起justfile
+可以分体式管理脚本,唯一感觉槽点就是
+justfile 轻量级make
+Debug https://github.com/rr-debugger/rr 这个可以完美支持rust有个gist里面有详细指南
+可以直接记录并回放,也就是直接在历史执行过的地方进行单步调试,可以随意的前进和后退,并且可以直接看当时情况下各种变量等等到底有啥
+Connect Reference "><meta itemprop=datePublished content="2025-09-21T00:00:00+00:00"><meta itemprop=dateModified content="2025-09-21T00:00:00+00:00"><meta itemprop=wordCount content="43"><meta itemprop=keywords content="fact,"><meta name=referrer content="no-referrer-when-downgrade"><link href=/simple.min.css rel=stylesheet><link href=/style.min.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css integrity=sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js integrity=sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js integrity=sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh crossorigin=anonymous onload=renderMathInElement(document.body)></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\[",right:"\\]",display:!0},{left:"$$",right:"$$",display:!0},{left:"\\(",right:"\\)",display:!1}],throwOnError:!1})})</script></head><body><header><nav><a href=/>Home</a>
+<a href=/box/>Box</a>
+<a href=https://noirkelo.github.io/index.xml>RSS</a></nav><h1>rust-trick</h1></header><main><content><h1 id=rust-trick>rust-trick</h1><h2 id=summary>Summary</h2><p>主要用来记录使用过程中的</p><h3 id=编译时间优化>编译时间优化</h3><p>主要是增量编译+各种trick</p><ul><li>cargo hakari /workspace hack</li></ul><p>这个主要是保证不管你使用包的方式,让所有的包Feature映射到一个并集里面，这样使用sccache也不会触发重新编译</p><ul><li>mold</li></ul><p>高性能链接不解释(</p><ul><li>cranelift</li></ul><p>除了llvm以外的另一个backend 目标是最快编译时间</p><ul><li>serde-core</li></ul><p>serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏</p><h3 id=测试相关>测试相关</h3><ul><li>instra</li></ul><p>包含vscode插件可以直接内联插入测试</p><ul><li>ui test
+<a href=https://docs.rs/ui_test/latest/ui_test/>https://docs.rs/ui_test/latest/ui_test/</a></li></ul><p>如果有过程宏必须要使用这个保证用户界面使用正确</p><h3 id=git-相关>git 相关</h3><ul><li>git cliff</li></ul><p>制作版本代际相关的changelog</p><h3 id=项目构建相关>项目构建相关</h3><ul><li>mise</li></ul><p>管理env,甚至加密的token还有不同版本的各种工具</p><p>目前还可以管理启动项目的脚本等等并且相比起justfile</p><p>可以分体式管理脚本,唯一感觉槽点就是</p><ul><li>justfile</li></ul><p>轻量级make</p><h3 id=debug>Debug</h3><ul><li><a href=https://github.com/rr-debugger/rr>https://github.com/rr-debugger/rr</a></li></ul><p>这个可以完美支持rust有个gist里面有详细指南</p><p>可以直接记录并回放,也就是直接在历史执行过的地方进行单步调试,可以随意的前进和后退,并且可以直接看当时情况下各种变量等等到底有啥</p><h2 id=connect>Connect</h2><hr><h1 id=reference>Reference</h1></content><p><a href=https://noirkelo.github.io/blog/fact/>#fact</a>&nbsp;&nbsp;</p></main><footer>Made with <a href=https://github.com/maolonglong/hugo-simple/>Hugo ʕ•ᴥ•ʔ Simple</a></footer></body></html>
