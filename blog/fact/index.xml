@@ -103,6 +103,7 @@ https://rust-for-linux.com/arc-in-the-linux-kernel
 https://rust-for-linux.com/
 rrdebug 得阅读看看感觉实现原理挺神奇的
 https://arxiv.org/pdf/1705.05937
+Server https://www.codedump.info/post/20220129-weekly-3/ https://www.cnblogs.com/fingerpass/p/game-server-programming-paradigm.html non-trivial buffer，ringbuffer，bufferlist https://github.com/hyperion-mc/hyperion 他的网络buffer确实跟我的类似rkyv
 Connect Reference</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
 <p>罗列最近看到的不错的技术文章/新的东西
 如果实际上用了会移动到具体方面</p>
@@ -142,6 +143,12 @@ Connect Reference</description><content:encoded><![CDATA[<h2 id="summary">Summar
 <p><a href="https://rust-for-linux.com/">https://rust-for-linux.com/</a></p>
 <p>rrdebug 得阅读看看感觉实现原理挺神奇的</p>
 <p><a href="https://arxiv.org/pdf/1705.05937">https://arxiv.org/pdf/1705.05937</a></p>
+<h2 id="server">Server</h2>
+<p><a href="https://www.codedump.info/post/20220129-weekly-3/">https://www.codedump.info/post/20220129-weekly-3/</a>
+<a href="https://www.cnblogs.com/fingerpass/p/game-server-programming-paradigm.html">https://www.cnblogs.com/fingerpass/p/game-server-programming-paradigm.html</a>
+non-trivial buffer，ringbuffer，bufferlist
+<a href="https://github.com/hyperion-mc/hyperion">https://github.com/hyperion-mc/hyperion</a>
+他的网络buffer确实跟我的类似rkyv</p>
 <h2 id="connect">Connect</h2>
 <hr>
 <h1 id="reference">Reference</h1>
