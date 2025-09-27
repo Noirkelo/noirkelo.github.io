@@ -327,6 +327,32 @@ dorp可以通过mem::forget这样去移除行为</li>
 <li>must be used exactly once (linear™) =1
 必须使用一次（线性™）</li>
 </ol>
+<h3 id="autodiff">Autodiff</h3>
+<p>自动计算微分
+比如说</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">f</span>(x: <span style="color:#66d9ef">f32</span>) -&gt; <span style="color:#66d9ef">f32</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span> x <span style="color:#f92672">*</span> x
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>}</span></span></code></pre></div>
+<p>可以自动计算这个</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">df</span>(x: <span style="color:#66d9ef">f32</span>) -&gt; (<span style="color:#66d9ef">f32</span>, <span style="color:#66d9ef">f32</span>) {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span> (x<span style="color:#f92672">*</span>x, <span style="color:#ae81ff">2.0</span> <span style="color:#f92672">*</span> x)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>}</span></span></code></pre></div>
+<p><a href="https://www.reddit.com/r/rust/comments/1h1b1po/using_stdautodiff_to_replace_jax/">https://www.reddit.com/r/rust/comments/1h1b1po/using_stdautodiff_to_replace_jax/</a>
+在Python/JAX中一般使用的时候使用的是jit编译时间可能需要数小时甚至数天
+Rust 的 autodiff 可以在大约 30 分钟内编译出等效的 Rust 代码
+具体工作层级是在
+Enzyme <a href="https://enzyme.mit.edu/">https://enzyme.mit.edu/</a>
+llvm ir</p>
 <h2 id="内部可变性">内部可变性</h2>
 <p>Rc Weak UniqueRc Arc
 RefCell &amp; Cell &amp; UnsafeCell
