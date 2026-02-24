@@ -3,7 +3,7 @@
 cargo hakari /workspace hack 这个主要是保证不管你使用包的方式,让所有的包Feature映射到一个并集里面，这样使用sccache也不会触发重新编译
 mold 高性能链接不解释(
 cranelift 除了llvm以外的另一个backend 目标是最快编译时间
-serde-core serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏
+serde-core serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏 sccache 屁用没有别用
 测试相关 instra 包含vscode插件可以直接内联插入测试
 ui test https://docs.rs/ui_test/latest/ui_test/ 如果有过程宏必须要使用这个保证用户界面使用正确
 git 相关 git cliff 制作版本代际相关的changelog
@@ -33,7 +33,8 @@ Connect Reference</description><content:encoded><![CDATA[<h1 id="rust-trick">rus
 <ul>
 <li>serde-core</li>
 </ul>
-<p>serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏</p>
+<p>serde做了一次调整重点就是把derive 的定义分离,可以直接使用core，也就是你可以按需导入过程宏
+sccache 屁用没有别用</p>
 <h3 id="测试相关">测试相关</h3>
 <ul>
 <li>instra</li>
@@ -70,7 +71,9 @@ Connect Reference</description><content:encoded><![CDATA[<h1 id="rust-trick">rus
 <hr>
 <h1 id="reference">Reference</h1>
 ]]></content:encoded></item><item><title>awsome-tech</title><link>https://noirkelo.github.io/box/awsome-tech/</link><pubDate>Fri, 19 Sep 2025 00:00:00 +0000</pubDate><guid>https://noirkelo.github.io/box/awsome-tech/</guid><description>Summary 罗列最近看到的不错的技术文章/新的东西 如果实际上用了会移动到具体方面
-Rust https://github.com/TimelyDataflow/timely-dataflow
+Rust https://www.0xatticus.com/posts/understanding_rust_niche/ https://llvm.org/docs/LangRef.html https://blog.yoshuawuyts.com/placing-functions/ 就地放置(我的skip list实现里面有类似这个部分可以推迟初始化时间)
+协同编辑相关 CRDTs 1.可以降低服务器带宽开销 2.更加实时的交互体验
+https://github.com/TimelyDataflow/timely-dataflow
 https://github.com/TimelyDataflow/differential-dataflow
 对于某些要求全局正确性的强状态服务的可能是必须的，看起来是可以做一个分布式的计算,并且根据增量的数据自动更新结果，缺点是需要把很多现有算法都重新实现成图对工程要求非常高 可能需要了解下datalog才能理解这种范式
 https://github.com/frankmcsherry/blog
@@ -103,11 +106,19 @@ https://rust-for-linux.com/arc-in-the-linux-kernel
 https://rust-for-linux.com/
 rrdebug 得阅读看看感觉实现原理挺神奇的
 https://arxiv.org/pdf/1705.05937
-Server https://www.codedump.info/post/20220129-weekly-3/ https://www.cnblogs.com/fingerpass/p/game-server-programming-paradigm.html non-trivial buffer，ringbuffer，bufferlist https://github.com/hyperion-mc/hyperion 他的网络buffer确实跟我的类似rkyv
-Connect Reference</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
+Server https://www.codedump.info/post/20220129-weekly-3/ https://www.cnblogs.com/fingerpass/p/game-server-programming-paradigm.html non-trivial buffer，ringbuffer，bufferlist https://github.com/hyperion-mc/hyperion 他的网络buffer确实跟我的类似rkyv https://github.com/juhaku/utoipa/ 快速搞openapi
+Misc Z-order curve https://mcyoung.</description><content:encoded><![CDATA[<h2 id="summary">Summary</h2>
 <p>罗列最近看到的不错的技术文章/新的东西
 如果实际上用了会移动到具体方面</p>
 <h2 id="rust">Rust</h2>
+<p><a href="https://www.0xatticus.com/posts/understanding_rust_niche/">https://www.0xatticus.com/posts/understanding_rust_niche/</a>
+<a href="https://llvm.org/docs/LangRef.html">https://llvm.org/docs/LangRef.html</a>
+<a href="https://blog.yoshuawuyts.com/placing-functions/">https://blog.yoshuawuyts.com/placing-functions/</a>
+就地放置(我的skip list实现里面有类似这个部分可以推迟初始化时间)</p>
+<p>协同编辑相关
+CRDTs
+1.可以降低服务器带宽开销
+2.更加实时的交互体验</p>
 <p><a href="https://github.com/TimelyDataflow/timely-dataflow">https://github.com/TimelyDataflow/timely-dataflow</a></p>
 <p><a href="https://github.com/TimelyDataflow/differential-dataflow">https://github.com/TimelyDataflow/differential-dataflow</a></p>
 <p>对于某些要求全局正确性的强状态服务的可能是必须的，看起来是可以做一个分布式的计算,并且根据增量的数据自动更新结果，缺点是需要把很多现有算法都重新实现成图对工程要求非常高
@@ -148,7 +159,19 @@ Connect Reference</description><content:encoded><![CDATA[<h2 id="summary">Summar
 <a href="https://www.cnblogs.com/fingerpass/p/game-server-programming-paradigm.html">https://www.cnblogs.com/fingerpass/p/game-server-programming-paradigm.html</a>
 non-trivial buffer，ringbuffer，bufferlist
 <a href="https://github.com/hyperion-mc/hyperion">https://github.com/hyperion-mc/hyperion</a>
-他的网络buffer确实跟我的类似rkyv</p>
+他的网络buffer确实跟我的类似rkyv
+<a href="https://github.com/juhaku/utoipa/">https://github.com/juhaku/utoipa/</a>
+快速搞openapi</p>
+<h1 id="misc">Misc</h1>
+<p>Z-order curve
+<a href="https://mcyoung.xyz/2023/08/01/llvm-ir/">https://mcyoung.xyz/2023/08/01/llvm-ir/</a></p>
+<p><a href="https://www.gabrielgambetta.com/lag-compensation.html">https://www.gabrielgambetta.com/lag-compensation.html</a>
+<a href="https://best33.com/325.moe">https://best33.com/325.moe</a>
+<a href="https://developer.valvesoftware.com/wiki/Latency_Compensating_Methods_in_Client/Server_In-game_Protocol_Design_and_Optimization">https://developer.valvesoftware.com/wiki/Latency_Compensating_Methods_in_Client/Server_In-game_Protocol_Design_and_Optimization</a>
+<a href="https://forums.unrealengine.com/t/how-can-i-use-navmesh-data-in-server-side/318281/1">https://forums.unrealengine.com/t/how-can-i-use-navmesh-data-in-server-side/318281/1</a>
+//# Lamport用于分布式系统确定顺序(接受数据后比较本地和远程的Lamport取大值+1,如果不能比较就使用进程id，除此之外就是并行，本质只是一种划分方法)
+<a href="https://www.codedump.info/post/20220703-weekly-21/">https://www.codedump.info/post/20220703-weekly-21/</a>
+卡尔曼滤波实质就是将预测状态量的高斯分布和观测量的高斯分布做融合，生成一个新的高斯分布，其中新的高斯分布的均值和方差是两个独立的高斯分布的相关参量的加权，这个加权就是卡尔曼增益，但是预测状态量和观测量可能维度不同，需要将他们同时转换到一个向量空间中，所以观测量前面有线性变换矩阵</p>
 <h2 id="connect">Connect</h2>
 <hr>
 <h1 id="reference">Reference</h1>
@@ -266,7 +289,11 @@ drop order 顺序</p>
 </ul>
 <h3 id="nicheoptimization">NicheOptimization</h3>
 <p>rust 会通过各种方式记录访问的值域，如果用不到的值域就会被用去做这个优化(enum)
-<a href="https://www.0xatticus.com/posts/understanding_rust_niche/">https://www.0xatticus.com/posts/understanding_rust_niche/</a></p>
+<a href="https://www.0xatticus.com/posts/understanding_rust_niche/">https://www.0xatticus.com/posts/understanding_rust_niche/</a>
+比如说u32首先因为平台问题会对齐到8字节
+其中低位(右边)存储的是判别式，高位存的是具体的值
+对于None的时候右边是0，左边可以是随机化初始的值</p>
+<p>0b0000000000000000000000000000001100000000000000000000000000000001</p>
 <h3 id="precise-capturing">precise-capturing</h3>
 <p>用于指定哪些泛型参数应在类似 RPIT 的 <code>impl Trait</code> 类型中捕获
 比如目前不允许嵌套透明对象中间捕获更高的生命周期可以通过use&lt;&gt; 来防止捕获进而通过编译
